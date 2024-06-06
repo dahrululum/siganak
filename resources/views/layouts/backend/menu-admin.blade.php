@@ -4,45 +4,14 @@
             <i class="nav-icon fas fa-home"></i>  <p>Dashboard</p>
         </a>
     </li>
-    <!--
-    <li class="nav-item has-treeview <?php if(Request::segment(2)=='jabutama' or Request::segment(2)=='jabuptd' or Request::segment(2)=='jabcabdin' or Request::segment(2)=='jabsekolah' or Request::segment(4)=='jabutama' or Request::segment(4)=='jabuptd' or Request::segment(4)=='jabcabdin' or Request::segment(4)=='jabsekolah'){echo 'menu-open';} ?>">
-        <a class="nav-link " href="#"><i class="nav-icon fa fa-tags"></i>  <p>Nomenklatur Jabatan <i class="right fa fa-angle-left"></i> </p></a>
-        <ul class="nav nav-treeview" style="<?php if(Request::segment(2)=='jabutama' or Request::segment(2)=='jabuptd' or Request::segment(2)=='jabcabdin' or Request::segment(2)=='jabsekolah' or Request::segment(4)=='jabutama' or Request::segment(4)=='jabuptd' or Request::segment(4)=='jabcabdin' or Request::segment(4)=='jabsekolah' or Request::segment(3)=='editjpeng' or Request::segment(3)=='editjpel' or Request::segment(3)=='editjfung'){echo 'display:block';}else{echo 'display:none';} ?>">
-            <li class="nav-item">
-                <a class="nav-link <?php if(Request::segment(2)=='jabutama' or Request::segment(4)=='jabutama'){echo 'active';} ?>" href="<?= url('/admin/jabutama'); ?>">
-                    <i class="nav-icon fa fa-angle-double-right"></i>  <p> Utama</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php if(Request::segment(2)=='jabuptd' or Request::segment(4)=='jabuptd' or Request::segment(2)=='detailuptd'){echo 'active';} ?>" href="<?= url('/admin/jabuptd'); ?>">
-                    <i class="nav-icon fa fa-angle-double-right"></i>  <p> UPTD/UPTB </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php if(Request::segment(2)=='jabcabdin' or Request::segment(4)=='jabcabdin'){echo 'active';} ?>" href="<?= url('/admin/jabcabdin'); ?>">
-                    <i class="nav-icon fa fa-angle-double-right"></i>  <p> Cabdin </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php if(Request::segment(2)=='jabsekolah' or Request::segment(4)=='jabsekolah' or Request::segment(2)=='detailsek'){echo 'active';} ?>" href="<?= url('/admin/jabsekolah'); ?>">
-                    <i class="nav-icon fa fa-angle-double-right"></i>  <p> Sekolah </p>
-                </a>
-            </li>
-        
-        </ul>
-    </li>
-    !-->
-    <li class="nav-header">Formasi Jabatan</li>
+     
+    {{-- <li class="nav-header">Formasi Jabatan</li>
     <li class="nav-item ">
         <a class="nav-link <?php if(Request::segment(2)=='jabatan'){echo 'active';} ?>" href="<?= url('/admin/jabatan/1'); ?>">
             <i class="nav-icon fas fa-table"></i>  <p>Jabatan</p>
         </a>
     </li> 
-    {{-- <li class="nav-item ">
-        <a class="nav-link <?php if(Request::segment(2)=='uraianjabatan'){echo 'active';} ?>" href="<?= url('/admin/uraianjabatan/1'); ?>">
-            <i class="nav-icon fas fa-table"></i>  <p> Uraian Jabatan</p>
-        </a>
-    </li> --}}
+    
     <li class="nav-item ">
         <a class="nav-link <?php if(Request::segment(2)=='uraianjabatan'){echo 'active';} ?>" href="<?= url('/admin/uraianjabatan/'); ?>">
             <i class="nav-icon fas fa-table"></i>  <p> Uraian Jabatan</p>
@@ -54,17 +23,7 @@
             <i class="nav-icon fas fa-table"></i>  <p>Analisa Beban Kerja</p>
         </a>
     </li> 
-    {{-- <li class="nav-item ">
-        <a class="nav-link <?php if(Request::segment(2)=='uraianjabatan'){echo 'active';} ?>" href="<?= url('/admin/uraianjabatan/1'); ?>">
-            <i class="nav-icon fas fa-table"></i>  <p> Kebutuhan Pegawai</p>
-        </a>
-    </li> --}}
-{{--     
-    <li class="nav-item ">
-        <a class="nav-link <?php if(Request::segment(2)=='formasijab'){echo 'active';} ?>" href="<?= url('/admin/formasijab/1'); ?>">
-            <i class="nav-icon fas fa-table"></i>  <p> Formasi Jabatan</p>
-        </a>
-    </li> --}}
+   
     <li class="nav-header">Usul Formasi Jabatan</li>
     <li class="nav-item ">
         <a class="nav-link <?php if(Request::segment(2)=='jabatan'){echo 'active';} ?>" href="<?= url('/admin/usulformasi/1'); ?>">
@@ -80,7 +39,7 @@
         <a class="nav-link <?php if(Request::segment(2)=='jabatan'){echo 'active';} ?>" href="<?= url('/admin/distribusiformasi/1'); ?>">
             <i class="nav-icon fas fa-table"></i>  <p>Redistribusi Pegawai ASN</p>
         </a>
-    </li> 
+    </li>  --}}
     <li class="nav-header">UTILITAS</li>
      
     <li class="nav-item has-treeview <?php if(Request::segment(2)=='useradmin' or Request::segment(2)=='userpd' or Request::segment(2)=='adduseradmin' or Request::segment(2)=='edituseradmin' or Request::segment(2)=='adduserpd' or Request::segment(2)=='edituserpd' ){echo 'menu-open';} ?>"><a class="nav-link " href="#"><i class="nav-icon fa fa-user"></i>  <p>User <i class="right fa fa-angle-left"></i> </p></a>
@@ -93,16 +52,21 @@
         </ul>
     </li>
     <li class="nav-item ">
-        <a class="nav-link <?php if(Request::segment(2)=='instansi' or Request::segment(2)=='addinstansi' or  Request::segment(2)=='editinstansi'  ){echo 'active';} ?>" href="<?= url('/admin/instansi'); ?>">
-            <i class="nav-icon fas fa-list-ol"></i>  <p>Instansi</p>
+        <a class="nav-link <?php if(Request::segment(2)=='wilayah' or Request::segment(2)=='addwilayah' or  Request::segment(2)=='editwilayah'  ){echo 'active';} ?>" href="<?= url('/admin/wilayah'); ?>">
+            <i class="nav-icon fas fa-list-ol"></i>  <p>Wilayah</p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='jenis' or Request::segment(2)=='addjenis' or  Request::segment(2)=='editjenis'  ){echo 'active';} ?>" href="<?= url('/admin/jenis'); ?>">
+            <i class="nav-icon fas fa-list-ol"></i>  <p>Jenis</p>
         </a>
     </li>
     
-    <li class="nav-item ">
+    {{-- <li class="nav-item ">
         <a class="nav-link <?php if(Request::segment(2)=='pegawai'  or Request::segment(2)=='addpegawai' or Request::segment(2)=='editpegawai' ){echo 'active';} ?>" href="<?= url('/admin/pegawai'); ?>">
             <i class="nav-icon fas fa-users"></i>  <p> Pegawai </p>
         </a>
-    </li>
+    </li> --}}
    
     <li class="nav-header">KELUAR ?</li>
     <li class="nav-item">

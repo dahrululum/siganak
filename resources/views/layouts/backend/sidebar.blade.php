@@ -6,7 +6,7 @@
     <a href="{{url('/admin')}}" class="brand-link">
         <img src="{{ asset('/images/logobabel.png') }}" alt="SIRENA" class="brand-image img-circle elevation-3"
              style="opacity: .9">
-        <span class="brand-text font-weight-light">Admin SIRENA</span>
+        <span class="brand-text font-weight-light">Admin SIGANAK</span>
     </a>
 
     <!-- Sidebar -->
