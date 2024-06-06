@@ -1,0 +1,1 @@
+<strong> <a href="/">BKPSDMD Provinsi Kepulauan Bangka Belitung</a>.</strong> All rights reserved.
