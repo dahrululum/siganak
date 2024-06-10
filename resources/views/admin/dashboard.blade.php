@@ -29,32 +29,32 @@ use App\Components\Helper;
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <div class="small-box bg-primary">
                         <div class="inner">
                          
-                            <p>Perangkat Dinas </p>
+                            <p>Wilayah / Perangkat Dinas </p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-file"></i>
                         </div>
-                        <a href="<?= url('/admin/skpd') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="<?= url('/admin/wilayah') ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-6">
                     <div class="small-box bg-success">
                         <div class="inner">
                            
 
-                            <p>UPTD</p>
+                            <p>Jenis Elemen</p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-file"></i>
                         </div>
-                        <a href="<?= url('/admin/uptd'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="<?= url('/admin/jenis'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                {{-- <div class="col-sm-3">
                     <div class="small-box bg-info">
                         <div class="inner">
                            
@@ -79,7 +79,7 @@ use App\Components\Helper;
                         </div>
                         <a href="<?= url('/admin/cabdin'); ?>" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
+                </div> --}}
                  
                 
             </div>

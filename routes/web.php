@@ -50,6 +50,9 @@ Route::post('/admin/post-edituserpd', [AdminController::class,'postEdituserpd'])
 
 Route::get('/admin/deluser/{id}',  [AdminController::class,'deluser']);
  
+//10 06 2024
+Route::get('admin/wilayah', [AdminController::class,'wilayah'])->name('admin.wilayah');
+
 
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 

@@ -280,7 +280,25 @@ class AdminController extends Controller
         
        
     }
+    //wilayah
+    //10 juni 2024
+    public function wilayah(){
+      if(Auth::guard('admin')->check()){  
+        $wil = Refwilayah::where('status',1)->get();
 
+        return view('admin/wilayah' , [
+          'layout' => $this->layout,
+          'wils' =>$wil,
+         
+          
+           
+  ]);
+      }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+          ]);
+        }
+    }
     //formasi jabatan
     //05 des 2021
     public function jabatan($id)
