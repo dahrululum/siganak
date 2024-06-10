@@ -51,6 +51,7 @@ Route::post('/admin/post-edituserpd', [AdminController::class,'postEdituserpd'])
 Route::get('/admin/deluser/{id}',  [AdminController::class,'deluser']);
  
 //10 06 2024
+//wilayah
 Route::get('admin/wilayah', [AdminController::class,'wilayah'])->name('admin.wilayah');
 
 

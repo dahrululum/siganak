@@ -45,7 +45,7 @@
                                     <th> Kode Wilayah </th>
                                     <th> Nama Wilayah </th>
                                     <th> Alias </th>
-                                    <th> # </th>
+                                    <th> #  </th>
 
                                 </tr>
                                 </thead>

@@ -290,9 +290,7 @@ class AdminController extends Controller
           'layout' => $this->layout,
           'wils' =>$wil,
          
-          
-           
-  ]);
+        ]);
       }else{
         return view('admin.login',[
             'layout' => $this->layout 
