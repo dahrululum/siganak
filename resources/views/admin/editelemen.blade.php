@@ -100,7 +100,7 @@
                      
                 </div>
                 <div class="card-footer">
-                    <input type="text" id="idna" name="idna" value="{{ $pel->id }}">
+                    <input type="hidden" id="idna" name="idna" value="{{ $pel->id }}">
                     <button class="btn btn-primary" type="submit">Simpan</button>
                     
                 </div>						

@@ -424,7 +424,29 @@ class AdminController extends Controller
               ]);
         }
     }
+    public function delelemen($id)
+    {
+        if(Auth::guard('admin')->check()){      
+             
+            $el = Elemen::where('id', $id)->first();
+            // if($el->id_induk==0){
 
+            // }else{
+
+            // }
+
+
+            $el->delete();
+            return Redirect::to("/admin/elemen")->with('success',' Proses Delete Elemen berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+            ]);
+        }
+        
+        
+       
+    }
 
 
     //formasi jabatan

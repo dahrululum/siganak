@@ -1,4 +1,4 @@
-<option value="{{$el->id}}" @if($el->id == $pel->id) selected @endif>
+<option value="{{$el->id}}" @if($el->id == $pel->id_induk) selected @endif>
     <?php 
         if($level!=0){
            
@@ -15,7 +15,7 @@
     @else
 
     -
-    @endif   </option> 
+    @endif ::    </option> 
 
 
     <?php 

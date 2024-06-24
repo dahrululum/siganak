@@ -61,6 +61,7 @@ Route::get('/admin/addelemen', [AdminController::class,'addelemen'])->name('admi
 Route::post('/admin/post-addelemen', [AdminController::class,'postAddelemen']); 
 Route::get('/admin/editelemen/{id}',  [AdminController::class,'editelemen'])->name('admin.editelemen');
 Route::post('/admin/post-editelemen', [AdminController::class,'postEditelemen']); 
+Route::get('/admin/delelemen/{id}',  [AdminController::class,'delelemen']);
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 
 
