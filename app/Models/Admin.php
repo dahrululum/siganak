@@ -17,15 +17,13 @@ class Admin extends Authenticatable
         'username',
         'password',
         'level',
-        'id_instansi',
-        'kdskpd',
-        'kdsubskpd',
-        'kdcab',
-        'kduptd',
+        'id_wilayah',
+        
     ];
-    public function getInstansi()
+     
+    public function getWil()
     {
-        return $this->hasOne(Instansi::class,'id','id_instansi')->withDefault();
+        return $this->hasOne(Refwilayah::class,'id','id_wilayah')->withDefault();
     }
 
 }

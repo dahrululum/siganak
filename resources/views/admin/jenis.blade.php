@@ -29,45 +29,41 @@
     <?php  } ?>
 
      
-    <div class="card">
+    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Daftar Operator PD</h3>
+                            <h3 class="card-title">Daftar Jenis</h3>
                         </div>    
                     <div class="card-body">
                         <div class="card-body table-responsive p-0">
-                        <a class="btn btn-success" href="{{ URL::to('/admin/adduserpd')}}"><i class="fa fa-user"></i> Tambah User</a>
+                        {{-- <a class="btn btn-success" href="{{ URL::to('/admin/adduserpd')}}"><i class="fa fa-user"></i> Tambah User</a> --}}
                         <br><br>
 
-                            <table class="table table-sm table-hover text-nowrap" id="tablena">
-                                <thead>
+                            <table class="table table-sm table-hover text-nowrap table-bordered" id="tablena">
+                                <thead class="bg-info">
                                 <tr>
                                     <th> ID</th>
-                                    <th> Nama Lengkap </th>
-                                    <th> Username </th>
-                                    <th> Email </th>
-                                    <th> Wilayah </th>
-                                    
-                                    <th> Proses </th>
+                                     
+                                    <th> Nama Jenis </th>
+                                    <th> Alias </th>
+                                    <th> #  </th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pelamars as $pelamar)
+                                    @foreach ($jens as $jen)
                                     <?php 
                                        
                                     ?>
                                     <tr>
-                                        <td>{{ $pelamar->id }}</td>
-                                        <td>{{ $pelamar->username }}</td>
-                                        <td>{{ $pelamar->name }}</td>
-                                        <td>{{ $pelamar->email }}</td>
-                                        <td>
-                                            {{$pelamar->getWil->namawilayah}}
-                                        </td>
-                                        
-                                        <td><a class="btn btn-success btn-xs" href="{{ URL::to('/admin/edituserpd/'.$pelamar->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                        <td>{{ $jen->id }}</td>
                                          
-                                        <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/deluser/'.$pelamar->id) }}"><i class="fa fa-trash"></i> Delete</a>
+                                        <td>{{ $jen->namajenis }}</td>
+                                        <td>{{ $jen->alias }}</td>
+                                        
+                                        
+                                        <td>
+                                            {{-- <a class="btn btn-success btn-xs" href="{{ URL::to('/admin/editwil/'.$wil->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                            <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/delwil/'.$wil->id) }}"><i class="fa fa-trash"></i> Delete</a> --}}
                                          </td>
                                     </tr>
                                     @endforeach

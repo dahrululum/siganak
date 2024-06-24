@@ -4,13 +4,18 @@
             <i class="nav-icon fas fa-home"></i>  <p>Dashboard</p>
         </a>
     </li>
-     
-    {{-- <li class="nav-header">Formasi Jabatan</li>
+    <li class="nav-header">Instrumen Data </li>
     <li class="nav-item ">
-        <a class="nav-link <?php if(Request::segment(2)=='jabatan'){echo 'active';} ?>" href="<?= url('/admin/jabatan/1'); ?>">
-            <i class="nav-icon fas fa-table"></i>  <p>Jabatan</p>
+        <a class="nav-link <?php if(Request::segment(2)=='elemen'){echo 'active';} ?>" href="<?= url('/admin/elemen'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>Data Elemen</p>
         </a>
-    </li> 
+    </li>  
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='nilai'){echo 'active';} ?>" href="<?= url('/admin/nilai'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>Nilai Elemen</p>
+        </a>
+    </li>  
+    {{-- 
     
     <li class="nav-item ">
         <a class="nav-link <?php if(Request::segment(2)=='uraianjabatan'){echo 'active';} ?>" href="<?= url('/admin/uraianjabatan/'); ?>">

@@ -216,13 +216,13 @@ class AdminController extends Controller
             'username'  => $request['username'],
             'email'     => $request['email'],
             'level'     => $request['level'],
-            'id_wilayah'    => $request['id_instansi'],
+            'id_wilayah'    => $request['id_wilayah'],
             
             
             'password'  => Hash::make($request['password'])
           ]);
        
-        return Redirect::to("/admin")->with('success','Selamat, Anda berhasil untuk melakukan Registrasi User');
+        return Redirect::to("/admin/userpd")->with('success','Selamat, Anda berhasil untuk melakukan Registrasi User');
     }
     
     public function edituserpd($id)
@@ -233,7 +233,7 @@ class AdminController extends Controller
 
           return view('admin/edituserpd',[
             'layout' => $this->layout,
-            'pel'   =>$us,
+            'user'   =>$us,
             'skpd'  =>$skpd,  
             'insta'  =>$allpd, 
              
@@ -257,7 +257,7 @@ class AdminController extends Controller
                 
             ]);
         
-                return Redirect::to("/admin")->with('success',' Edit User berhasil.');
+                return Redirect::to("/admin/userpd")->with('success',' Edit User berhasil.');
         }else{
             return view('admin.login',[
                 'layout' => $this->layout 
@@ -297,6 +297,136 @@ class AdminController extends Controller
           ]);
         }
     }
+    public function jenis(){
+      if(Auth::guard('admin')->check()){  
+        $jen = Refjenis::where('status',1)->get();
+
+        return view('admin/jenis' , [
+          'layout' => $this->layout,
+          'jens' =>$jen,
+         
+        ]);
+      }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+          ]);
+        }
+    }
+    //elemen
+    //24 Juni 2024
+    public function elemen(){
+      if(Auth::guard('admin')->check()){  
+        $elemens = Elemen::Where(
+          [
+            ['id_induk','=',"0"],
+            ['status_aktif','=',1],
+           
+          ])->orderBy('id_induk')->get();
+
+        return view('admin/elemen' , [
+          'layout' => $this->layout,
+          'el' =>$elemens,
+         
+        ]);
+      }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+          ]);
+        }
+    }
+    public function addelemen()
+    {
+        if(Auth::guard('admin')->check()){  
+            $users = Admin::Where('level',2)->get();
+            $alias = uniqid();
+            $jen = Refjenis::where('status',1)->get();
+            $elemens = Elemen::Where(
+              [
+                ['id_induk','=',"0"],
+                ['status_aktif','=',1],
+               
+              ])->orderBy('id_induk')->get();
+            return view('admin/addelemen',[
+            'layout'  => $this->layout,
+            'alias'   => $alias,
+            'jenis'     => $jen,
+            'el'      => $elemens, 
+             
+            ]);
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+            }        
+       // return view('register');
+    }
+    public function postAddelemen(Request $request)
+    {  
+    
+        
+        Elemen::create([
+            'nama'                  => $request['nama'],
+            'alias'                 => $request['alias'],
+            'id_induk'              => $request['id_induk'],
+            'id_jenis'              => $request['id_jenis'],
+            'sumber'                => $request['sumber'],
+            'ket'                   => $request['ket'],
+            'status_verifikasi'     => 1,
+            'status_aktif'          => 1,
+            
+          ]);
+       
+        return Redirect::to("/admin/elemen")->with('success','Selamat, Anda berhasil untuk menambah elemen data');
+    }
+    public function editelemen($id)
+    {
+        $el = Elemen::where('id', $id)->first();
+        $jen = Refjenis::where('status',1)->get();
+        $elemens = Elemen::Where(
+          [
+            ['id_induk','=',"0"],
+            ['status_aktif','=',1],
+           
+          ])->orderBy('id_induk')->get();
+
+          return view('admin/editelemen',[
+            'layout'    => $this->layout,
+            'pel'       => $el,
+            'jenis'     => $jen,  
+            'elemens'   => $elemens, 
+             
+        ]);
+
+       // return view('register');
+    }
+    public function postEditelemen(Request $request)
+    {  
+        if(Auth::guard('admin')->check()){      
+                 
+                $idna=$request->input('idna');
+                Elemen::where('id', $idna)
+                ->update([
+                  'nama'                  => $request['nama'],
+                  'id_induk'              => $request['id_induk'],
+                  'id_jenis'              => $request['id_jenis'],
+                  'sumber'                => $request['sumber'],
+                  'ket'                   => $request['ket'],
+                  'status_verifikasi'     => 1,
+                  'status_aktif'          => 1,
+                
+                
+            ]);
+        
+                return Redirect::to("/admin/elemen")->with('success',' Edit Elemen berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+        }
+    }
+
+
+
     //formasi jabatan
     //05 des 2021
     public function jabatan($id)

@@ -20,6 +20,15 @@ class Elemen extends Model
         'sumber',
         'nama',
         'status_verifikasi',
+        'status_aktif',
          
     ];
+    public function getJenis()
+    {
+        return $this->hasOne(Refjenis::class,'id','id_jenis')->withDefault();
+    }
+    public function manySub()
+    {
+        return $this->hasMany(Elemen::class, 'id_induk', 'id')->where('status_aktif','=',1);
+    }
 }

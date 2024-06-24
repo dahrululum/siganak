@@ -53,8 +53,14 @@ Route::get('/admin/deluser/{id}',  [AdminController::class,'deluser']);
 //10 06 2024
 //wilayah
 Route::get('admin/wilayah', [AdminController::class,'wilayah'])->name('admin.wilayah');
-
-
+//jenis
+Route::get('admin/jenis', [AdminController::class,'jenis'])->name('admin.jenis');
+//elemen
+Route::get('admin/elemen', [AdminController::class,'elemen'])->name('admin.elemen');
+Route::get('/admin/addelemen', [AdminController::class,'addelemen'])->name('admin.addelemen');
+Route::post('/admin/post-addelemen', [AdminController::class,'postAddelemen']); 
+Route::get('/admin/editelemen/{id}',  [AdminController::class,'editelemen'])->name('admin.editelemen');
+Route::post('/admin/post-editelemen', [AdminController::class,'postEditelemen']); 
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 
 
