@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2024-06-25 15:11:24
+Date: 2024-06-25 15:53:27
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,6 +80,31 @@ INSERT INTO data_elemen VALUES ('11', '10', null, '1', 'LAKI-LAKI', '667a6d12b98
 INSERT INTO data_elemen VALUES ('12', '10', null, '1', 'Perempuan', '667a6d23cd120', '-', '1', '1', '', '2024-06-25 07:09:33', '2024-06-25 07:09:33', null);
 INSERT INTO data_elemen VALUES ('13', '0', null, '1', 'INDEKS PEMBANGUNAN GENDER (IPG)', '667a6d36c2b2c', '-', '1', '1', '', '2024-06-25 07:09:57', '2024-06-25 07:09:57', null);
 INSERT INTO data_elemen VALUES ('14', '0', null, '1', 'INDEKS PEMBERDAYAAN GENDER (IDG)', '667a6d46b7a35', '-', '1', '1', '', '2024-06-25 07:10:08', '2024-06-25 07:10:08', null);
+
+-- ----------------------------
+-- Table structure for `data_nilai`
+-- ----------------------------
+DROP TABLE IF EXISTS `data_nilai`;
+CREATE TABLE `data_nilai` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `alias` varchar(100) DEFAULT '',
+  `id_elemen` varchar(10) DEFAULT '',
+  `id_jenis` varchar(20) DEFAULT '',
+  `id_wilayah` varchar(20) DEFAULT '',
+  `tahun` varchar(200) DEFAULT '',
+  `sumber` varchar(200) DEFAULT '',
+  `status_aktif` char(1) DEFAULT '',
+  `status_verifikasi` char(1) DEFAULT '',
+  `ket` text DEFAULT '',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of data_nilai
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `periode`
