@@ -69,12 +69,7 @@
 
 @section('content')
  
-    <?php if ($message = Session::get('success')) { ?>
-        <div class="alert alert-success alert-block">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong><?= $message ?></strong>
-        </div>
-    <?php  } ?>
+    
 
     <form method="GET" id="FormCari" enctype="multipart/form-data">    
     <div class="card card-primary">
@@ -142,21 +137,32 @@
        
         {{-- {{ $arrpar }} --}}
         <div class="card-header">
-            <h3 class="card-title">Daftar Elemen Data  </h3>
+            <h3 class="card-title">Daftar Elemen Data   </h3>
         </div> 
         <div class="card-body table-responsive p-2">
+            <div class="row p-0 border-bottom">
+                <div class="col-sm-2 text-center bg-dark">Jenis</div>
+                <div class="col-sm-4 bg-light">{{ @$params['id_jenis'] }}. </div>
+                
+            </div>
+            <div class="row p-0 mb-4">
+                <div class="col-sm-2 text-center bg-dark">Wilayah</div>
+                <div class="col-sm-4 bg-light">{{ @$params['id_wilayah'] }}. </div>
+                
+            </div>
             <table class="table table-sm table-hover text-nowrap table-bordered" id="tablena">
                 <thead class="bg-info">
                 <tr>
                     <th> ID</th>
                     <th> Nama Elemen </th>
-                    <th> Tahun </th>
+                    <th> Tahun {{ @$params['tahun'] }}</th>
 
                 </tr>
                 </thead>
                 <tbody>
                     <?php $no=0; $level = 0; ?>
                     @foreach ($el as $el)
+                    
                     @include('admin/subelemen_nilai',[
                         'el' =>  $el,
                         'level' => $level
@@ -167,9 +173,9 @@
             </table>
         </div>
         <div class="card-footer">
-            <input type="text" id="id_wilayah" name="id_wilayah" value="{{ @$params['id_wilayah'] }}">
-            <input type="text" id="id_jenis" name="id_jenis" value="{{ @$params['id_jenis'] }}">
-            <input type="text" id="tahun" name="tahun" value="{{ @$params['tahun'] }}">
+            <input type="hidden" id="id_wilayah" name="id_wilayah" value="{{ @$params['id_wilayah'] }}">
+            <input type="hidden" id="id_jenis" name="id_jenis" value="{{ @$params['id_jenis'] }}">
+            <input type="hidden" id="tahun" name="tahun" value="{{ @$params['tahun'] }}">
             <button class="btn btn-primary" type="submit">Simpan</button>
         </div>
        

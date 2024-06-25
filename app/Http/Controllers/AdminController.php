@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
  
 use App\Models\Elemen;
+use App\Models\Nilai;
 use App\Models\Refjenis;
 use App\Models\Refwilayah;
 use App\Models\Periode;
@@ -476,6 +477,9 @@ class AdminController extends Controller
                 //$queryEL->latest();
                 //$allEL = $queryEL->paginate(10);
                 $model = $queryEL->get();
+
+             
+
             
             //return view('/pelamar/datatable', compact('pelamars'));
                 return view('admin.nilai' , [
@@ -486,7 +490,7 @@ class AdminController extends Controller
                     'params'        => $params,
                     'arrpar'        => $arrpar,
                     'el'            => $model,
-
+                 
 
                      
             ]);
@@ -500,12 +504,21 @@ class AdminController extends Controller
     {  
       $alias = uniqid();
       $id_jenis = $request['id_jenis'];
-      $id_wilayah = $request['id_jenis'];
+      $id_wilayah = $request['id_wilayah'];
       $tahun = $request['tahun'];
       
       $que = Elemen :: where('id_jenis',$id_jenis)->count();
       // $queryEL = Elemen::query($id_jenis);
- 
+      //cek table
+      $cekque = Nilai::Where(
+                [
+                  ['id_jenis','=',$id_jenis],
+                  ['id_wilayah','=',$id_wilayah],
+                  ['tahun','=',$tahun],
+                  
+                
+                ])->count();
+      
       // $model = $queryEL->get();
       //dd($que);                 
       //dd($request['id_jenis']);
@@ -515,13 +528,47 @@ class AdminController extends Controller
         //echo $nelement; echo" - ";echo $stuff; echo":"; echo $val;
         //   echo"<br>";
         if(strpos($stuff, 'nilai') !== false){
-          echo $alias; echo " | "; echo $nelement; echo":"; echo $val; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun;
-          echo"<br>";
+          // echo $cekque; echo" ## "; echo $alias; echo " | "; echo $nelement; echo":"; echo $val; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun;
+          // echo"<br>";
+         
+         if(empty($cekque)){
+          //insert
+              Nilai::create([
+                'alias'                 => $alias,
+                'id_elemen'             => $nelement,
+                'id_wilayah'            => $id_wilayah,
+                'id_jenis'              => $id_jenis,
+                'tahun'                 => $tahun,
+                'nilai'                 => $val,
+                'status_aktif'          => 1,
+                'status_verifikasi'     => 1,
+                
+                
+              ]);
+         }else{
+          //update
+            Nilai::where(
+              [
+                ['id_jenis','=',$id_jenis],
+                ['id_wilayah','=',$id_wilayah],
+                ['id_elemen','=',$nelement],
+                ['tahun','=',$tahun],
+                
+              ]
+            )
+                ->update([
+                  
+                  'nilai'                 => $val,
+               
+            ]);
+         }
+          
+
         }
 
       }
-        
-                 
+     
+      return Redirect::to("/admin/nilai")->with('success','Selamat, Anda berhasil simpan data NIlai Elemen');       
          
     }
 

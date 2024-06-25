@@ -49,5 +49,21 @@ class Elemen extends Model
 
         return $query;
     }
+    //getnilai
+    public function getNilai($id_elemen,$id_jenis,$id_wilayah,$tahun)
+    {
+       // return $this->hasOne(Nilai::class,'id','id_jenis')->withDefault();
+       $query = parent::query();
+       $query->where(
+        [
+            ['id_jenis','=',$id_jenis],
+            ['id_wilayah','=',$id_wilayah],
+            ['id_elemen','=',$id_elemen],
+            ['tahun','=',$tahun],
+        ]
+       );
+       return $query;
+    }
+
 
 }
