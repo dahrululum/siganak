@@ -55,6 +55,10 @@ Route::get('/admin/deluser/{id}',  [AdminController::class,'deluser']);
 Route::get('admin/wilayah', [AdminController::class,'wilayah'])->name('admin.wilayah');
 //jenis
 Route::get('admin/jenis', [AdminController::class,'jenis'])->name('admin.jenis');
+//periode
+Route::get('admin/periode', [AdminController::class,'periode'])->name('admin.periode');
+Route::get('admin/status-periode/', [AdminController::class,'periodestatus'])->name('periodestatus');
+
 //elemen
 Route::get('admin/elemen', [AdminController::class,'elemen'])->name('admin.elemen');
 Route::get('/admin/addelemen', [AdminController::class,'addelemen'])->name('admin.addelemen');
@@ -62,6 +66,10 @@ Route::post('/admin/post-addelemen', [AdminController::class,'postAddelemen']);
 Route::get('/admin/editelemen/{id}',  [AdminController::class,'editelemen'])->name('admin.editelemen');
 Route::post('/admin/post-editelemen', [AdminController::class,'postEditelemen']); 
 Route::get('/admin/delelemen/{id}',  [AdminController::class,'delelemen']);
+
+//nilai
+Route::get('admin/nilai', [AdminController::class,'nilai'])->name('admin.nilai');
+Route::post('admin/post-nilaielemen', [AdminController::class,'postNilaielemen']);
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 
 

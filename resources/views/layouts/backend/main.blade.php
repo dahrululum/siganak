@@ -93,7 +93,7 @@
 <script>
   $(function () {
     //Initialize Select2 Elements
-    bsCustomFileInput.init();
+    //bsCustomFileInput.init();
    // $('.select2').select2();
  
   })

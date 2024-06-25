@@ -31,4 +31,21 @@ class Elemen extends Model
     {
         return $this->hasMany(Elemen::class, 'id_induk', 'id')->where('status_aktif','=',1);
     }
+    public static function query($params = [])
+    {
+        $query = parent::query();
+
+     
+        if (@$params['id_jenis'] != null) {
+             
+                $query->where('id_jenis', '=', $params['id_jenis'])->where('id_induk',0)->where('status_aktif',1);
+             
+        }
+        
+        $query->orderby('id','asc');
+        
+
+        return $query;
+    }
+
 }

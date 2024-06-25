@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2024-06-24 14:03:56
+Date: 2024-06-25 15:11:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,12 +34,13 @@ CREATE TABLE `admins` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of admins
 -- ----------------------------
 INSERT INTO admins VALUES ('1', null, 'admin', '1', null, null, 'dahrul.ulum@gmail.com', null, 'dahrul.ulum@gmail.com', '$2y$10$K9o5RXw.2qeujixYtl17ROaQch6w3mydLdXkbFLW68AgXEMGzDs0y', null, '2020-06-25 14:12:55', '2021-12-24 13:46:12', null);
+INSERT INTO admins VALUES ('209', '8', 'Dafa', '2', null, '', 'dafa@gmail.com', null, 'dafa', '$2y$10$r2ub5NBJkY4ugamKTtfC7OcUE3bLNV8GCctEX7OEcAT1YQx.bOKRK', null, '2024-06-24 07:25:51', '2024-06-24 07:33:27', null);
 
 -- ----------------------------
 -- Table structure for `data_elemen`
@@ -60,7 +61,7 @@ CREATE TABLE `data_elemen` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of data_elemen
@@ -71,9 +72,42 @@ INSERT INTO data_elemen VALUES ('3', '1', null, '1', 'Perempuan', '6678f0b7e4c8a
 INSERT INTO data_elemen VALUES ('4', '0', null, '1', 'JUMLAH PEKERJA NON LEMBAGA PEMERINTAHAN', '6678f15eb9afa', '-', '1', '1', '', '2024-06-24 04:09:15', '2024-06-24 04:09:15', null);
 INSERT INTO data_elemen VALUES ('5', '4', null, '1', 'LAKI-LAKI', '6678f25c1c895', '-', '1', '1', '', '2024-06-24 04:13:29', '2024-06-24 04:13:29', null);
 INSERT INTO data_elemen VALUES ('6', '4', null, '1', 'Perempuan', '6678f26d7bc13', '-', '1', '1', '', '2024-06-24 04:13:42', '2024-06-24 04:13:42', null);
-INSERT INTO data_elemen VALUES ('7', '0', null, '1', 'JUMLAH PEKERJA DILEMBAGA PEMERINTAHAN', '6678f28429c37', '-', '1', '1', '', '2024-06-24 04:14:22', '2024-06-24 04:14:22', null);
+INSERT INTO data_elemen VALUES ('7', '0', null, '1', 'JUMLAH PEKERJA DILEMBAGA PEMERINTAHAN', '6678f28429c37', '-', '1', '1', '', '2024-06-24 04:14:22', '2024-06-24 09:01:16', null);
 INSERT INTO data_elemen VALUES ('8', '7', null, '1', 'LAKI-LAKI', '6678f2a28d66b', '-', '1', '1', '', '2024-06-24 04:14:37', '2024-06-24 04:14:37', null);
-INSERT INTO data_elemen VALUES ('9', '7', null, '1', 'Perempuan', '6678f2b04ec99', '-', '1', '1', '', '2024-06-24 04:14:50', '2024-06-24 04:14:50', null);
+INSERT INTO data_elemen VALUES ('9', '7', null, '1', 'Perempuan', '6678f2b04ec99', '-', '1', '1', 'keterangan', '2024-06-24 04:14:50', '2024-06-24 08:56:44', null);
+INSERT INTO data_elemen VALUES ('10', '0', null, '1', 'JUMLAH ANGGOTA LEGISLATIF', '667a6d03607de', '-', '1', '1', '', '2024-06-25 07:09:02', '2024-06-25 07:09:02', null);
+INSERT INTO data_elemen VALUES ('11', '10', null, '1', 'LAKI-LAKI', '667a6d12b9820', '-', '1', '1', '', '2024-06-25 07:09:22', '2024-06-25 07:09:22', null);
+INSERT INTO data_elemen VALUES ('12', '10', null, '1', 'Perempuan', '667a6d23cd120', '-', '1', '1', '', '2024-06-25 07:09:33', '2024-06-25 07:09:33', null);
+INSERT INTO data_elemen VALUES ('13', '0', null, '1', 'INDEKS PEMBANGUNAN GENDER (IPG)', '667a6d36c2b2c', '-', '1', '1', '', '2024-06-25 07:09:57', '2024-06-25 07:09:57', null);
+INSERT INTO data_elemen VALUES ('14', '0', null, '1', 'INDEKS PEMBERDAYAAN GENDER (IDG)', '667a6d46b7a35', '-', '1', '1', '', '2024-06-25 07:10:08', '2024-06-25 07:10:08', null);
+
+-- ----------------------------
+-- Table structure for `periode`
+-- ----------------------------
+DROP TABLE IF EXISTS `periode`;
+CREATE TABLE `periode` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `namaperiode` varchar(100) DEFAULT NULL,
+  `thnawal` varchar(10) DEFAULT NULL,
+  `thnakhir` varchar(10) DEFAULT NULL,
+  `labelawal` varchar(10) DEFAULT NULL,
+  `labelakhir` varchar(10) DEFAULT NULL,
+  `ket` varchar(200) DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- ----------------------------
+-- Records of periode
+-- ----------------------------
+INSERT INTO periode VALUES ('1', '2021', '2016', '2020', '1', '5', '2016-2020', '0', null, '2024-06-25 02:39:34', null);
+INSERT INTO periode VALUES ('2', '2022', '2017', '2021', '2', '6', '2017-2021', '0', null, '2024-06-25 02:39:34', null);
+INSERT INTO periode VALUES ('3', '2023', '2018', '2022', '3', '7', '2018-2022', '0', null, '2024-06-25 02:39:34', null);
+INSERT INTO periode VALUES ('4', '2024', '2019', '2023', '4', '8', '2019-2023', '0', null, '2024-06-25 02:39:34', null);
+INSERT INTO periode VALUES ('5', '2025', '2020', '2024', '5', '9', '2020-2024', '1', null, '2024-06-25 02:39:34', null);
 
 -- ----------------------------
 -- Table structure for `ref_jenis`

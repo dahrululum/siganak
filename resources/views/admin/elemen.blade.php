@@ -11,7 +11,7 @@
 <script src="{{url('lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
 <script> 
     $ ( function () {
-        $('#tablena').DataTable();
+        $('#tablena').DataTable({ "pageLength": 500 });
     })
 </script>
 

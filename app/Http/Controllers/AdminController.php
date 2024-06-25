@@ -15,7 +15,7 @@ use DB;
 use App\Models\Elemen;
 use App\Models\Refjenis;
 use App\Models\Refwilayah;
-
+use App\Models\Periode;
  
 use App\Models\Admin;
  
@@ -447,6 +447,115 @@ class AdminController extends Controller
         
        
     }
+    //nilai
+    //25 juni 2024
+    public function nilai(Request $request)
+    {
+        if(Auth::guard('admin')->check()){  
+                $per = Periode::where('status',1)->first();
+                $wil = Refwilayah::all();
+                $jen = Refjenis::where('status',1)->get();
+
+                $params = $request->query();
+                if(!empty($params)){
+                    if(!empty($params['id_wilayah'])){$id_wilayah=$params['id_wilayah'];}else{$id_wilayah="";}
+                    if(!empty($params['id_jenis'])){$id_jenis=$params['id_jenis'];}else{$id_jenis="";}
+                    if(!empty($params['tahun'])){$tahun=$params['tahun'];}else{$tahun="";}
+                    
+    
+                    $arrpar="?id_wilayah=".$id_wilayah."&id_jenis=".$id_jenis."&tahun=".$tahun;
+                
+                }else{
+                    $arrpar="";
+                }
+
+                $elemens = Elemen::Where(
+                  [
+                    ['id_induk','=',"0"],
+                    ['status_aktif','=',1],
+                   
+                  ])->orderBy('id_induk')->get();
+                  
+                $queryEL = Elemen::query($params);
+
+                $queryEL->latest();
+                $allEL = $queryEL->paginate(10);
+                $model = $queryEL->get();
+            
+            //return view('/pelamar/datatable', compact('pelamars'));
+                return view('admin.nilai' , [
+                    'layout'        => $this->layout,
+                    'periode'       => $per,
+                    'wilayah'       => $wil,
+                    'jenis'         => $jen,
+                    'params'        => $params,
+                    'arrpar'        => $arrpar,
+                    'el'            => $model,
+
+
+                     
+            ]);
+        }else{
+                return view('admin.login',[
+                    'layout' => $this->layout 
+                  ]);
+                }
+    }
+    public function postNilaielemen(Request $request)
+    {  
+       
+                 
+                dd($request);
+        
+                 
+         
+    }
+
+
+
+    //periode
+    public function periode(Request $request)
+    {
+        if(Auth::guard('admin')->check()){  
+                $per = Periode::all();
+            
+            //return view('/pelamar/datatable', compact('pelamars'));
+                return view('admin.periode' , [
+                    'layout' => $this->layout,
+                    'periode' =>$per,
+                     
+            ]);
+        }else{
+                return view('admin.login',[
+                    'layout' => $this->layout 
+                  ]);
+                }
+    }
+    public function periodestatus( request $request){
+       
+      $idna = $request->get('idna');
+      $sp = $request->get('statuspage');
+      if ($sp == "true") {
+          Periode::where('id', $idna)
+              ->update([
+                  'status' => 1,
+              ]);
+          Periode::where('id','!=',$idna)
+                ->update(
+                  ['status' => 0,]  
+                );
+      } else {
+          Periode::where('id', $idna)
+              ->update([
+                  'status' => 0,
+              ]);
+      }
+
+      return response()->json(['success' => 'Halaman Periode Berhasil diedit']);
+
+
+  }
+
 
 
     //formasi jabatan
