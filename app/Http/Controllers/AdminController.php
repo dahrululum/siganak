@@ -469,17 +469,12 @@ class AdminController extends Controller
                     $arrpar="";
                 }
 
-                $elemens = Elemen::Where(
-                  [
-                    ['id_induk','=',"0"],
-                    ['status_aktif','=',1],
-                   
-                  ])->orderBy('id_induk')->get();
+                
                   
                 $queryEL = Elemen::query($params);
 
-                $queryEL->latest();
-                $allEL = $queryEL->paginate(10);
+                //$queryEL->latest();
+                //$allEL = $queryEL->paginate(10);
                 $model = $queryEL->get();
             
             //return view('/pelamar/datatable', compact('pelamars'));
@@ -503,9 +498,28 @@ class AdminController extends Controller
     }
     public function postNilaielemen(Request $request)
     {  
-       
-                 
-                dd($request);
+      $alias = uniqid();
+      $id_jenis = $request['id_jenis'];
+      $id_wilayah = $request['id_jenis'];
+      $tahun = $request['tahun'];
+      
+      $que = Elemen :: where('id_jenis',$id_jenis)->count();
+      // $queryEL = Elemen::query($id_jenis);
+ 
+      // $model = $queryEL->get();
+      //dd($que);                 
+      //dd($request['id_jenis']);
+      foreach( $_POST as $stuff => $val ) {
+        $idelement=substr_replace($stuff,'','0',9);
+        $nelement=substr_replace($stuff,'','0',5);
+        //echo $nelement; echo" - ";echo $stuff; echo":"; echo $val;
+        //   echo"<br>";
+        if(strpos($stuff, 'nilai') !== false){
+          echo $alias; echo " | "; echo $nelement; echo":"; echo $val; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun;
+          echo"<br>";
+        }
+
+      }
         
                  
          

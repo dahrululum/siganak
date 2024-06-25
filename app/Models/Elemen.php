@@ -40,6 +40,8 @@ class Elemen extends Model
              
                 $query->where('id_jenis', '=', $params['id_jenis'])->where('id_induk',0)->where('status_aktif',1);
              
+        }else{
+            $query->where('id_jenis', '=', 0)->where('id_induk',0)->where('status_aktif',1);
         }
         
         $query->orderby('id','asc');

@@ -135,15 +135,16 @@
         </div>
     </div>
     </form>
-     
-    <div class="card card-info" id="resultna">
-        <form method="POST" action="{{url('admin/post-nilaielemen')}}" id="FormNilai" enctype="multipart/form-data">     
-            {{ csrf_field() }}
+    @if(!empty(@$params['id_jenis']))
+    <form method="POST" action="{{url('admin/post-nilaielemen')}}" id="FormNilai" enctype="multipart/form-data">     
+        {{ csrf_field() }}
+    <div class="card card-primary" id="resultna">
+       
         {{-- {{ $arrpar }} --}}
         <div class="card-header">
             <h3 class="card-title">Daftar Elemen Data  </h3>
         </div> 
-        <div class="card-body table-responsive p-1">
+        <div class="card-body table-responsive p-2">
             <table class="table table-sm table-hover text-nowrap table-bordered" id="tablena">
                 <thead class="bg-info">
                 <tr>
@@ -171,7 +172,8 @@
             <input type="text" id="tahun" name="tahun" value="{{ @$params['tahun'] }}">
             <button class="btn btn-primary" type="submit">Simpan</button>
         </div>
-        </form>
+       
     </div>
-
+    </form>
+    @endif
 @endsection
