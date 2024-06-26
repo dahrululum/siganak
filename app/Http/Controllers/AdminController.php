@@ -535,22 +535,18 @@ class AdminController extends Controller
         $nelement=substr_replace($stuff,'','0',5);
         //  echo $stuff; echo":"; echo $val;
         //   echo"<br>";
-        if(strpos($stuff, 'sumber') !== false ){
-          
-        $nilaisumber = $val;
-        // echo $stuff; echo" ## "; echo $alias; echo " | ";  echo"value :"; echo $nilaisumber; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun;
-        // echo"<br>";
-        }
-        if(strpos($stuff, 'ket') !== false ){
-          
-          $nilaiket = $val;
-          // echo $stuff; echo" ## "; echo $alias; echo " | ";  echo"value :"; echo $nilaiket; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun;
-          // echo"<br>";
-          }
+        //dd($_POST);
 
-        if(strpos($stuff, 'nilai') !== false ){
-          echo $stuff; echo" ## "; echo $alias; echo " | ";  echo"value :"; echo $val; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun; echo"- ket:"; echo $nilaiket;
-          echo"<br>";
+        
+         
+        if(strpos($stuff, 'nilai') !== false  ){
+          $nmsumber = "sumber".$nelement;
+          $varsumber = $_POST[$nmsumber];
+          $nmket = "ket".$nelement;
+          $varket = $_POST[$nmket];
+
+        //  echo" ## "; echo $alias; echo " | ";  echo"value :"; echo $val; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun; echo"- sumber:".$varsumber; echo"- ket:".$varket; 
+        //   echo"<br>";
          
           $cekque = Nilai::Where(
             [
@@ -561,44 +557,49 @@ class AdminController extends Controller
             ])->count();
 
 
-        //  if(empty($cekque)){
-        //   //insert
-        //       Nilai::create([
-        //         'alias'                 => $alias,
-        //         'id_elemen'             => $nelement,
-        //         'id_wilayah'            => $id_wilayah,
-        //         'id_jenis'              => $id_jenis,
-        //         'tahun'                 => $tahun,
-        //         'nilai'                 => $val,
-        //         'status_aktif'          => 1,
-        //         'status_verifikasi'     => 1,
+         if(empty($cekque)){
+          //insert
+              Nilai::create([
+                'alias'                 => $alias,
+                'id_elemen'             => $nelement,
+                'id_wilayah'            => $id_wilayah,
+                'id_jenis'              => $id_jenis,
+                'tahun'                 => $tahun,
+                'nilai'                 => $val,
+                'sumber'                => $varsumber,
+                'ket'                   => $varket,
+                
+                'status_aktif'          => 1,
+                'status_verifikasi'     => 1,
                 
                 
-        //       ]);
-        //  }else{
-        //   //update
-        //     Nilai::where(
-        //       [
-        //         ['id_jenis','=',$id_jenis],
-        //         ['id_wilayah','=',$id_wilayah],
-        //         ['id_elemen','=',$nelement],
-        //         ['tahun','=',$tahun],
+              ]);
+         }else{
+          //update
+            Nilai::where(
+              [
+                ['id_jenis','=',$id_jenis],
+                ['id_wilayah','=',$id_wilayah],
+                ['id_elemen','=',$nelement],
+                ['tahun','=',$tahun],
                 
-        //       ]
-        //     )
-        //         ->update([
+              ]
+            )
+                ->update([
                   
-        //           'nilai'                 => $val,
+                  'nilai'                 => $val,
+                  'sumber'                => $varsumber,
+                  'ket'                   => $varket,
                
-        //     ]);
-        //  }
+            ]);
+         }
           
 
         }
 
       }
      
-      //return Redirect::to("/admin/nilai")->with('success','Selamat, Anda berhasil simpan data NIlai Elemen');       
+      return Redirect::to("/admin/nilai")->with('success','Selamat, Anda berhasil simpan data NIlai Elemen');       
          
     }
     //laporan
