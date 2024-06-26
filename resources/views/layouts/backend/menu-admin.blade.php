@@ -14,7 +14,35 @@
         <a class="nav-link <?php if(Request::segment(2)=='nilai'){echo 'active';} ?>" href="<?= url('/admin/nilai'); ?>">
             <i class="nav-icon fas fa-table"></i>  <p>Nilai Elemen</p>
         </a>
-    </li>  
+    </li>
+    <li class="nav-header">Report</li>
+     
+   
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='laporan'){echo 'active';} ?>" href="<?= url('/admin/laporan/'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>Laporan Elemen Data</p>
+        </a>
+    </li>
+    <li class="nav-header">Publikasi & Informasi</li>
+     
+   
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='laporan'){echo 'active';} ?>" href="<?= url('/admin/laporan/'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>Publikasi  </p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='laporan'){echo 'active';} ?>" href="<?= url('/admin/laporan/'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>Informasi  </p>
+        </a>
+    </li>
+    <li class="nav-header">Indikator Kinerja</li>
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='laporan'){echo 'active';} ?>" href="<?= url('/admin/laporan/'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>Indikator Kinerja  </p>
+        </a>
+    </li>
+
     {{-- 
     
     <li class="nav-item ">

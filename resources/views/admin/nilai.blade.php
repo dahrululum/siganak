@@ -69,16 +69,19 @@
 
 @section('content')
  
-    
+    <?php
+        
+    ?>
 
     <form method="GET" id="FormCari" enctype="multipart/form-data">    
     <div class="card card-primary">
         <div class="card-header">
-            <h3 class="card-title">Filter Data Jenis, Periode Tahun  </h3>
+            <h3 class="card-title">Filter Data Jenis, Periode Tahun   </h3>
         </div>    
         <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-4 border-right">
+                    @if($levuser==1)
+                    <div class="col-lg-5 border-right">
                         <div class="form-group">
                             <label id="wilayah">Wilayah</label>
                             <select class="form-control form-control-sm " name="id_wilayah" id="id_wilayah"  required>
@@ -90,6 +93,18 @@
                             </select>
                         </div>
                     </div>
+                    @else
+                    <div class="col-lg-5 border-right">
+                        <div class="form-group">
+                            <label id="wilayah">Wilayah</label>
+                             <input type="hidden" class="form-control form-control-sm " id="id_wilayah" name="id_wilayah" value="{{ $idwilayah }}" readonly >
+                             <div class="border p-1">
+                                {{ $nmwilayah }}
+                             </div>
+                             {{-- <input type="text" class="form-control form-control-sm " id="nama_wilayah" name="nama_wilayah" value="{{ $nmwilayah }}" readonly > --}}
+                        </div>
+                    </div>
+                    @endif
                     <div class="col-lg-3 border-right">
                         <div class="form-group">
                             <label id="jenisdata">Jenis Data</label>
@@ -105,7 +120,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-4 border-right">
+                    <div class="col-lg-4 ">
                         <div class="form-group">
                             <label id="periode">Periode Aktif Tahun {{ $periode->thnawal }} s/d {{ $periode->thnakhir }}</label>
                             <select class="form-control form-control-sm " name="tahun" id="tahun"  required>
@@ -140,15 +155,21 @@
             <h3 class="card-title">Daftar Elemen Data   </h3>
         </div> 
         <div class="card-body table-responsive p-2">
-            <div class="row p-0 border-bottom">
-                <div class="col-sm-2 text-center bg-dark">Jenis</div>
-                <div class="col-sm-4 bg-light">{{ @$params['id_jenis'] }}. </div>
-                
+            <?php 
+                $refj=App\Models\Refjenis::where('id',@$params['id_jenis'])->first(); 
+                $refw=App\Models\Refwilayah::where('id',@$params['id_wilayah'])->first();     
+            ?>
+            <div class="row p-0 ">
+                <div class="col-sm-2 text-center bg-dark border-bottom p-1">Jenis</div>
+                <div class="col-sm-4 bg-light border-bottom p-1">{{ @$params['id_jenis'] }}. {{ $refj->namajenis }}</div>
+            </div>
+            <div class="row p-0 ">
+                <div class="col-sm-2 text-center bg-dark border-bottom p-1">Wilayah</div>
+                <div class="col-sm-4 bg-light border-bottom p-1">{{ @$params['id_wilayah'] }}. {{ $refw->namawilayah }}</div>
             </div>
             <div class="row p-0 mb-4">
-                <div class="col-sm-2 text-center bg-dark">Wilayah</div>
-                <div class="col-sm-4 bg-light">{{ @$params['id_wilayah'] }}. </div>
-                
+                <div class="col-sm-2 text-center bg-dark border-bottom p-1">Tahun</div>
+                <div class="col-sm-4 bg-light border-bottom p-1">{{ @$params['tahun'] }}</div>
             </div>
             <table class="table table-sm table-hover text-nowrap table-bordered" id="tablena">
                 <thead class="bg-info">
@@ -156,7 +177,8 @@
                     <th> ID</th>
                     <th> Nama Elemen </th>
                     <th> Tahun {{ @$params['tahun'] }}</th>
-
+                    <th> Sumber Data </th>
+                    <th> Ket </th>
                 </tr>
                 </thead>
                 <tbody>

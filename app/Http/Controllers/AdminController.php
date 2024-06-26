@@ -453,6 +453,17 @@ class AdminController extends Controller
     public function nilai(Request $request)
     {
         if(Auth::guard('admin')->check()){  
+                $levuser=Auth::guard('admin')->user()->level;  
+                if($levuser==2){
+                  $idwilayah=Auth::guard('admin')->user()->id_wilayah;
+                  $refwil = Refwilayah::where('id',$idwilayah)->first();
+                  $nmwilayah = $refwil->namawilayah;
+                }else{
+                  $idwilayah="";
+                  $nmwilayah="";
+                }
+                
+
                 $per = Periode::where('status',1)->first();
                 $wil = Refwilayah::all();
                 $jen = Refjenis::where('status',1)->get();
@@ -490,6 +501,10 @@ class AdminController extends Controller
                     'params'        => $params,
                     'arrpar'        => $arrpar,
                     'el'            => $model,
+                    'levuser'       => $levuser,
+                    'idwilayah'     => $idwilayah,
+                    'nmwilayah'     => $nmwilayah,
+                    
                  
 
                      
@@ -510,14 +525,7 @@ class AdminController extends Controller
       $que = Elemen :: where('id_jenis',$id_jenis)->count();
       // $queryEL = Elemen::query($id_jenis);
       //cek table
-      $cekque = Nilai::Where(
-                [
-                  ['id_jenis','=',$id_jenis],
-                  ['id_wilayah','=',$id_wilayah],
-                  ['tahun','=',$tahun],
-                  
-                
-                ])->count();
+      
       
       // $model = $queryEL->get();
       //dd($que);                 
@@ -525,53 +533,135 @@ class AdminController extends Controller
       foreach( $_POST as $stuff => $val ) {
         $idelement=substr_replace($stuff,'','0',9);
         $nelement=substr_replace($stuff,'','0',5);
-        //echo $nelement; echo" - ";echo $stuff; echo":"; echo $val;
+        //  echo $stuff; echo":"; echo $val;
         //   echo"<br>";
-        if(strpos($stuff, 'nilai') !== false){
-          // echo $cekque; echo" ## "; echo $alias; echo " | "; echo $nelement; echo":"; echo $val; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun;
+        if(strpos($stuff, 'sumber') !== false ){
+          
+        $nilaisumber = $val;
+        // echo $stuff; echo" ## "; echo $alias; echo " | ";  echo"value :"; echo $nilaisumber; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun;
+        // echo"<br>";
+        }
+        if(strpos($stuff, 'ket') !== false ){
+          
+          $nilaiket = $val;
+          // echo $stuff; echo" ## "; echo $alias; echo " | ";  echo"value :"; echo $nilaiket; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun;
           // echo"<br>";
+          }
+
+        if(strpos($stuff, 'nilai') !== false ){
+          echo $stuff; echo" ## "; echo $alias; echo " | ";  echo"value :"; echo $val; echo" - idjenis:"; echo $id_jenis; echo"- idwilayah :"; echo $id_wilayah; echo"- tahun:"; echo $tahun; echo"- ket:"; echo $nilaiket;
+          echo"<br>";
          
-         if(empty($cekque)){
-          //insert
-              Nilai::create([
-                'alias'                 => $alias,
-                'id_elemen'             => $nelement,
-                'id_wilayah'            => $id_wilayah,
-                'id_jenis'              => $id_jenis,
-                'tahun'                 => $tahun,
-                'nilai'                 => $val,
-                'status_aktif'          => 1,
-                'status_verifikasi'     => 1,
+          $cekque = Nilai::Where(
+            [
+              ['id_elemen','=',$nelement],
+              ['id_jenis','=',$id_jenis],
+              ['id_wilayah','=',$id_wilayah],
+              ['tahun','=',$tahun],
+            ])->count();
+
+
+        //  if(empty($cekque)){
+        //   //insert
+        //       Nilai::create([
+        //         'alias'                 => $alias,
+        //         'id_elemen'             => $nelement,
+        //         'id_wilayah'            => $id_wilayah,
+        //         'id_jenis'              => $id_jenis,
+        //         'tahun'                 => $tahun,
+        //         'nilai'                 => $val,
+        //         'status_aktif'          => 1,
+        //         'status_verifikasi'     => 1,
                 
                 
-              ]);
-         }else{
-          //update
-            Nilai::where(
-              [
-                ['id_jenis','=',$id_jenis],
-                ['id_wilayah','=',$id_wilayah],
-                ['id_elemen','=',$nelement],
-                ['tahun','=',$tahun],
+        //       ]);
+        //  }else{
+        //   //update
+        //     Nilai::where(
+        //       [
+        //         ['id_jenis','=',$id_jenis],
+        //         ['id_wilayah','=',$id_wilayah],
+        //         ['id_elemen','=',$nelement],
+        //         ['tahun','=',$tahun],
                 
-              ]
-            )
-                ->update([
+        //       ]
+        //     )
+        //         ->update([
                   
-                  'nilai'                 => $val,
+        //           'nilai'                 => $val,
                
-            ]);
-         }
+        //     ]);
+        //  }
           
 
         }
 
       }
      
-      return Redirect::to("/admin/nilai")->with('success','Selamat, Anda berhasil simpan data NIlai Elemen');       
+      //return Redirect::to("/admin/nilai")->with('success','Selamat, Anda berhasil simpan data NIlai Elemen');       
          
     }
+    //laporan
+    public function laporan(Request $request)
+    {
+      if(Auth::guard('admin')->check()){  
+        $levuser=Auth::guard('admin')->user()->level;  
+        if($levuser==2){
+          $idwilayah=Auth::guard('admin')->user()->id_wilayah;
+          $refwil = Refwilayah::where('id',$idwilayah)->first();
+          $nmwilayah = $refwil->namawilayah;
+        }else{
+          $idwilayah="";
+          $nmwilayah="";
+        }
 
+        $per = Periode::where('status',1)->first();
+        $wil = Refwilayah::all();
+        $jen = Refjenis::where('status',1)->get();
+
+        $params = $request->query();
+        if(!empty($params)){
+            if(!empty($params['id_wilayah'])){$id_wilayah=$params['id_wilayah'];}else{$id_wilayah="";}
+            if(!empty($params['id_jenis'])){$id_jenis=$params['id_jenis'];}else{$id_jenis="";}
+            if(!empty($params['tahun'])){$tahun=$params['tahun'];}else{$tahun="";}
+            
+
+            $arrpar="?id_wilayah=".$id_wilayah."&id_jenis=".$id_jenis."&tahun=".$tahun;
+        
+        }else{
+            $arrpar="";
+        }
+
+        
+          
+        $queryEL = Elemen::queryreport($params);
+
+        //$queryEL->latest();
+        //$allEL = $queryEL->paginate(10);
+        $model = $queryEL->get();
+
+        return view('admin.laporan' , [
+          'layout' => $this->layout,
+          'periode'       => $per,
+          'wilayah'       => $wil,
+          'jenis'         => $jen,
+          'params'        => $params,
+          'arrpar'        => $arrpar,
+          'el'            => $model,
+          'levuser'       => $levuser,
+          'idwilayah'     => $idwilayah,
+          'nmwilayah'     => $nmwilayah,
+           
+        ]);
+
+      }else{
+        return view('admin.login',[
+          'layout' => $this->layout 
+        ]);
+      }
+    
+    
+    }
 
 
     //periode

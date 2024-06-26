@@ -68,8 +68,10 @@ Route::post('/admin/post-editelemen', [AdminController::class,'postEditelemen'])
 Route::get('/admin/delelemen/{id}',  [AdminController::class,'delelemen']);
 
 //nilai
-Route::get('admin/nilai', [AdminController::class,'nilai'])->name('admin.nilai');
+Route::get('admin/nilai/{id?}', [AdminController::class,'nilai'])->name('admin.nilai');
 Route::post('admin/post-nilaielemen', [AdminController::class,'postNilaielemen']);
+
+Route::get('admin/laporan/{id?}', [AdminController::class,'laporan'])->name('admin.laporan');
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 
 
