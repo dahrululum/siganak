@@ -99,6 +99,36 @@
   })
   jQuery(document).ready(function($) {
   $('a[rel*=facebox]').facebox();
+  $('.ket').summernote({
+        height: 150,   //set editable area's height
+        codemirror: { // codemirror options
+          theme: 'monokai'
+        },
+        fontSizes: ['8', '9', '10', '11', '12', '14', '18'],
+        toolbar: [
+          ['style', ['style']],
+          ['fontsize', ['fontsize']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+           
+          
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+        
+      });
+  $('#pilihtanggal').datetimepicker({
+      format:'YYYY-MM-DD',	
+        //format: 'L'
+  });
+
+     //tgl
+  $('.datepicker').datepicker({
+      format:'yyyy-mm-dd',	
+      autoclose: true
+  })
+
+
 })
 function getSKPD(kdcab,kduptd,kdsubskpd,kdskpd,namapd){
    //$('#resultna').load('files/list_upload_detail.php?getskpd='+kdskpd+'&getmod='+mod+'&getsec='+sec+'&getcat='+cat+'&getjp='+jp + '&getper='+periode +'&getthnp='+thnp);

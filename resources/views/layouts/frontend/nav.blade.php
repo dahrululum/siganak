@@ -1,56 +1,29 @@
-<?php 
-$thn=date('Y');
-?>
-<nav class="main-header navbar navbar-expand-md navbar-light navbar-dark">
-            <div class="container">
-            <a href="{{ url('/') }}" class="navbar-brand">
-                <img src="{{ asset('/images/logo-sidebar.png') }}" alt="" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">SSCPTK <?=$thn?></span>
-            </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<ul>
+    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
+    <li><a class="nav-link scrollto" href="#about">Data Anak</a></li>
+    <li><a class="nav-link scrollto" href="#">Data Gender</a></li>
+    <li><a class="nav-link scrollto " href="#">Indikator Kinerja</a></li>
+    <li><a class="nav-link scrollto" href="#features">Publikasi</a></li>
+    <li><a class="nav-link scrollto" href="#contact">Informasi</a></li>
+    {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+      <ul>
+        <li><a href="#">Drop Down 1</a></li>
+        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+          <ul>
+            <li><a href="#">Deep Drop Down 1</a></li>
+            <li><a href="#">Deep Drop Down 2</a></li>
+            <li><a href="#">Deep Drop Down 3</a></li>
+            <li><a href="#">Deep Drop Down 4</a></li>
+            <li><a href="#">Deep Drop Down 5</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Drop Down 2</a></li>
+        <li><a href="#">Drop Down 3</a></li>
+        <li><a href="#">Drop Down 4</a></li>
+      </ul>
+    </li> --}}
+    
+  </ul>
+  <i class="bi bi-list mobile-nav-toggle"></i>
 
  

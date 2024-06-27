@@ -4,13 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
  
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\NomenklaturJabatanController;
-
-//03 Juli 2023
-use App\Http\Controllers\UraianJabatanController;
-use App\Http\Controllers\AnalisaJabatanController;
-
+use App\Http\Controllers\FrontController;
+ 
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,9 +21,11 @@ use App\Http\Controllers\AnalisaJabatanController;
  
 
 //Route::get('/', [AdminController::class,'index']);
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [FrontController::class,'index']);
+
 //admin
 Route::get('admin', [AdminController::class,'index'])->name('admin.index');
 Route::get('admin/login', [AdminController::class,'index'])->name('admin.login');
@@ -72,6 +70,18 @@ Route::get('admin/nilai/{id?}', [AdminController::class,'nilai'])->name('admin.n
 Route::post('admin/post-nilaielemen', [AdminController::class,'postNilaielemen']);
 
 Route::get('admin/laporan/{id?}', [AdminController::class,'laporan'])->name('admin.laporan');
+
+//publikasi & informasi
+Route::get('admin/publikasi', [AdminController::class,'publikasi'])->name('admin.publikasi');
+Route::get('/admin/addpublikasi', [AdminController::class,'addpublikasi'])->name('admin.addpublikasi');
+Route::post('/admin/post-addpublikasi', [AdminController::class,'postAddpublikasi']); 
+Route::get('/admin/editpublikasi/{id}',  [AdminController::class,'editpublikasi'])->name('admin.editpublikasi');
+Route::post('/admin/post-edipublikasi', [AdminController::class,'postEditpublikasi']); 
+Route::get('/admin/delpublikasi/{id}',  [AdminController::class,'delpublikasi']);
+
+Route::get('admin/dialog_uploadpub/{id}/{label}', [AdminController::class,'dialoguploadpub'])->name('admin.dialoguploadpub');
+Route::post('/admin/uploadactionpub',  [AdminController::class,'uploadactionpub'])->name('admin.uploadactionpub');
+
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 
 

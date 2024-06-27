@@ -27,7 +27,7 @@
      
    
     <li class="nav-item ">
-        <a class="nav-link <?php if(Request::segment(2)=='laporan'){echo 'active';} ?>" href="<?= url('/admin/laporan/'); ?>">
+        <a class="nav-link <?php if(Request::segment(2)=='publikasi'){echo 'active';} ?>" href="<?= url('/admin/publikasi/'); ?>">
             <i class="nav-icon fas fa-table"></i>  <p>Publikasi  </p>
         </a>
     </li>

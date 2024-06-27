@@ -19,7 +19,7 @@ use App\Models\Refwilayah;
 use App\Models\Periode;
  
 use App\Models\Admin;
- 
+use App\Models\Publikasi;
 
 use Session;
 use Carbon;
@@ -708,6 +708,181 @@ class AdminController extends Controller
 
   }
 
+  //publikasi
+  public function publikasi(request $request){
+    if(Auth::guard('admin')->check()){  
+      $pub = Publikasi::orderBy('id')->get();
+
+      return view('admin/publikasi' , [
+        'layout' => $this->layout,
+        'pub' =>$pub,
+       
+      ]);
+    }else{
+      return view('admin.login',[
+          'layout' => $this->layout 
+        ]);
+      }
+  }
+  public function dialoguploadpub($id, $label)
+  {
+        if(Auth::guard('admin')->check()){  
+                
+            
+            //return view('/pelamar/datatable', compact('pelamars'));
+                return view('admin.dialog_uploadpub' , [
+                    'layout' => $this->layout,
+                    'uniqid'  =>$id,
+                    'label'     =>$label
+                    
+                     
+                     
+            ]);
+        }else{
+                return view('admin.login',[
+                    'layout' => $this->layout 
+                  ]);
+                }
+  }
+  public function uploadactionpub(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+        'select_file' => 'required|mimes:jpeg,png,jpg,pdf,docx,xlsx,doc|max:20748'
+        ]);
+        if($validation->passes())
+        {
+            $uniqid   =   $request->input('uniqid');
+            $label    =   $request->input('label');
+            
+            $image = $request->file('select_file');
+
+            $nama_file = "file_".$label."_".$uniqid.".".$image->getClientOriginalExtension();  
+            $tujuan_upload = 'downloads';
+            $image->move($tujuan_upload,$nama_file);
+
+            //Storage::disk('downloads') -> put($nama_file, file_get_contents($image->getRealPath()));
+
+             
+            return response()->json([
+                'message'   => 'Berkas Berhasil di Upload',
+                'uploaded_file' => '<input type="hidden" id="uploadfile" name="uploadfile" value="'.$nama_file.'"  />',
+                'label_file' => '<input type="hidden" id="labelfile" name="labelfile" value="'.$label.'"  />',
+                'uploaded_image' => '<a href="../downloads/'.$nama_file.'" class="btn btn-danger" target="_blank" >'.$nama_file.'</a>',
+                'class_name'  => 'alert-success'
+            ]);
+
+                
+
+        }
+        else
+        {
+            return response()->json([
+            'message'   => $validation->errors()->all(),
+            'uploaded_image' => '',
+            'class_name'  => 'alert-danger'
+            ]);
+        }
+  }
+  public function addpublikasi(Request $request)
+  {
+       $uniqid=uniqid();
+
+          return view('admin/addpublikasi',[
+            'layout'    => $this->layout,
+            'alias'     => $uniqid,
+           
+             
+        ]);
+
+       // return view('register');
+  }
+  public function postAddpublikasi(Request $request)
+    {  
+    
+        
+        Elemen::create([
+            'nama'                  => $request['nama'],
+            'alias'                 => $request['alias'],
+            'id_induk'              => $request['id_induk'],
+            'id_jenis'              => $request['id_jenis'],
+            'sumber'                => $request['sumber'],
+            'ket'                   => $request['ket'],
+            'status_verifikasi'     => 1,
+            'status_aktif'          => 1,
+            
+          ]);
+       
+        return Redirect::to("/admin/elemen")->with('success','Selamat, Anda berhasil untuk menambah elemen data');
+    }
+    public function editpublikasi($id)
+    {
+        $el = Elemen::where('id', $id)->first();
+        $jen = Refjenis::where('status',1)->get();
+        $elemens = Elemen::Where(
+          [
+            ['id_induk','=',"0"],
+            ['status_aktif','=',1],
+           
+          ])->orderBy('id_induk')->get();
+
+          return view('admin/editelemen',[
+            'layout'    => $this->layout,
+            'pel'       => $el,
+            'jenis'     => $jen,  
+            'elemens'   => $elemens, 
+             
+        ]);
+
+       // return view('register');
+    }
+    public function postEditpublikasi(Request $request)
+    {  
+        if(Auth::guard('admin')->check()){      
+                 
+                $idna=$request->input('idna');
+                Elemen::where('id', $idna)
+                ->update([
+                  'nama'                  => $request['nama'],
+                  'id_induk'              => $request['id_induk'],
+                  'id_jenis'              => $request['id_jenis'],
+                  'sumber'                => $request['sumber'],
+                  'ket'                   => $request['ket'],
+                  'status_verifikasi'     => 1,
+                  'status_aktif'          => 1,
+                
+                
+            ]);
+        
+                return Redirect::to("/admin/elemen")->with('success',' Edit Elemen berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+        }
+    }
+    public function delpublikasi($id)
+    {
+        if(Auth::guard('admin')->check()){      
+             
+            $el = Elemen::where('id', $id)->first();
+            // if($el->id_induk==0){
+
+            // }else{
+
+            // }
+
+
+            $el->delete();
+            return Redirect::to("/admin/elemen")->with('success',' Proses Delete Elemen berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+            ]);
+        }
+        
+        
+       
+    }
 
 
     //formasi jabatan
