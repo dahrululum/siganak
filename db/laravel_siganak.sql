@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2024-06-25 23:43:39
+Date: 2024-06-27 16:03:16
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,13 +34,14 @@ CREATE TABLE `admins` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=210 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=211 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of admins
 -- ----------------------------
 INSERT INTO admins VALUES ('1', null, 'admin', '1', null, null, 'dahrul.ulum@gmail.com', null, 'dahrul.ulum@gmail.com', '$2y$10$K9o5RXw.2qeujixYtl17ROaQch6w3mydLdXkbFLW68AgXEMGzDs0y', null, '2020-06-25 14:12:55', '2021-12-24 13:46:12', null);
-INSERT INTO admins VALUES ('209', '8', 'Dafa', '2', null, '', 'dafa@gmail.com', null, 'dafa', '$2y$10$r2ub5NBJkY4ugamKTtfC7OcUE3bLNV8GCctEX7OEcAT1YQx.bOKRK', null, '2024-06-24 07:25:51', '2024-06-24 07:33:27', null);
+INSERT INTO admins VALUES ('209', '8', 'Dafa', '2', null, '', 'dafa@gmail.com', null, 'dafa', '$2y$10$K9o5RXw.2qeujixYtl17ROaQch6w3mydLdXkbFLW68AgXEMGzDs0y', null, '2024-06-24 07:25:51', '2024-06-24 07:33:27', null);
+INSERT INTO admins VALUES ('210', '2', 'Danish', '2', null, '', 'danish@gmail.com', null, 'danish', '$2y$10$oconlsFJVAr769I.cUWDL.O3Co6aIYgd/CdB2xshQsoY0ST3xNrVu', null, '2024-06-26 02:41:38', '2024-06-26 02:41:38', null);
 
 -- ----------------------------
 -- Table structure for `data_elemen`
@@ -61,7 +62,7 @@ CREATE TABLE `data_elemen` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of data_elemen
@@ -80,6 +81,9 @@ INSERT INTO data_elemen VALUES ('11', '10', null, '1', 'LAKI-LAKI', '667a6d12b98
 INSERT INTO data_elemen VALUES ('12', '10', null, '1', 'Perempuan', '667a6d23cd120', '-', '1', '1', '', '2024-06-25 07:09:33', '2024-06-25 07:09:33', null);
 INSERT INTO data_elemen VALUES ('13', '0', null, '1', 'INDEKS PEMBANGUNAN GENDER (IPG)', '667a6d36c2b2c', '-', '1', '1', '', '2024-06-25 07:09:57', '2024-06-25 07:09:57', null);
 INSERT INTO data_elemen VALUES ('14', '0', null, '1', 'INDEKS PEMBERDAYAAN GENDER (IDG)', '667a6d46b7a35', '-', '1', '1', '', '2024-06-25 07:10:08', '2024-06-25 07:10:08', null);
+INSERT INTO data_elemen VALUES ('15', '0', null, '1', 'SUMBANGAN PENGELUARAN', '667bbf81eaebc', '-', '1', '1', '', '2024-06-26 07:14:01', '2024-06-26 07:14:01', null);
+INSERT INTO data_elemen VALUES ('16', '15', null, '1', 'LAKI-LAKI', '667bbfc4eacff', '-', '1', '1', '', '2024-06-26 07:14:25', '2024-06-26 07:14:25', null);
+INSERT INTO data_elemen VALUES ('17', '15', null, '1', 'Perempuan', '667bbfd7eeddb', '-', '1', '1', '', '2024-06-26 07:14:45', '2024-06-26 07:14:45', null);
 
 -- ----------------------------
 -- Table structure for `data_nilai`
@@ -101,25 +105,25 @@ CREATE TABLE `data_nilai` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of data_nilai
 -- ----------------------------
-INSERT INTO data_nilai VALUES ('15', '667ae3579947c', '1', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('16', '667ae3579947c', '2', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('17', '667ae3579947c', '3', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('18', '667ae3579947c', '4', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('19', '667ae3579947c', '5', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('20', '667ae3579947c', '6', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('21', '667ae3579947c', '7', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('22', '667ae3579947c', '8', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('23', '667ae3579947c', '9', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('24', '667ae3579947c', '10', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('25', '667ae3579947c', '11', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('26', '667ae3579947c', '12', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('27', '667ae3579947c', '13', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
-INSERT INTO data_nilai VALUES ('28', '667ae3579947c', '14', '1', '1', '2020', '1', '', '1', '1', '', '2024-06-25 15:33:43', '2024-06-25 16:34:44', null);
+INSERT INTO data_nilai VALUES ('15', '667ae3579947c', '1', '1', '1', '2020', '16', 'dukcapil1', '1', '1', 'ket1', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('16', '667ae3579947c', '2', '1', '1', '2020', '16', 'dukcapil2', '1', '1', 'ket2', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('17', '667ae3579947c', '3', '1', '1', '2020', '16', 'dukcapil3', '1', '1', 'asd', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('18', '667ae3579947c', '4', '1', '1', '2020', '14', 'dddd', '1', '1', 'a', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('19', '667ae3579947c', '5', '1', '1', '2020', '14', 'ssss', '1', '1', 'dasda', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('20', '667ae3579947c', '6', '1', '1', '2020', '143', 'dddd', '1', '1', 'asdad', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('21', '667ae3579947c', '7', '1', '1', '2020', '132', 'eeewww', '1', '1', 'qqqqwww', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('22', '667ae3579947c', '8', '1', '1', '2020', '133', 'fffffaa', '1', '1', 'fffffaaaa', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('23', '667ae3579947c', '9', '1', '1', '2020', '122', 'aaadddd', '1', '1', 'dasdas', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('24', '667ae3579947c', '10', '1', '1', '2020', '122', 'asda', '1', '1', 'asdasd', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('25', '667ae3579947c', '11', '1', '1', '2020', '12', 'asd', '1', '1', '', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('26', '667ae3579947c', '12', '1', '1', '2020', '12', 'asd', '1', '1', '', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('27', '667ae3579947c', '13', '1', '1', '2020', '12', 'asda', '1', '1', '', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('28', '667ae3579947c', '14', '1', '1', '2020', '12', 'asdasd', '1', '1', '', '2024-06-25 15:33:43', '2024-06-26 08:27:18', null);
 INSERT INTO data_nilai VALUES ('29', '667af1cde52fe', '1', '1', '8', '2020', '23', '', '1', '1', '', '2024-06-25 16:35:25', '2024-06-25 16:36:12', null);
 INSERT INTO data_nilai VALUES ('30', '667af1cde52fe', '2', '1', '8', '2020', '32', '', '1', '1', '', '2024-06-25 16:35:25', '2024-06-25 16:36:12', null);
 INSERT INTO data_nilai VALUES ('31', '667af1cde52fe', '3', '1', '8', '2020', '12', '', '1', '1', '', '2024-06-25 16:35:25', '2024-06-25 16:36:12', null);
@@ -134,6 +138,48 @@ INSERT INTO data_nilai VALUES ('39', '667af1cde52fe', '11', '1', '8', '2020', '5
 INSERT INTO data_nilai VALUES ('40', '667af1cde52fe', '12', '1', '8', '2020', '44', '', '1', '1', '', '2024-06-25 16:35:25', '2024-06-25 16:36:12', null);
 INSERT INTO data_nilai VALUES ('41', '667af1cde52fe', '13', '1', '8', '2020', '33', '', '1', '1', '', '2024-06-25 16:35:25', '2024-06-25 16:36:12', null);
 INSERT INTO data_nilai VALUES ('42', '667af1cde52fe', '14', '1', '8', '2020', '66', '', '1', '1', '', '2024-06-25 16:35:25', '2024-06-25 16:36:12', null);
+INSERT INTO data_nilai VALUES ('43', '667b88c989ae9', '1', '1', '2', '2020', '10', '', '1', '1', '', '2024-06-26 03:19:37', '2024-06-26 03:19:37', null);
+INSERT INTO data_nilai VALUES ('44', '667b88c989ae9', '2', '1', '2', '2020', '20', '', '1', '1', '', '2024-06-26 03:19:37', '2024-06-26 03:19:37', null);
+INSERT INTO data_nilai VALUES ('45', '667b88c989ae9', '3', '1', '2', '2020', '30', '', '1', '1', '', '2024-06-26 03:19:37', '2024-06-26 03:19:37', null);
+INSERT INTO data_nilai VALUES ('46', '667b88c989ae9', '4', '1', '2', '2020', '40', '', '1', '1', '', '2024-06-26 03:19:37', '2024-06-26 03:19:37', null);
+INSERT INTO data_nilai VALUES ('47', '667b88c989ae9', '5', '1', '2', '2020', '50', '', '1', '1', '', '2024-06-26 03:19:37', '2024-06-26 03:19:37', null);
+INSERT INTO data_nilai VALUES ('48', '667b88c989ae9', '6', '1', '2', '2020', '60', '', '1', '1', '', '2024-06-26 03:19:37', '2024-06-26 03:19:37', null);
+INSERT INTO data_nilai VALUES ('49', '667b88c989ae9', '7', '1', '2', '2020', '70', '', '1', '1', '', '2024-06-26 03:19:37', '2024-06-26 03:19:37', null);
+INSERT INTO data_nilai VALUES ('50', '667b88c989ae9', '8', '1', '2', '2020', '80', '', '1', '1', '', '2024-06-26 03:19:37', '2024-06-26 03:19:37', null);
+INSERT INTO data_nilai VALUES ('51', '667b88c989ae9', '9', '1', '2', '2020', '90', '', '1', '1', '', '2024-06-26 03:19:38', '2024-06-26 03:19:38', null);
+INSERT INTO data_nilai VALUES ('52', '667b88c989ae9', '10', '1', '2', '2020', '100', '', '1', '1', '', '2024-06-26 03:19:38', '2024-06-26 03:19:38', null);
+INSERT INTO data_nilai VALUES ('53', '667b88c989ae9', '11', '1', '2', '2020', '110', '', '1', '1', '', '2024-06-26 03:19:38', '2024-06-26 03:19:38', null);
+INSERT INTO data_nilai VALUES ('54', '667b88c989ae9', '12', '1', '2', '2020', '120', '', '1', '1', '', '2024-06-26 03:19:38', '2024-06-26 03:19:38', null);
+INSERT INTO data_nilai VALUES ('55', '667b88c989ae9', '13', '1', '2', '2020', '130', '', '1', '1', '', '2024-06-26 03:19:38', '2024-06-26 03:19:38', null);
+INSERT INTO data_nilai VALUES ('56', '667b88c989ae9', '14', '1', '2', '2020', '140', '', '1', '1', '', '2024-06-26 03:19:38', '2024-06-26 03:19:38', null);
+INSERT INTO data_nilai VALUES ('57', '667bc64b34048', '15', '1', '1', '2020', '34', 'ad', '1', '1', '', '2024-06-26 07:42:03', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('58', '667bc64b34048', '16', '1', '1', '2020', '44', 'asdad', '1', '1', '', '2024-06-26 07:42:04', '2024-06-26 08:27:18', null);
+INSERT INTO data_nilai VALUES ('59', '667bc64b34048', '17', '1', '1', '2020', '45', 'asdad', '1', '1', '', '2024-06-26 07:42:04', '2024-06-26 08:27:18', null);
+
+-- ----------------------------
+-- Table structure for `data_publikasi`
+-- ----------------------------
+DROP TABLE IF EXISTS `data_publikasi`;
+CREATE TABLE `data_publikasi` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `alias` varchar(100) DEFAULT NULL,
+  `judul` varchar(200) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `file_foto` varchar(200) DEFAULT NULL,
+  `file_download` varchar(200) DEFAULT NULL,
+  `inputby` varchar(100) DEFAULT NULL,
+  `tglinput` date DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
+  `ket` text DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of data_publikasi
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `periode`
@@ -157,11 +203,11 @@ CREATE TABLE `periode` (
 -- ----------------------------
 -- Records of periode
 -- ----------------------------
-INSERT INTO periode VALUES ('1', '2021', '2016', '2020', '1', '5', '2016-2020', '0', null, '2024-06-25 02:39:34', null);
-INSERT INTO periode VALUES ('2', '2022', '2017', '2021', '2', '6', '2017-2021', '0', null, '2024-06-25 02:39:34', null);
-INSERT INTO periode VALUES ('3', '2023', '2018', '2022', '3', '7', '2018-2022', '0', null, '2024-06-25 02:39:34', null);
-INSERT INTO periode VALUES ('4', '2024', '2019', '2023', '4', '8', '2019-2023', '0', null, '2024-06-25 02:39:34', null);
-INSERT INTO periode VALUES ('5', '2025', '2020', '2024', '5', '9', '2020-2024', '1', null, '2024-06-25 02:39:34', null);
+INSERT INTO periode VALUES ('1', '2021', '2016', '2020', '1', '5', '2016-2020', '0', null, '2024-06-26 07:24:42', null);
+INSERT INTO periode VALUES ('2', '2022', '2017', '2021', '2', '6', '2017-2021', '0', null, '2024-06-26 07:24:42', null);
+INSERT INTO periode VALUES ('3', '2023', '2018', '2022', '3', '7', '2018-2022', '0', null, '2024-06-26 07:24:42', null);
+INSERT INTO periode VALUES ('4', '2024', '2019', '2023', '4', '8', '2019-2023', '0', null, '2024-06-26 07:24:42', null);
+INSERT INTO periode VALUES ('5', '2025', '2020', '2024', '5', '9', '2020-2024', '1', null, '2024-06-26 07:24:42', null);
 
 -- ----------------------------
 -- Table structure for `ref_jenis`
