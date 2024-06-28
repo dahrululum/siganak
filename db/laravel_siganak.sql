@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2024-06-27 16:03:16
+Date: 2024-06-28 11:05:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -84,6 +84,30 @@ INSERT INTO data_elemen VALUES ('14', '0', null, '1', 'INDEKS PEMBERDAYAAN GENDE
 INSERT INTO data_elemen VALUES ('15', '0', null, '1', 'SUMBANGAN PENGELUARAN', '667bbf81eaebc', '-', '1', '1', '', '2024-06-26 07:14:01', '2024-06-26 07:14:01', null);
 INSERT INTO data_elemen VALUES ('16', '15', null, '1', 'LAKI-LAKI', '667bbfc4eacff', '-', '1', '1', '', '2024-06-26 07:14:25', '2024-06-26 07:14:25', null);
 INSERT INTO data_elemen VALUES ('17', '15', null, '1', 'Perempuan', '667bbfd7eeddb', '-', '1', '1', '', '2024-06-26 07:14:45', '2024-06-26 07:14:45', null);
+
+-- ----------------------------
+-- Table structure for `data_link`
+-- ----------------------------
+DROP TABLE IF EXISTS `data_link`;
+CREATE TABLE `data_link` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `alias` varchar(200) DEFAULT NULL,
+  `nama` varchar(200) DEFAULT NULL,
+  `file_foto` varchar(200) DEFAULT NULL,
+  `urlna` varchar(100) DEFAULT NULL,
+  `ket` text DEFAULT NULL,
+  `status` char(1) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- ----------------------------
+-- Records of data_link
+-- ----------------------------
+INSERT INTO data_link VALUES ('1', '667e344895655', 'DP3ACSKB Kabupaten Bangka Barat', 'file_foto_667e344895655.png', 'https://www.babarkab.go.id', '<p>asd asdasd</p>', '1', '2024-06-28 03:56:48', '2024-06-28 04:04:17', null);
+INSERT INTO data_link VALUES ('2', '667e364755182', 'DP3ACSKB Kabupaten Bangka Selatan', 'file_foto_667e364755182.png', 'https://www.bangkaselatankab.go.id', null, '1', '2024-06-28 04:04:53', '2024-06-28 04:04:53', null);
 
 -- ----------------------------
 -- Table structure for `data_nilai`
@@ -175,11 +199,13 @@ CREATE TABLE `data_publikasi` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of data_publikasi
 -- ----------------------------
+INSERT INTO data_publikasi VALUES ('1', '667e1b45ccca6', 'Publikasi tes', '<p>asd asdas asd asd asd asdasd asdas dasdasd asdasd qweq qwe qwe qwe qwe qwe</p><p>asd aasd asd a</p><p>asd asdasdasd dasd asss sddsd</p>', 'file_foto_667e1b45ccca6.jpg', 'file_file_667e1b45ccca6.pdf', null, '2024-06-28', '1', null, '2024-06-28 02:10:02', '2024-06-28 03:21:33', null);
+INSERT INTO data_publikasi VALUES ('2', '667e2fcb4c6c8', 'pub 2', '<p>asd asdasd</p>', 'file_foto_667e2fcb4c6c8.jpg', 'file_file_667e2fcb4c6c8.pdf', null, '2024-06-27', '1', null, '2024-06-28 03:37:13', '2024-06-28 03:37:31', '2024-06-28 03:37:31');
 
 -- ----------------------------
 -- Table structure for `periode`

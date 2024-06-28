@@ -19,7 +19,7 @@
     var modal = $(this)
     modal.find('.modal-title').text('Dialog Upload ' + jenis)
 
-    var appurl = {!! json_encode(url('/admin/dialog_uploadpub/')) !!};
+    var appurl = {!! json_encode(url('/admin/dialog_uploadwl/')) !!};
         var deturl = appurl+'/'+uniqid+'/'+jenis;
         
         $("#viewupload").load(deturl);    
@@ -75,8 +75,8 @@
 	
         <div class="col-md-12">
             <div class="card card-primary">
-                <div class="card-header"><b>Add Publikasi</b></div>
-                <form action="{{url('admin/post-addpublikasi')}}" method="POST" id="regForm" class="form-horizontal">
+                <div class="card-header"><b>Add Informasi</b></div>
+                <form action="{{url('admin/post-addweblink')}}" method="POST" id="regForm" class="form-horizontal">
                 <div class="card-body">
                    {{ csrf_field() }}
                     
@@ -88,9 +88,9 @@
                     </div> 
                   </div>
                     <div class="form-group row">
-                      <label class="col-sm-3 col-form-label" for="judul">Judul Publikasi</label>
+                      <label class="col-sm-3 col-form-label" for="judul">Nama Informasi</label>
                       <div class="col-sm-9">
-                      <input class="form-control form-control-sm " id="judul" type="text" name="judul" placeholder="Judul Publikasi" />
+                      <input class="form-control form-control-sm " id="nama" type="text" name="nama" placeholder="nama informasi" />
                          
                       </div> 
                     </div>
@@ -98,23 +98,11 @@
                     <div class="form-group row">
                       <label class="col-sm-3 col-form-label" for="desk">Deskripsi</label>
                       <div class="col-sm-9">
-                        <textarea name="desk" id="desk" cols="30" rows="10" class="form-control form-control-sm ket"></textarea>
+                        <textarea name="ket" id="ket" cols="30" rows="10" class="form-control form-control-sm ket"></textarea>
                          
                       </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="inputName" class="col-sm-3 col-form-label">Tanggal Upload</label>
-                        
-                        <div class="col-sm-2">
-                            <div class="input-group date" id="pilihtanggal" data-target-input="nearest">
-                                <input type="text"  id="tglupload" name="tglupload"  class="form-control form-control-sm datetimepicker-input "  data-target="#pilihtanggal" value="" required  />
-                                <div class="input-group-append" data-target="#pilihtanggal" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                            <p class="small text-primary">format : YYYY-MM-DD</p>
-                        </div>
-                    </div> 
+                     
                     <div class="form-group row">
                         <label for="inputName" class="col-sm-3 col-form-label">Upload Foto/Gambar </label>
                             <div class="col-sm-2">
@@ -127,14 +115,14 @@
                             </div>
                     </div> 
                     <div class="form-group row">
-                        <label for="inputName" class="col-sm-3 col-form-label">Upload File </label>
-                            <div class="col-sm-2">
-                                <a href="#modal_upload" data-toggle="modal" class="btn btn-sm btn-info" data-jenis="file"  ><i class="fa fa-search"></i> Pilih File</a>
-                            </div>
-                            <div class="col-sm-5">
-                            File Unduh/Download: <span id="ressnamafileunduh"></span>
-                            </div>
-                    </div> 
+                        <label class="col-sm-3 col-form-label" for="judul">Link URL Informasi</label>
+                        <div class="col-sm-9">
+                            <input class="form-control form-control-sm " id="urlna" type="text" name="urlna" placeholder="masukan Alamat URL" />
+                            <p class="text-primary">ex. https://www.babelprov.go.id</p>
+                        </div>
+
+                      </div>
+                     
                 </div>
                 <div class="card-footer"> 
                     <button class="btn btn-primary" type="submit">Simpan</button>

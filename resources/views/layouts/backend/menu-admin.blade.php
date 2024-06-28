@@ -32,7 +32,7 @@
         </a>
     </li>
     <li class="nav-item ">
-        <a class="nav-link <?php if(Request::segment(2)=='laporan'){echo 'active';} ?>" href="<?= url('/admin/laporan/'); ?>">
+        <a class="nav-link <?php if(Request::segment(2)=='weblink'){echo 'active';} ?>" href="<?= url('/admin/weblink/'); ?>">
             <i class="nav-icon fas fa-table"></i>  <p>Informasi  </p>
         </a>
     </li>

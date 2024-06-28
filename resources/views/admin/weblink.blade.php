@@ -28,10 +28,10 @@
      
     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title font-weight-bold">Daftar Publikasi  </h3>
+                            <h3 class="card-title font-weight-bold">Daftar Informasi  </h3>
                         </div>    
                     <div class="card-body">
-                        <a class="btn btn-success" href="{{ URL::to('/admin/addpublikasi')}}"><i class="fa fa-plus"></i> Tambah Publikasi</a>
+                        <a class="btn btn-success" href="{{ URL::to('/admin/addweblink')}}"><i class="fa fa-plus"></i> Tambah Informasi</a>
                         <br><br>
                         <div class="card-body table-responsive p-0">
                           
@@ -40,11 +40,11 @@
                                 <tr>
                                     <th> ID</th>
                                     
-                                    <th> Judul Publikasi </th>
+                                    <th> Nama Informasi </th>
                                     <th> Deskripsi</th>
-                                    <th> Tanggal</th>
+                                    
                                     <th> File Cover</th>
-                                    <th> File Unduh</th>
+                                    <th> Link URL</th>
                                     <th> Status </th>
                                     <th> # </th> 
 
@@ -63,9 +63,9 @@
                                     <tr>
                                         <td>{{ $pub->id }}</td>
                                        
-                                        <td>{{ $pub->judul }}</td>
-                                        <td>{!! $pub->deskripsi !!}</td>
-                                        <td>{{ $pub->tglinput }}</td>
+                                        <td>{{ $pub->nama }}</td>
+                                        <td>{!! $pub->ket !!}</td>
+                                        
                                         <td class="text-center">
                                             @if(empty($pub->file_foto))
                                                 <img src="{{ asset('images/noimage.jpg') }}" alt="">
@@ -74,18 +74,18 @@
                                             @endif
                                         </td>
                                         <td class="text-center">
-                                            @if(empty($pub->file_download))
-                                                <span class="text-danger">Tidak ada file download</span>
+                                            @if(empty($pub->urlna))
+                                                <span class="text-danger">Tidak ada Link URL</span>
                                             @else
-                                                <a href="{{ asset('downloads/'.$pub->file_download) }}" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> Download File</a>
+                                                <a href="{{ $pub->urlna }}" target="_blank" class="btn btn-sm btn-primary"><i class="fa fa-download"></i> {{ $pub->urlna }}</a>
                                             @endif
  
                                         </td>
                                         <td>{{ $namastatus }}</td>
                                          
                                         <td>
-                                            <a class="btn btn-success btn-xs" href="{{ URL::to('/admin/editpublikasi/'.$pub->id) }}"><i class="fa fa-edit"></i> Edit</a>
-                                            <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/delpublikasi/'.$pub->id) }}" onClick="if(!confirm('Anda yakin Akan Hapus Data Publikasi ini !'))return false;"><i class="fa fa-trash"></i> Delete</a>
+                                            <a class="btn btn-success btn-xs" href="{{ URL::to('/admin/editweblink/'.$pub->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                            <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/delweblink/'.$pub->id) }}" onClick="if(!confirm('Anda yakin Akan Hapus Data Informasi ini !'))return false;"><i class="fa fa-trash"></i> Delete</a>
                                              
                                          </td>
                                          

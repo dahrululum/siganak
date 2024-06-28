@@ -20,6 +20,7 @@ use App\Models\Periode;
  
 use App\Models\Admin;
 use App\Models\Publikasi;
+use App\Models\Weblink;
 
 use Session;
 use Carbon;
@@ -800,36 +801,30 @@ class AdminController extends Controller
     {  
     
         
-        Elemen::create([
-            'nama'                  => $request['nama'],
-            'alias'                 => $request['alias'],
-            'id_induk'              => $request['id_induk'],
-            'id_jenis'              => $request['id_jenis'],
-            'sumber'                => $request['sumber'],
-            'ket'                   => $request['ket'],
-            'status_verifikasi'     => 1,
-            'status_aktif'          => 1,
+        Publikasi::create([
+            'alias'                  => $request['alias'],
+            'judul'                  => $request['judul'],
+            'deskripsi'              => $request['desk'],
+            'file_foto'              => $request['namafilecover'],
+            'file_download'          => $request['namafileunduh'],
+            'tglinput'               => $request['tglupload'],
+            'status'                 => 1,
+            
             
           ]);
        
-        return Redirect::to("/admin/elemen")->with('success','Selamat, Anda berhasil untuk menambah elemen data');
+        return Redirect::to("/admin/publikasi")->with('success','Selamat, Anda berhasil untuk menambah Publikasi');
     }
     public function editpublikasi($id)
     {
-        $el = Elemen::where('id', $id)->first();
-        $jen = Refjenis::where('status',1)->get();
-        $elemens = Elemen::Where(
-          [
-            ['id_induk','=',"0"],
-            ['status_aktif','=',1],
-           
-          ])->orderBy('id_induk')->get();
+        $pub = Publikasi::where('id', $id)->first();
+        
 
-          return view('admin/editelemen',[
+          return view('admin/editpublikasi',[
             'layout'    => $this->layout,
-            'pel'       => $el,
-            'jenis'     => $jen,  
-            'elemens'   => $elemens, 
+            'alias'     => $pub->alias,
+            'pub'       => $pub,
+           
              
         ]);
 
@@ -840,20 +835,19 @@ class AdminController extends Controller
         if(Auth::guard('admin')->check()){      
                  
                 $idna=$request->input('idna');
-                Elemen::where('id', $idna)
+                Publikasi::where('id', $idna)
                 ->update([
-                  'nama'                  => $request['nama'],
-                  'id_induk'              => $request['id_induk'],
-                  'id_jenis'              => $request['id_jenis'],
-                  'sumber'                => $request['sumber'],
-                  'ket'                   => $request['ket'],
-                  'status_verifikasi'     => 1,
-                  'status_aktif'          => 1,
+                  
+                  'judul'                  => $request['judul'],
+                  'deskripsi'              => $request['desk'],
+                  'file_foto'              => $request['namafilecover'],
+                  'file_download'          => $request['namafileunduh'],
+                  'tglinput'               => $request['tglupload'],
                 
                 
             ]);
         
-                return Redirect::to("/admin/elemen")->with('success',' Edit Elemen berhasil.');
+                return Redirect::to("/admin/publikasi")->with('success',' Edit Publikasi berhasil.');
         }else{
             return view('admin.login',[
                 'layout' => $this->layout 
@@ -864,16 +858,171 @@ class AdminController extends Controller
     {
         if(Auth::guard('admin')->check()){      
              
-            $el = Elemen::where('id', $id)->first();
-            // if($el->id_induk==0){
+            $pub = Publikasi::where('id', $id)->first();
+           
+            $pub->delete();
+            return Redirect::to("/admin/publikasi")->with('success',' Proses Delete Publikasi berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+            ]);
+        }
+        
+        
+       
+    }
+    //INformasi - WEBLINK
+    //28 juni 2024
+    //publikasi
+  public function weblink(request $request){
+    if(Auth::guard('admin')->check()){  
+      $pub = Weblink::orderBy('id')->get();
 
-            // }else{
+      return view('admin/weblink' , [
+        'layout' => $this->layout,
+        'pub' =>$pub,
+       
+      ]);
+    }else{
+      return view('admin.login',[
+          'layout' => $this->layout 
+        ]);
+      }
+  }
+  public function dialoguploadwl($id, $label)
+  {
+        if(Auth::guard('admin')->check()){  
+                
+            
+            //return view('/pelamar/datatable', compact('pelamars'));
+                return view('admin.dialog_uploadwl' , [
+                    'layout' => $this->layout,
+                    'uniqid'  =>$id,
+                    'label'     =>$label
+                    
+                     
+                     
+            ]);
+        }else{
+                return view('admin.login',[
+                    'layout' => $this->layout 
+                  ]);
+                }
+  }
+  public function uploadactionwl(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+        'select_file' => 'required|mimes:jpeg,png,jpg,pdf,docx,xlsx,doc|max:20748'
+        ]);
+        if($validation->passes())
+        {
+            $uniqid   =   $request->input('uniqid');
+            $label    =   $request->input('label');
+            
+            $image = $request->file('select_file');
 
-            // }
+            $nama_file = "file_".$label."_".$uniqid.".".$image->getClientOriginalExtension();  
+            $tujuan_upload = 'downloads';
+            $image->move($tujuan_upload,$nama_file);
 
+            //Storage::disk('downloads') -> put($nama_file, file_get_contents($image->getRealPath()));
 
-            $el->delete();
-            return Redirect::to("/admin/elemen")->with('success',' Proses Delete Elemen berhasil.');
+             
+            return response()->json([
+                'message'   => 'Berkas Berhasil di Upload',
+                'uploaded_file' => '<input type="hidden" id="uploadfile" name="uploadfile" value="'.$nama_file.'"  />',
+                'label_file' => '<input type="hidden" id="labelfile" name="labelfile" value="'.$label.'"  />',
+                'uploaded_image' => '<a href="../downloads/'.$nama_file.'" class="btn btn-danger" target="_blank" >'.$nama_file.'</a>',
+                'class_name'  => 'alert-success'
+            ]);
+
+                
+
+        }
+        else
+        {
+            return response()->json([
+            'message'   => $validation->errors()->all(),
+            'uploaded_image' => '',
+            'class_name'  => 'alert-danger'
+            ]);
+        }
+  }
+  public function addweblink(Request $request)
+  {
+       $uniqid=uniqid();
+
+          return view('admin/addweblink',[
+            'layout'    => $this->layout,
+            'alias'     => $uniqid,
+           
+             
+        ]);
+
+       // return view('register');
+  }
+  public function postAddweblink(Request $request)
+    {  
+    
+        
+        Weblink::create([
+            'alias'                 => $request['alias'],
+            'nama'                  => $request['nama'],
+            'ket'                   => $request['ket'],
+            'urlna'                 => $request['urlna'],
+            'file_foto'             => $request['namafilecover'],
+            'status'                => 1,
+            
+            
+          ]);
+       
+        return Redirect::to("/admin/weblink")->with('success','Selamat, Anda berhasil untuk menambah weblink');
+    }
+    public function editweblink($id)
+    {
+        $pub = Weblink::where('id', $id)->first();
+        
+
+          return view('admin/editweblink',[
+            'layout'    => $this->layout,
+            'alias'     => $pub->alias,
+            'pub'       => $pub,
+           
+             
+        ]);
+
+       // return view('register');
+    }
+    public function postEditweblink(Request $request)
+    {  
+        if(Auth::guard('admin')->check()){      
+                 
+                $idna=$request->input('idna');
+                Weblink::where('id', $idna)
+                ->update([
+                  'nama'                  => $request['nama'],
+                  'ket'                   => $request['ket'],
+                  'urlna'                 => $request['urlna'],
+                  'file_foto'             => $request['namafilecover'],
+                
+                
+            ]);
+        
+                return Redirect::to("/admin/weblink")->with('success',' Edit weblink berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+        }
+    }
+    public function delweblink($id)
+    {
+        if(Auth::guard('admin')->check()){      
+             
+            $pub = Weblink::where('id', $id)->first();
+           
+            $pub->delete();
+            return Redirect::to("/admin/weblink")->with('success',' Proses Delete Weblink berhasil.');
         }else{
             return view('admin.login',[
                 'layout' => $this->layout 

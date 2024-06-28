@@ -76,11 +76,22 @@ Route::get('admin/publikasi', [AdminController::class,'publikasi'])->name('admin
 Route::get('/admin/addpublikasi', [AdminController::class,'addpublikasi'])->name('admin.addpublikasi');
 Route::post('/admin/post-addpublikasi', [AdminController::class,'postAddpublikasi']); 
 Route::get('/admin/editpublikasi/{id}',  [AdminController::class,'editpublikasi'])->name('admin.editpublikasi');
-Route::post('/admin/post-edipublikasi', [AdminController::class,'postEditpublikasi']); 
+Route::post('/admin/post-editpublikasi', [AdminController::class,'postEditpublikasi']); 
 Route::get('/admin/delpublikasi/{id}',  [AdminController::class,'delpublikasi']);
 
 Route::get('admin/dialog_uploadpub/{id}/{label}', [AdminController::class,'dialoguploadpub'])->name('admin.dialoguploadpub');
 Route::post('/admin/uploadactionpub',  [AdminController::class,'uploadactionpub'])->name('admin.uploadactionpub');
+
+Route::get('admin/weblink', [AdminController::class,'weblink'])->name('admin.weblink');
+Route::get('/admin/addweblink', [AdminController::class,'addweblink'])->name('admin.addweblink');
+Route::post('/admin/post-addweblink', [AdminController::class,'postAddweblink']); 
+Route::get('/admin/editweblink/{id}',  [AdminController::class,'editweblink'])->name('admin.editweblink');
+Route::post('/admin/post-editweblink', [AdminController::class,'postEditweblink']); 
+Route::get('/admin/delweblink/{id}',  [AdminController::class,'delweblink']);
+
+Route::get('admin/dialog_uploadwl/{id}/{label}', [AdminController::class,'dialoguploadwl'])->name('admin.dialoguploadwl');
+Route::post('/admin/uploadactionwl',  [AdminController::class,'uploadactionwl'])->name('admin.uploadactionwl');
+
 
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 
