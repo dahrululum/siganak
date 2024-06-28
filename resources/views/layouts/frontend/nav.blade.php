@@ -1,10 +1,14 @@
 <ul>
-    <li><a class="nav-link scrollto active" href="#hero">Beranda</a></li>
-    <li><a class="nav-link scrollto" href="#about">Data Anak</a></li>
+    <li><a class="nav-link scrollto active" href="#hero">
+      {{-- <i class="bi bi-house-fill" style="font-size: 20px; padding:2px;"></i>  --}}
+      Home</a>
+    </li>
+    <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
+    <li><a class="nav-link scrollto" href="#">Data Anak</a></li>
     <li><a class="nav-link scrollto" href="#">Data Gender</a></li>
     <li><a class="nav-link scrollto " href="#">Indikator Kinerja</a></li>
-    <li><a class="nav-link scrollto" href="#features">Publikasi</a></li>
-    <li><a class="nav-link scrollto" href="#contact">Informasi</a></li>
+    <li><a class="nav-link scrollto" href="#publikasi">Publikasi</a></li>
+    <li><a class="nav-link scrollto" href="#informasi">Informasi</a></li>
     {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
       <ul>
         <li><a href="#">Drop Down 1</a></li>
