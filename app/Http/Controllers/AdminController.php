@@ -317,6 +317,23 @@ class AdminController extends Controller
           ]);
         }
     }
+    //target indikator
+    public function target(){
+      if(Auth::guard('admin')->check()){  
+        $tar = Reftarget::where('status',1)->get();
+
+        return view('admin/target' , [
+          'layout' => $this->layout,
+          'tars' =>$tar,
+         
+        ]);
+      }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+          ]);
+        }
+    }
+
     //elemen
     //24 Juni 2024
     public function elemen(){
@@ -1040,21 +1057,189 @@ class AdminController extends Controller
     public function indikator(Request $request)
     {
       if(Auth::guard('admin')->check()){ 
-        $tar = Reftarget::where('status',1)->orderby('id')->get();     
-        $ind = Indikator::all();
-         
-        return view('admin.indikator',[
-          'layout'  => $this->layout,
-          'tar'     => $tar, 
-          'ind'     => $ind, 
+          $tar = Reftarget::where('status',1)->orderby('id')->get();     
+          $ind = Indikator::all();
+          
+          return view('admin.indikator',[
+            'layout'  => $this->layout,
+            'tar'     => $tar, 
+            'ind'     => $ind, 
 
-      ]);
+        ]);
+      }else{
+          return view('admin.login',[
+              'layout' => $this->layout 
+          ]);
+      }
+    }
+    public function addindikator(Request $request)
+    {
+    if(Auth::guard('admin')->check()){  
+      $tar = Reftarget::where('status',1)->orderby('id')->get(); 
+          return view('admin/addindikator',[
+            'layout'    => $this->layout,
+            'tar'       => $tar,
+           
+             
+        ]);
+    
     }else{
         return view('admin.login',[
             'layout' => $this->layout 
         ]);
     }
+
+       // return view('register');
+  }
+  public function postAddindikator(Request $request)
+    {  
+    
+        
+        Indikator::create([
+          'kode'            => $request['kode'],
+          'id_target'       => $request['id_target'],
+          'nama'            => $request['nama'],
+          'sumber'          => $request['sumber'],
+          'satuan'          => $request['satuan'],
+          'status_aktif'    => 1,
+            
+            
+          ]);
+       
+        return Redirect::to("/admin/indikator")->with('success','Selamat, Anda berhasil untuk menambah Indikator Kinerja');
     }
+    public function editindikator($id)
+    {
+      if(Auth::guard('admin')->check()){ 
+
+        $tar = Reftarget::where('status',1)->orderby('id')->get();  
+        $ind = Indikator::where('id', $id)->first();
+
+          return view('admin/editindikator',[
+            'layout'    => $this->layout,
+            'ind'       => $ind,
+            'tar'       => $tar
+           
+             
+        ]);
+      }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+        ]);
+      }
+       // return view('register');
+    }
+    public function postEditindikator(Request $request)
+    {  
+        if(Auth::guard('admin')->check()){      
+                 
+                $idna=$request->input('idna');
+                Indikator::where('id', $idna)
+                ->update([
+                  'kode'            => $request['kode'],
+                  'id_target'       => $request['id_target'],
+                  'nama'            => $request['nama'],
+                  'sumber'          => $request['sumber'],
+                  'satuan'          => $request['satuan'],
+                
+                
+            ]);
+        
+                return Redirect::to("/admin/indikator")->with('success',' Edit Label Indikator berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+        }
+    }
+    public function delindikator($id)
+    {
+        if(Auth::guard('admin')->check()){      
+             
+            $pub = Indikator::where('id', $id)->first();
+           
+            $pub->delete();
+            return Redirect::to("/admin/indikator")->with('success',' Proses Delete Indikator  berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+            ]);
+        }
+       
+    }
+    //nilai indikator
+    public function nindi(Request $request)
+    {
+      if(Auth::guard('admin')->check()){ 
+          $tar = Reftarget::where('status',1)->orderby('id')->get();     
+          $ind = Indikator::all();
+          
+          return view('admin.nilai_indikator',[
+            'layout'  => $this->layout,
+            'tar'     => $tar, 
+            'ind'     => $ind, 
+
+        ]);
+      }else{
+          return view('admin.login',[
+              'layout' => $this->layout 
+          ]);
+      }
+    }
+    public function isinindi($id)
+    {
+      if(Auth::guard('admin')->check()){ 
+        $per = Periode::where('status',1)->first();
+        $tar = Reftarget::where('status',1)->orderby('id')->get();  
+        $ind = Indikator::where('id', $id)->first();
+
+          return view('admin/isi_nilai_indikator',[
+            'layout'    => $this->layout,
+            'per'       => $per,
+            'ind'       => $ind,
+            'tar'       => $tar,
+            'tahun1'    => $ind->tahun1,
+            'tahun2'    => $ind->tahun2,
+            'tahun3'    => $ind->tahun3,
+            'tahun4'    => $ind->tahun4,
+            'tahun5'    => $ind->tahun5,
+            
+           
+             
+        ]);
+      }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+        ]);
+      }
+       // return view('register');
+    }
+    public function postIsinindi(Request $request)
+    {  
+        if(Auth::guard('admin')->check()){      
+                 
+                $idna=$request->input('idna');
+                Indikator::where('id', $idna)
+                ->update([
+                  'tahun1'          => $request['tahun1'],
+                  'tahun2'          => $request['tahun2'],
+                  'tahun3'          => $request['tahun3'],
+                  'tahun4'          => $request['tahun4'],
+                  'tahun5'          => $request['tahun5'],
+                
+                
+            ]);
+        
+                return Redirect::to("/admin/nindi")->with('success',' isi Nilai Indikator berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+        }
+    }
+
+
+
 
     //formasi jabatan
     //05 des 2021

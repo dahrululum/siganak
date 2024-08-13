@@ -20,7 +20,11 @@ class Indikator extends Model
         'nama',
         'sumber',
         'satuan',
-       
+        'tahun1',
+        'tahun2',
+        'tahun3',
+        'tahun4',
+        'tahun5',
         'status_verifikasi',
         'status_aktif',
          
@@ -28,6 +32,10 @@ class Indikator extends Model
     public function manySub()
     {
         return $this->hasMany(Indikator::class, 'id_induk', 'id')->where('status_aktif','=',1);
+    }
+    public function getTarget()
+    {
+        return $this->hasOne(Reftarget::class,'id','id_target')->withDefault();
     }
     //query u isi nilai
     public static function query($params = [])

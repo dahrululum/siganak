@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2024-08-13 15:20:52
+Date: 2024-08-13 20:15:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -94,6 +94,11 @@ CREATE TABLE `data_indikator` (
   `alias` varchar(100) DEFAULT NULL,
   `sumber` varchar(200) DEFAULT NULL,
   `satuan` varchar(100) DEFAULT NULL,
+  `tahun1` varchar(40) DEFAULT NULL,
+  `tahun2` varchar(40) DEFAULT NULL,
+  `tahun3` varchar(40) DEFAULT NULL,
+  `tahun4` varchar(40) DEFAULT NULL,
+  `tahun5` varchar(40) DEFAULT NULL,
   `status_aktif` char(1) DEFAULT '',
   `status_verifikasi` char(1) DEFAULT '',
   `ket` text DEFAULT '',
@@ -101,20 +106,21 @@ CREATE TABLE `data_indikator` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- ----------------------------
 -- Records of data_indikator
 -- ----------------------------
-INSERT INTO data_indikator VALUES ('1', null, '1', '5.1.1', 'Jumlah kebijakan yang responsif gender mendukung pemberdayaan perempuan', null, 'DP3AP2 dan DINAS PPPA', 'Dokumen', '1', '', '', null, null, null);
-INSERT INTO data_indikator VALUES ('2', null, '2', '5.2.1', 'Prevalensi Kekerasan terhadap anak perempuan dan laki-laki 0-17 th', null, 'DP3AP2 dan DINAS PPPA', '%', '1', '', '', null, null, null);
-INSERT INTO data_indikator VALUES ('3', null, '2', '5.2.2', 'Proporsi perempuan dan anak perempuan menagalami kekerasan Dalam Rumah Tangga (KDRT)', null, 'DP3AP2 dan DINAS PPPA', '%', '1', '', '', null, null, null);
-INSERT INTO data_indikator VALUES ('4', null, '2', '5.2.3', 'Proporsi perempuan dan anak perempuan mengalami kekerasan non-KDRT', null, 'DP3AP2 dan DINAS PPPA', '%', '1', '', '', null, null, null);
-INSERT INTO data_indikator VALUES ('5', null, '2', '5.2.4', 'Persentase korban kekerasan terhdapa perempuan yang mendapat layanan komprehensif', null, 'DP3AP2 dan DINAS PPPA', '%', '1', '', '', null, null, null);
-INSERT INTO data_indikator VALUES ('6', null, '3', '5.3.1', 'Median usia kawin pertama perempuan pernah kawin umur 25-49 tahun', null, 'DP3AP2 dan DINAS PPPA', 'Tahun', '1', '', '', null, null, null);
-INSERT INTO data_indikator VALUES ('7', null, '5', '5.5.1', 'Proporsi kursi yang diduduki perempuan di parlemen tingkat pusat, parlemen daerah dan pemerintah daerah', null, 'DP3AP2 dan DINAS PPPA', '%', '1', '', '', null, null, null);
-INSERT INTO data_indikator VALUES ('8', null, '6', '5.6.1', 'UU dan PP yg menjamin perempuan umur 15-49 th utk mendapatkan pelayanan terkait kesehatan seksual', null, 'DP3AP2 dan DINAS PPPA', 'Dokumen', '1', '', '', null, null, null);
-INSERT INTO data_indikator VALUES ('9', null, '7', '5.7.1', 'Tersedianya pusat layanan korban kekerasan perempuan dan anak', null, 'DP3AP2 dan DINAS PPPA', 'Lembaga', '1', '', '', null, null, null);
+INSERT INTO data_indikator VALUES ('1', null, '1', '5.1.1', 'Jumlah kebijakan yang responsif gender mendukung pemberdayaan perempuan', null, 'DPACSKB', 'Dokumen', '145', '250', '280', '300', '-', '1', '', '', null, '2024-08-13 13:13:58', null);
+INSERT INTO data_indikator VALUES ('2', null, '2', '5.2.1', 'Prevalensi Kekerasan terhadap anak perempuan dan laki-laki 0-17 th', null, 'DPACSKB', '%', '12', '45', '5', '0', '0', '1', '', '', null, '2024-08-13 13:13:33', null);
+INSERT INTO data_indikator VALUES ('3', null, '2', '5.2.2', 'Proporsi perempuan dan anak perempuan menagalami kekerasan Dalam Rumah Tangga (KDRT)', null, 'DP3AP2 dan DINAS PPPA', '%', null, null, null, null, null, '1', '', '', null, null, null);
+INSERT INTO data_indikator VALUES ('4', null, '2', '5.2.3', 'Proporsi perempuan dan anak perempuan mengalami kekerasan non-KDRT', null, 'DP3AP2 dan DINAS PPPA', '%', null, null, null, null, null, '1', '', '', null, null, null);
+INSERT INTO data_indikator VALUES ('5', null, '2', '5.2.4', 'Persentase korban kekerasan terhdapa perempuan yang mendapat layanan komprehensif', null, 'DP3AP2 dan DINAS PPPA', '%', null, null, null, null, null, '1', '', '', null, null, null);
+INSERT INTO data_indikator VALUES ('6', null, '3', '5.3.1', 'Median usia kawin pertama perempuan pernah kawin umur 25-49 tahun', null, 'DP3AP2 dan DINAS PPPA', 'Tahun', null, null, null, null, null, '1', '', '', null, null, null);
+INSERT INTO data_indikator VALUES ('7', null, '5', '5.5.1', 'Proporsi kursi yang diduduki perempuan di parlemen tingkat pusat, parlemen daerah dan pemerintah daerah', null, 'DP3AP2 dan DINAS PPPA', '%', null, null, null, null, null, '1', '', '', null, null, null);
+INSERT INTO data_indikator VALUES ('8', null, '6', '5.6.1', 'UU dan PP yg menjamin perempuan umur 15-49 th utk mendapatkan pelayanan terkait kesehatan seksual', null, 'DP3AP2 dan DINAS PPPA', 'Dokumen', null, null, null, null, null, '1', '', '', null, null, null);
+INSERT INTO data_indikator VALUES ('9', null, '7', '5.7.1', 'Tersedianya pusat layanan korban kekerasan perempuan dan anak', null, 'DP3AP2 dan DINAS PPPA', 'Lembaga', null, null, null, null, null, '1', '', '', null, null, null);
+INSERT INTO data_indikator VALUES ('10', null, '1', '5.1.2', 'tes Nama Indikator', null, 'Sumberna', 'Satuanna', null, null, null, null, null, '1', '', '', '2024-08-13 10:04:23', '2024-08-13 10:04:23', null);
 
 -- ----------------------------
 -- Table structure for `data_link`

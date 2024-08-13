@@ -56,6 +56,9 @@ Route::get('admin/jenis', [AdminController::class,'jenis'])->name('admin.jenis')
 //periode
 Route::get('admin/periode', [AdminController::class,'periode'])->name('admin.periode');
 Route::get('admin/status-periode/', [AdminController::class,'periodestatus'])->name('periodestatus');
+//target indikator
+Route::get('admin/target', [AdminController::class,'target'])->name('admin.target');
+
 
 //elemen
 Route::get('admin/elemen', [AdminController::class,'elemen'])->name('admin.elemen');
@@ -95,7 +98,16 @@ Route::post('/admin/uploadactionwl',  [AdminController::class,'uploadactionwl'])
 //indikator
 //13 aug 2024
 Route::get('admin/indikator', [AdminController::class,'indikator'])->name('admin.indikator');
+Route::get('/admin/addindikator', [AdminController::class,'addindikator'])->name('admin.addindikator');
+Route::post('/admin/post-addindikator', [AdminController::class,'postAddindikator']); 
+Route::get('/admin/editindikator/{id}',  [AdminController::class,'editindikator'])->name('admin.editindikator');
+Route::post('/admin/post-editindikator', [AdminController::class,'postEditindikator']); 
+Route::get('/admin/delindikator/{id}',  [AdminController::class,'delindikator']);
 
+//nilai indikator
+Route::get('admin/nindi', [AdminController::class,'nindi'])->name('admin.nindi');
+Route::get('/admin/isinindi/{id}',  [AdminController::class,'isinindi'])->name('admin.isinindi');
+Route::post('/admin/post-isinindi', [AdminController::class,'postIsinindi']); 
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 
 

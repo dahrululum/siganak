@@ -21,47 +21,45 @@
 
 @section('content')
  
-    
+     
 
      
     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Daftar Target & Indikator</h3>
+                            <h3 class="card-title">Daftar Target Indikator Kinerja</h3>
                         </div>    
                     <div class="card-body">
                         <div class="card-body table-responsive p-0">
-                        <a class="btn btn-success" href="{{ URL::to('/admin/addindikator')}}"><i class="fa fa-plus"></i> Tambah Indikator</a>
+                        {{-- <a class="btn btn-success" href="{{ URL::to('/admin/adduserpd')}}"><i class="fa fa-user"></i> Tambah User</a> --}}
                         <br><br>
 
-                            <table class="table table-hover table-bordered" id="tablena">
-                                <thead class="bg-primary">
+                            <table class="table table-sm table-hover  table-bordered" id="tablena">
+                                <thead class="bg-info">
                                 <tr>
-                                    <th> Kode</th>
-                                    <th> Nama Indikator </th>
-                                    <th> Sumber Data </th>
-                                    <th> Satuan </th>
+                                    <th> ID</th>
+                                    <th> Kode Target</th> 
+                                    <th> Nama Target </th>
+                                   
                                     <th> #  </th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($tar as $tar)
+                                    @foreach ($tars as $tar)
                                     <?php 
                                        
                                     ?>
                                     <tr>
-                                        <td colspan="5" class="bg-lightblue  ">
-                                            <div class="row">
-                                                <div class="col-1 text-center"><b>Target {{ $tar->kdtarget }}</b></div>
-                                                <div class="col-10">{{ $tar->namatarget }}</div>
-                                            </div>
-                                        </td>
-                                         
-                                         
+                                        <td>{{ $tar->id }}</td>
+                                        <td>{{ $tar->kdtarget }}</td>
+                                        <td>{{ $tar->namatarget }}</td>
+                                       
+                                        
+                                        <td>
+                                            {{-- <a class="btn btn-success btn-xs" href="{{ URL::to('/admin/editwil/'.$wil->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                            <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/delwil/'.$wil->id) }}"><i class="fa fa-trash"></i> Delete</a> --}}
+                                         </td>
                                     </tr>
-                                    @if(count($tar->hasIndikator))
-                                        @include('admin/subindikator ',['tar' => $tar->hasIndikator])
-                                    @endif
                                     @endforeach
                                 </tbody>
                             </table>

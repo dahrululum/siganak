@@ -104,6 +104,11 @@
             <i class="nav-icon fas fa-list-ol"></i>  <p>Periode</p>
         </a>
     </li>
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='target' or Request::segment(2)=='addtarget' or  Request::segment(2)=='edittarget'  ){echo 'active';} ?>" href="<?= url('/admin/target'); ?>">
+            <i class="nav-icon fas fa-list-ol"></i>  <p>Target Indikator</p>
+        </a>
+    </li>
     
     {{-- <li class="nav-item ">
         <a class="nav-link <?php if(Request::segment(2)=='pegawai'  or Request::segment(2)=='addpegawai' or Request::segment(2)=='editpegawai' ){echo 'active';} ?>" href="<?= url('/admin/pegawai'); ?>">
