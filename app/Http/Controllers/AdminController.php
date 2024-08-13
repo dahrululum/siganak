@@ -21,6 +21,9 @@ use App\Models\Periode;
 use App\Models\Admin;
 use App\Models\Publikasi;
 use App\Models\Weblink;
+use App\Models\Indikator;
+use App\Models\Nindi;
+use App\Models\Reftarget;
 
 use Session;
 use Carbon;
@@ -1032,7 +1035,26 @@ class AdminController extends Controller
         
        
     }
+    //indikator
+    //13 aug 2024
+    public function indikator(Request $request)
+    {
+      if(Auth::guard('admin')->check()){ 
+        $tar = Reftarget::where('status',1)->orderby('id')->get();     
+        $ind = Indikator::all();
+         
+        return view('admin.indikator',[
+          'layout'  => $this->layout,
+          'tar'     => $tar, 
+          'ind'     => $ind, 
 
+      ]);
+    }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+        ]);
+    }
+    }
 
     //formasi jabatan
     //05 des 2021

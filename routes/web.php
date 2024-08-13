@@ -92,6 +92,9 @@ Route::get('/admin/delweblink/{id}',  [AdminController::class,'delweblink']);
 Route::get('admin/dialog_uploadwl/{id}/{label}', [AdminController::class,'dialoguploadwl'])->name('admin.dialoguploadwl');
 Route::post('/admin/uploadactionwl',  [AdminController::class,'uploadactionwl'])->name('admin.uploadactionwl');
 
+//indikator
+//13 aug 2024
+Route::get('admin/indikator', [AdminController::class,'indikator'])->name('admin.indikator');
 
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 

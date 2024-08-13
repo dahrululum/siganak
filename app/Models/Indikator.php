@@ -14,11 +14,13 @@ class Indikator extends Model
     protected $fillable = [
         'id',
         'id_induk',
-        'id_jenis',
+        'id_target',
         'alias',
+        'kode',
+        'nama',
         'sumber',
         'satuan',
-        'nama',
+       
         'status_verifikasi',
         'status_aktif',
          
@@ -33,12 +35,12 @@ class Indikator extends Model
         $query = parent::query();
 
      
-        if (@$params['id_jenis'] != null) {
+        if (@$params['id_target'] != null) {
              
-                $query->where('id_jenis', '=', $params['id_jenis'])->where('id_induk',0)->where('status_aktif',1);
+                $query->where('id_target', '=', $params['id_target'])->where('id_induk',0)->where('status_aktif',1);
              
         }else{
-            $query->where('id_jenis', '=', 0)->where('id_induk',0)->where('status_aktif',1);
+            $query->where('id_target', '=', 0)->where('id_induk',0)->where('status_aktif',1);
         }
         
         $query->orderby('id','asc');

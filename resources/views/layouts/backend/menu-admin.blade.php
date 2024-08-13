@@ -38,8 +38,13 @@
     </li>
     <li class="nav-header">Indikator Kinerja</li>
     <li class="nav-item ">
-        <a class="nav-link <?php if(Request::segment(2)=='laporan'){echo 'active';} ?>" href="<?= url('/admin/laporan/'); ?>">
-            <i class="nav-icon fas fa-table"></i>  <p>Indikator Kinerja  </p>
+        <a class="nav-link <?php if(Request::segment(2)=='indikator'){echo 'active';} ?>" href="<?= url('/admin/indikator/'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>Nama Indikator Kinerja  </p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='nindi'){echo 'active';} ?>" href="<?= url('/admin/nindi/'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>NIlai Indikator Kinerja  </p>
         </a>
     </li>
 
