@@ -37,4 +37,12 @@ class FrontController extends Controller
               ]);
         
     }
+    public function indikator()
+    {
+        return view('site.indikator',[
+                'layout' => $this->layout
+                
+              ]);
+        
+    }
 }

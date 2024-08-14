@@ -25,6 +25,8 @@ use App\Http\Controllers\FrontController;
 //     return view('welcome');
 // });
 Route::get('/', [FrontController::class,'index']);
+Route::get('/indikator', [FrontController::class,'indikator'])->name('front.indikator');
+
 
 //admin
 Route::get('admin', [AdminController::class,'index'])->name('admin.index');
