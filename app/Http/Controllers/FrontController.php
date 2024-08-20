@@ -17,6 +17,7 @@ use App\Models\Elemen;
 use App\Models\Nilai;
 use App\Models\Refjenis;
 use App\Models\Refwilayah;
+use App\Models\Reftarget;
 use App\Models\Periode;
 use App\Models\Admin;
  
@@ -39,8 +40,10 @@ class FrontController extends Controller
     }
     public function indikator()
     {
+      $tar = Reftarget::where('status',1)->orderby('id')->get();    
         return view('site.indikator',[
-                'layout' => $this->layout
+                'layout'  => $this->layout,
+                'tar'     => $tar,
                 
               ]);
         
