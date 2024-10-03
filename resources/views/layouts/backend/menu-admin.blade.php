@@ -100,6 +100,11 @@
         </a>
     </li>
     <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='bidang' or Request::segment(2)=='addbidang' or  Request::segment(2)=='editbidang'  ){echo 'active';} ?>" href="<?= url('/admin/bidang'); ?>">
+            <i class="nav-icon fas fa-list-ol"></i>  <p>Bidang</p>
+        </a>
+    </li>
+    <li class="nav-item ">
         <a class="nav-link <?php if(Request::segment(2)=='periode' or Request::segment(2)=='addperiode' or  Request::segment(2)=='editperiode'  ){echo 'active';} ?>" href="<?= url('/admin/periode'); ?>">
             <i class="nav-icon fas fa-list-ol"></i>  <p>Periode</p>
         </a>

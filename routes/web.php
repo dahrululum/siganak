@@ -55,6 +55,14 @@ Route::get('/admin/deluser/{id}',  [AdminController::class,'deluser']);
 Route::get('admin/wilayah', [AdminController::class,'wilayah'])->name('admin.wilayah');
 //jenis
 Route::get('admin/jenis', [AdminController::class,'jenis'])->name('admin.jenis');
+//01 okt 2024
+//bidang
+Route::get('admin/bidang', [AdminController::class,'bidang'])->name('admin.bidang');
+Route::get('/admin/addbidang', [AdminController::class,'addbidang'])->name('admin.addbidang');
+Route::post('/admin/post-addbidang', [AdminController::class,'postAddbidang']); 
+Route::get('/admin/editbidang/{id}',  [AdminController::class,'editbidang'])->name('admin.editbidang');
+Route::post('/admin/post-editbidang', [AdminController::class,'postEditbidang']); 
+Route::get('/admin/delbidang/{id}',  [AdminController::class,'delbidang']);
 //periode
 Route::get('admin/periode', [AdminController::class,'periode'])->name('admin.periode');
 Route::get('admin/status-periode/', [AdminController::class,'periodestatus'])->name('periodestatus');

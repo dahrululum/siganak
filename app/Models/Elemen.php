@@ -16,6 +16,8 @@ class Elemen extends Model
         'id_induk',
         'id_wilayah',
         'id_jenis',
+        'id_bidang',
+        
         'alias',
         'sumber',
         'nama',
@@ -26,6 +28,10 @@ class Elemen extends Model
     public function getJenis()
     {
         return $this->hasOne(Refjenis::class,'id','id_jenis')->withDefault();
+    }
+    public function getBidang()
+    {
+        return $this->hasOne(Refbidang::class,'id','id_bidang')->withDefault();
     }
     public function manySub()
     {

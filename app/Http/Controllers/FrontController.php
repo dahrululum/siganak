@@ -41,10 +41,11 @@ class FrontController extends Controller
     public function indikator()
     {
       $tar = Reftarget::where('status',1)->orderby('id')->get();    
+      $per = Periode::where('status',1)->first();
         return view('site.indikator',[
                 'layout'  => $this->layout,
                 'tar'     => $tar,
-                
+                'periode' => $per,
               ]);
         
     }

@@ -6,9 +6,11 @@
 @section('javascripts')
   <script src="{{ url('lte/plugins/jquery/jquery.min.js') }}"></script>
   <script src="{{ url('lte/plugins/select2/js/select2.full.js') }}"></script>
+  <script src="{{ url('js/jquery.chained.js') }}"></script>
   <script> 
   $ ( function () {
       $('.select2').select2();
+      $("#id_bidang").chained("#id_jenis");
   })
   </script>
 
@@ -71,8 +73,21 @@
                             </select>
                         
                         </div>
-    
+                        <div class="col-sm-3">
+                            <select class="form-control form-control-sm " name="id_bidang" id="id_bidang"  required>
+                                <option value="">Pilih Bidang Elemen </option>
+                                <?php 
+                                  $level = 0;
+                                  $strip = "--"; 
+                                ?>
+                                @foreach ($bidang as $bid)
+                                    <option  class="{{ $bid->id_jenis }}" value="{{ $bid->id }}">  {{ $bid->id }}. {{ $bid->namabidang }}</option>
+                                @endforeach
+                            </select>
+                        
                         </div>
+    
+                    </div>
                     <div class="form-group row">
                       <label class="col-sm-3 col-form-label" for="namaelemen">Nama Elemen Data</label>
                       <div class="col-sm-9">

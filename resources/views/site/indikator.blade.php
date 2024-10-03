@@ -4,14 +4,20 @@
 <div class="container">
     <div class="row p-2">
         <div class="col-12">
-            <table class="table table-hover table-bordered" id="tablena">
-                <thead class="bg-primary">
-                <tr class="text-center">
-                    <th class="col-2"> Kode</th>
-                    <th> Nama Indikator </th>
-                    <th> Sumber Data </th>
-                    <th> Satuan </th>
-                    <th> #  </th>
+            <table class="table  table-hover table-bordered fs-7" id="tablena">
+                <thead class="bg-info " >
+                <tr class="text-center text-white">
+                    <th rowspan="2" class="col-1"> Kode</th>
+                    <th rowspan="2"> Nama Indikator </th>
+                    <th rowspan="2"> Sumber Data </th>
+                    <th rowspan="2"> Satuan </th>
+                    <th colspan="5" class=""> Realisasi Pencapaian </th>
+                </tr>
+                <tr class="text-center text-light ">
+                    @for ($i = $periode->thnawal; $i <= $periode->thnakhir; $i++)
+                        <th> Tahun {{ $i }}  </th>
+                    @endfor
+                    
                 </tr>
                 </thead>
                 <tbody>
@@ -20,10 +26,10 @@
                        
                     ?>
                     <tr>
-                        <td colspan="5" class="bg-lightblue  ">
+                        <td colspan="10" class="bg-lightblue  ">
                             <div class="row">
-                                <div class="col-2 text-left"><b>Target {{ $tar->kdtarget }}</b></div>
-                                <div class="col-9"> <b>{{ $tar->namatarget }}</b> </div>
+                                <div class="text-left fw-bold" style="width: 93px;"> Target {{ $tar->kdtarget }} </div>
+                                <div class="col-sm-10 fw-semibold"> {{ $tar->namatarget }}  </div>
                             </div>
                         </td>
                     </tr>

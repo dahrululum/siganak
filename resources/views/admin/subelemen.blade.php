@@ -14,7 +14,7 @@
             -
             @endif 
         </span></td>
-    <td class="text-center">{{ $el->id_jenis }}. {{ $el->getJenis->namajenis }}</td>
+    <td class="text-left"> <b>{{ $el->getJenis->namajenis }}</b> - {{ $el->getBidang->namabidang }}  </td>
     <td class="text-center">{{ $el->sumber }}</td>
     <td class="text-center">{{ $el->ket }}</td>
     

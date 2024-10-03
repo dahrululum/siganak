@@ -4,10 +4,14 @@
    
     
     <td>{{ $child->kode }}</td>
-    <td><span style="padding-left:0px;">{{ $child->nama }}</span></td>
-    <td ><span style="padding-left:0px;">{{ $child->sumber }}</span></td>
-    <td><span style="padding-left:0px;">{{ $child->satuan }}</span></td>
-    <td class="col-2"></td>
+    <td>{{ $child->nama }}</td>
+    <td class="text-center">{{ $child->sumber }}</td>
+    <td class="text-center">{{ $child->satuan }}</td>
+    <td class="col-1 text-center">{{ $child->tahun1 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun2 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun3 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun4 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun5 }}</td>
 </tr>
     
 @endforeach

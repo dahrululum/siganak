@@ -15,6 +15,7 @@ use DB;
 use App\Models\Elemen;
 use App\Models\Nilai;
 use App\Models\Refjenis;
+use App\Models\Refbidang;
 use App\Models\Refwilayah;
 use App\Models\Periode;
  
@@ -317,6 +318,120 @@ class AdminController extends Controller
           ]);
         }
     }
+    //01 okt 2024
+    //bidang
+    public function bidang(){
+      if(Auth::guard('admin')->check()){  
+        $bid = Refbidang::where('status',1)->get();
+
+        return view('admin/bidang' , [
+          'layout' => $this->layout,
+          'bidang' =>$bid,
+         
+        ]);
+      }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+          ]);
+        }
+    }
+    public function addbidang()
+    {
+        if(Auth::guard('admin')->check()){  
+           
+            $alias = uniqid();
+            $jen = Refjenis::where('status',1)->get();
+            $bid = Refbidang::where('status',1)->get();
+           
+            return view('admin/addbidang',[
+            'layout'    => $this->layout,
+            'alias'     => $alias,
+            'jenis'     => $jen,
+            'bidang'    => $bid,
+            
+             
+            ]);
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+            }        
+       // return view('register');
+    }
+    public function postAddbidang(Request $request)
+    {  
+    
+        
+          Refbidang::create([
+            'alias'                 => $request['alias'],
+            'id_jenis'              => $request['id_jenis'],
+            'namabidang'            => $request['namabidang'],
+            'status'                => 1,
+            
+          ]);
+       
+        return Redirect::to("/admin/bidang")->with('success','Selamat, Anda berhasil untuk menambah bidang ');
+    }
+    public function editbidang($id)
+    {
+        $bid = Refbidang::where('id', $id)->first();
+        $jen = Refjenis::where('status',1)->get();
+        
+
+          return view('admin/editbidang',[
+            'layout'    => $this->layout,
+            'bid'       => $bid,
+            'jenis'     => $jen,  
+           
+             
+        ]);
+
+       // return view('register');
+    }
+    public function postEditbidang(Request $request)
+    {  
+        if(Auth::guard('admin')->check()){      
+                 
+                $idna=$request->input('idna');
+                Refbidang::where('id', $idna)
+                ->update([
+                  'id_jenis'              => $request['id_jenis'],
+                  'namabidang'            => $request['namabidang'],
+                  
+            ]);
+        
+                return Redirect::to("/admin/bidang")->with('success',' Edit Bidang berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+        }
+    }
+    public function delbidang($id)
+    {
+        if(Auth::guard('admin')->check()){      
+             
+            $bid = Refbidang::where('id', $id)->first();
+            // if($el->id_induk==0){
+
+            // }else{
+
+            // }
+
+
+            $bid->delete();
+            return Redirect::to("/admin/bidang")->with('success',' Proses Delete Bidang berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+            ]);
+        }
+        
+        
+       
+    }
+
+
     //target indikator
     public function target(){
       if(Auth::guard('admin')->check()){  
@@ -362,6 +477,7 @@ class AdminController extends Controller
             $users = Admin::Where('level',2)->get();
             $alias = uniqid();
             $jen = Refjenis::where('status',1)->get();
+            $bid = Refbidang::where('status',1)->get();
             $elemens = Elemen::Where(
               [
                 ['id_induk','=',"0"],
@@ -372,6 +488,7 @@ class AdminController extends Controller
             'layout'  => $this->layout,
             'alias'   => $alias,
             'jenis'     => $jen,
+            'bidang'     => $bid,
             'el'      => $elemens, 
              
             ]);
@@ -391,6 +508,7 @@ class AdminController extends Controller
             'alias'                 => $request['alias'],
             'id_induk'              => $request['id_induk'],
             'id_jenis'              => $request['id_jenis'],
+            'id_bidang'             => $request['id_bidang'],
             'sumber'                => $request['sumber'],
             'ket'                   => $request['ket'],
             'status_verifikasi'     => 1,
@@ -404,6 +522,7 @@ class AdminController extends Controller
     {
         $el = Elemen::where('id', $id)->first();
         $jen = Refjenis::where('status',1)->get();
+        $bid = Refbidang::where('status',1)->get();
         $elemens = Elemen::Where(
           [
             ['id_induk','=',"0"],
@@ -415,6 +534,7 @@ class AdminController extends Controller
             'layout'    => $this->layout,
             'pel'       => $el,
             'jenis'     => $jen,  
+            'bidang'     => $bid,
             'elemens'   => $elemens, 
              
         ]);
@@ -431,6 +551,7 @@ class AdminController extends Controller
                   'nama'                  => $request['nama'],
                   'id_induk'              => $request['id_induk'],
                   'id_jenis'              => $request['id_jenis'],
+                  'id_bidang'             => $request['id_bidang'],
                   'sumber'                => $request['sumber'],
                   'ket'                   => $request['ket'],
                   'status_verifikasi'     => 1,
