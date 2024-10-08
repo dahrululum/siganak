@@ -68,7 +68,11 @@ Route::get('admin/periode', [AdminController::class,'periode'])->name('admin.per
 Route::get('admin/status-periode/', [AdminController::class,'periodestatus'])->name('periodestatus');
 //target indikator
 Route::get('admin/target', [AdminController::class,'target'])->name('admin.target');
-
+Route::get('/admin/addtarget', [AdminController::class,'addtarget'])->name('admin.addtarget');
+Route::post('/admin/post-addtarget', [AdminController::class,'postAddtarget']); 
+Route::get('/admin/edittarget/{id}',  [AdminController::class,'edittarget'])->name('admin.edittarget');
+Route::post('/admin/post-edittarget', [AdminController::class,'postEdittarget']); 
+Route::get('/admin/deltarget/{id}',  [AdminController::class,'deltarget']);
 
 //elemen
 Route::get('admin/elemen', [AdminController::class,'elemen'])->name('admin.elemen');

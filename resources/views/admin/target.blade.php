@@ -30,7 +30,7 @@
                         </div>    
                     <div class="card-body">
                         <div class="card-body table-responsive p-0">
-                        {{-- <a class="btn btn-success" href="{{ URL::to('/admin/adduserpd')}}"><i class="fa fa-user"></i> Tambah User</a> --}}
+                        <a class="btn btn-success" href="{{ URL::to('/admin/addtarget')}}"><i class="fa fa-user"></i> Tambah Target Indikator Kinerja</a>
                         <br><br>
 
                             <table class="table table-sm table-hover  table-bordered" id="tablena">
@@ -55,9 +55,9 @@
                                         <td>{{ $tar->namatarget }}</td>
                                        
                                         
-                                        <td>
-                                            {{-- <a class="btn btn-success btn-xs" href="{{ URL::to('/admin/editwil/'.$wil->id) }}"><i class="fa fa-edit"></i> Edit</a>
-                                            <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/delwil/'.$wil->id) }}"><i class="fa fa-trash"></i> Delete</a> --}}
+                                        <td class="col-2 text-center">
+                                            <a class="btn btn-success btn-xs" href="{{ URL::to('/admin/edittarget/'.$tar->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                            <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/deltarget/'.$tar->id) }}"><i class="fa fa-trash"></i> Delete</a>
                                          </td>
                                     </tr>
                                     @endforeach

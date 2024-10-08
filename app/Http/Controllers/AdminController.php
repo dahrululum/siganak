@@ -448,7 +448,89 @@ class AdminController extends Controller
           ]);
         }
     }
+    //08 okt 2024
+    public function addtarget()
+    {
+        if(Auth::guard('admin')->check()){  
+           
+           
+           
+            return view('admin/addtarget',[
+            'layout'    => $this->layout,
+           
+            
+             
+            ]);
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+            }        
+       // return view('register');
+    }
+    public function postAddtarget(Request $request)
+    {  
+    
+      $alias = uniqid();
+          Reftarget::create([
+            'alias'                 => $request['alias'],
+            'kdtarget'              => $request['kdtarget'],
+            'namatarget'            => $request['namatarget'],
+            'status'                => 1,
+            
+          ]);
+       
+        return Redirect::to("/admin/target")->with('success','Selamat, Anda berhasil untuk menambah Target Indikator Kinerja ');
+    }
+    public function edittarget($id)
+    {
+        $tar = Reftarget::where('id', $id)->first();
+        
 
+          return view('admin/edittarget',[
+            'layout'    => $this->layout,
+            'tar'       => $tar,
+            
+             
+        ]);
+
+       // return view('register');
+    }
+    public function postEdittarget(Request $request)
+    {  
+        if(Auth::guard('admin')->check()){      
+                 
+                $idna=$request->input('idna');
+                Reftarget::where('id', $idna)
+                ->update([
+                  'kdtarget'              => $request['kdtarget'],
+                  'namatarget'            => $request['namatarget'],
+                  
+            ]);
+        
+                return Redirect::to("/admin/target")->with('success',' Edit Target berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+        }
+    }
+    public function deltarget($id)
+    {
+        if(Auth::guard('admin')->check()){      
+             
+            $tar = Reftarget::where('id', $id)->first();
+            $tar->delete();
+            return Redirect::to("/admin/target")->with('success',' Proses Delete Target berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+            ]);
+        }
+        
+        
+       
+    }
     //elemen
     //24 Juni 2024
     public function elemen(){
