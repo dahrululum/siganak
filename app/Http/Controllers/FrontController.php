@@ -19,6 +19,8 @@ use App\Models\Refjenis;
 use App\Models\Refwilayah;
 use App\Models\Reftarget;
 use App\Models\Periode;
+use App\Models\Publikasi;
+use App\Models\Weblink;
 use App\Models\Admin;
  
 
@@ -32,8 +34,13 @@ class FrontController extends Controller
     public $layout = 'layouts.frontend.main';
     public function index()
     {
+      $pub = Publikasi::where('status',1)
+            ->orderby('id')
+            ->limit(3)
+            ->get();    
         return view('site.index',[
-                'layout' => $this->layout
+                'layout'  => $this->layout,
+                'pub'     => $pub,
                 
               ]);
         
