@@ -41,6 +41,10 @@ Route::get('/admin/adduseradmin', [AdminController::class,'adduseradmin'])->name
 Route::post('/admin/post-adduseradmin', [AdminController::class,'postAdduseradmin']); 
 Route::get('/admin/edituseradmin/{id}',  [AdminController::class,'edituseradmin'])->name('admin.edituser');
 Route::post('/admin/post-edituseradmin', [AdminController::class,'postEdituseradmin']); 
+Route::get('/admin/resetuser/{id}',  [AdminController::class,'resetuser'])->name('admin.resetuser');
+Route::post('/admin/post-resetuser', [AdminController::class,'postEditresetuser']); 
+
+
 
 Route::get('admin/userpd', [AdminController::class,'userpd'])->name('admin.userpd');
 Route::get('/admin/adduserpd', [AdminController::class,'adduserpd'])->name('admin.adduserpd');
@@ -108,6 +112,18 @@ Route::get('/admin/delweblink/{id}',  [AdminController::class,'delweblink']);
 
 Route::get('admin/dialog_uploadwl/{id}/{label}', [AdminController::class,'dialoguploadwl'])->name('admin.dialoguploadwl');
 Route::post('/admin/uploadactionwl',  [AdminController::class,'uploadactionwl'])->name('admin.uploadactionwl');
+
+//artikel
+//12 okt 2024
+Route::get('admin/artikel', [AdminController::class,'artikel'])->name('admin.artikel');
+Route::get('/admin/addartikel', [AdminController::class,'addartikel'])->name('admin.addartikel');
+Route::post('/admin/post-addartikel', [AdminController::class,'postAddartikel']); 
+Route::get('/admin/editartikel/{id}',  [AdminController::class,'editartikel'])->name('admin.editartikel');
+Route::post('/admin/post-editartikel', [AdminController::class,'postEditartikel']); 
+Route::get('/admin/delartikel/{id}',  [AdminController::class,'delartikel']);
+
+Route::get('admin/dialog_uploadart/{id}/{label}', [AdminController::class,'dialoguploadart'])->name('admin.dialoguploadart');
+Route::post('/admin/uploadactionart',  [AdminController::class,'uploadactionart'])->name('admin.uploadactionart');
 
 //indikator
 //13 aug 2024

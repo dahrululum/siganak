@@ -39,7 +39,7 @@
                             <p class="small text-primary">*) jika ada/subelemen</p>
 
                         </label>
-                        <div class="col-sm-8">
+                        <div class="col-sm-5">
                             <select class="form-control form-control-sm select2" name="id_induk" id="id_induk"  >
                                 <option value="0">Pilih Elemen Induk </option>
                                 <?php 

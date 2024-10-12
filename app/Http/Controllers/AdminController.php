@@ -25,6 +25,7 @@ use App\Models\Weblink;
 use App\Models\Indikator;
 use App\Models\Nindi;
 use App\Models\Reftarget;
+use App\Models\Artikel;
 
 use Session;
 use Carbon;
@@ -86,7 +87,9 @@ class AdminController extends Controller
     public function useradmin(Request $request)
     {
         if(Auth::guard('admin')->check()){  
-                $users = Admin::Where('level',1)->get();
+                $users = Admin::Where('level',1)
+                                ->orWhere('level',3)
+                                ->get();
             
             //return view('/pelamar/datatable', compact('pelamars'));
                 return view('admin.useradmin' , [
@@ -171,6 +174,40 @@ class AdminController extends Controller
               ]);
         }
     }
+    //resetuser
+    public function resetuser($id)
+    {
+        $us = Admin::where('id', $id)->first();
+       
+          return view('admin/resetuser',[
+            'layout' => $this->layout,
+            'user' =>$us    
+             
+        ]);
+
+       // return view('register');
+    }
+    public function postEditresetuser(Request $request)
+    {  
+        if(Auth::guard('admin')->check()){      
+                 
+                $idna=$request->input('idna');
+                Admin::where('id', $idna)
+                ->update([
+                  'password' => Hash::make($request['password'])
+                    
+                
+                
+            ]);
+        
+                return Redirect::to("/admin")->with('success',' Reset Password User berhasil.');
+        }else{
+            return view('admin.login',[
+                'layout' => $this->layout 
+              ]);
+        }
+    }
+
     //user pd
     public function userpd(Request $request)
     {
@@ -1255,6 +1292,189 @@ class AdminController extends Controller
         
        
     }
+  //artikel
+  //12 okt 2024
+  public function artikel(request $request){
+    if(Auth::guard('admin')->check()){  
+      $pub = Artikel::orderBy('id')->get();
+
+      return view('admin/artikel' , [
+        'layout' => $this->layout,
+        'pub' =>$pub,
+       
+      ]);
+    }else{
+      return view('admin.login',[
+          'layout' => $this->layout 
+        ]);
+      }
+  }
+  public function dialoguploadart($id, $label)
+  {
+        if(Auth::guard('admin')->check()){  
+                
+            
+            //return view('/pelamar/datatable', compact('pelamars'));
+                return view('admin.dialog_uploadart' , [
+                    'layout' => $this->layout,
+                    'uniqid'  =>$id,
+                    'label'     =>$label
+                    
+                     
+                     
+            ]);
+        }else{
+                return view('admin.login',[
+                    'layout' => $this->layout 
+                  ]);
+                }
+  }
+  public function uploadactionart(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+        'select_file' => 'required|mimes:jpeg,png,jpg,pdf,docx,xlsx,doc|max:20748'
+        ]);
+        if($validation->passes())
+        {
+            $uniqid   =   $request->input('uniqid');
+            $label    =   $request->input('label');
+            
+            $image = $request->file('select_file');
+
+            $nama_file = "file_".$label."_".$uniqid.".".$image->getClientOriginalExtension();  
+            $tujuan_upload = 'downloads';
+            $image->move($tujuan_upload,$nama_file);
+
+            //Storage::disk('downloads') -> put($nama_file, file_get_contents($image->getRealPath()));
+
+             
+            return response()->json([
+                'message'   => 'Berkas Berhasil di Upload',
+                'uploaded_file' => '<input type="hidden" id="uploadfile" name="uploadfile" value="'.$nama_file.'"  />',
+                'label_file' => '<input type="hidden" id="labelfile" name="labelfile" value="'.$label.'"  />',
+                'uploaded_image' => '<a href="../downloads/'.$nama_file.'" class="btn btn-danger" target="_blank" >'.$nama_file.'</a>',
+                'class_name'  => 'alert-success'
+            ]);
+
+                
+
+        }
+        else
+        {
+            return response()->json([
+            'message'   => $validation->errors()->all(),
+            'uploaded_image' => '',
+            'class_name'  => 'alert-danger'
+            ]);
+        }
+  }
+  public function addartikel(Request $request)
+  {
+       $uniqid=uniqid();
+
+          return view('admin/addartikel',[
+            'layout'    => $this->layout,
+            'alias'     => $uniqid,
+           
+             
+        ]);
+
+       // return view('register');
+  }
+  public function postAddartikel(Request $request)
+  {  
+    $userna = Auth::guard('admin')->user()->name;
+    $userlev = Auth::guard('admin')->user()->level;
+    if($userlev==1){
+      $statuspub=$request['status_publish'];
+    }else{
+      $statuspub="2";
+    }  
+
+    Artikel::create([
+          'alias'                  => $request['alias'],
+          'judul'                  => $request['judul'],
+          'teaser'                 => $request['teaser'],
+          'isi'                    => $request['fullteks'],
+          'file_foto'              => $request['namafilecover'],
+          'tglinput'               => $request['tglupload'],
+          'status_publish'         => $statuspub,
+          'inputby'                => $userna,
+          
+          
+          
+        ]);
+      
+      return Redirect::to("/admin/artikel")->with('success','Selamat, Anda berhasil untuk menambah artikel');
+  }
+  public function editartikel($id)
+  {
+      $pub = Artikel::where('id', $id)->first();
+      $userlev = Auth::guard('admin')->user()->level;
+
+        return view('admin/editartikel',[
+          'layout'    => $this->layout,
+          'alias'     => $pub->alias,
+          'pub'       => $pub,
+          'userlev'       => $userlev,
+          
+          
+            
+      ]);
+
+      // return view('register');
+  }
+  public function postEditartikel(Request $request)
+  {  
+      if(Auth::guard('admin')->check()){      
+        $userna = Auth::guard('admin')->user()->name;
+        $userlev = Auth::guard('admin')->user()->level;
+        if($userlev==1){
+          $statuspub=$request['status_publish'];
+        }else{
+          $statuspub="2";
+        }  
+
+              $idna=$request->input('idna');
+              Artikel::where('id', $idna)
+              ->update([
+                
+                'judul'                  => $request['judul'],
+                'teaser'                 => $request['teaser'],
+                'isi'                    => $request['fullteks'],
+                'file_foto'              => $request['namafilecover'],
+                'tglinput'               => $request['tglupload'],
+                'status_publish'         => $statuspub,
+                'inputby'                => $userna,
+              
+              
+          ]);
+      
+              return Redirect::to("/admin/artikel")->with('success',' Edit artikel berhasil.');
+      }else{
+          return view('admin.login',[
+              'layout' => $this->layout 
+            ]);
+      }
+  }
+  public function delartikel($id)
+  {
+      if(Auth::guard('admin')->check()){      
+            
+          $pub = Artikel::where('id', $id)->first();
+          
+          $pub->delete();
+          return Redirect::to("/admin/artikel")->with('success',' Proses Delete artikel berhasil.');
+      }else{
+          return view('admin.login',[
+              'layout' => $this->layout 
+          ]);
+      }
+      
+      
+      
+  }
+
     //indikator
     //13 aug 2024
     public function indikator(Request $request)

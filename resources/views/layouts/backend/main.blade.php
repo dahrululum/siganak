@@ -117,6 +117,24 @@
         ]
         
       });
+  $('.isi').summernote({
+        height: 300,   //set editable area's height
+        codemirror: { // codemirror options
+          theme: 'monokai'
+        },
+        fontSizes: ['8', '9', '10', '11', '12', '14', '18'],
+        toolbar: [
+          ['style', ['style']],
+          ['fontsize', ['fontsize']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+           
+          
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+        
+      });
   $('#pilihtanggal').datetimepicker({
       format:'YYYY-MM-DD',	
         //format: 'L'

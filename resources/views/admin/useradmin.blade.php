@@ -57,7 +57,7 @@
                                         if($pelamar->level=="1"){
                                             $namalevel="Admin";
                                         }else{
-                                            $namalevel="Operator Daerah";
+                                            $namalevel="Operator/Kontributor ";
                                         }
 
                                          
