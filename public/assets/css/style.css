@@ -594,7 +594,7 @@ a:hover {
 
 .feature-col {
   display: table;
-  padding-bottom: 45px;
+  padding-bottom: 5px;
 }
 
 .feature-col>div>div {
@@ -607,14 +607,14 @@ a:hover {
 }
 
 .feature-col .feature-icon {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   margin-bottom: 15px;
   background: #199EB8;
   color: #fff;
   font-size: 24px;
   text-align: center;
-  border-radius: 50%;
+  border-radius: 20%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -821,7 +821,20 @@ a:hover {
   font-size: 18px;
   color: #999;
 }
-
+.team-img {
+  width: 280px;
+  height: 280px;
+  margin-bottom: 15px;
+  
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  border-radius: 20%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
 /* ==================================================
   Contact Section
   ================================================== */

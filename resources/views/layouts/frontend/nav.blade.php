@@ -8,6 +8,7 @@
     <li><a class="nav-link scrollto" href="#">Data Gender</a></li>
     <li><a class="nav-link scrollto " href="{{url('/indikator')}}">Indikator Kinerja</a></li>
     <li><a class="nav-link scrollto" href="#publikasi">Publikasi</a></li>
+    <li><a class="nav-link scrollto" href="#artikel">Artikel</a></li>
     <li><a class="nav-link scrollto" href="#informasi">Informasi</a></li>
     {{-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
       <ul>

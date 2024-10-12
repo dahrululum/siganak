@@ -1337,11 +1337,12 @@ class AdminController extends Controller
         if($validation->passes())
         {
             $uniqid   =   $request->input('uniqid');
+            $now = date('his');
             $label    =   $request->input('label');
             
             $image = $request->file('select_file');
 
-            $nama_file = "file_".$label."_".$uniqid.".".$image->getClientOriginalExtension();  
+            $nama_file = "artikel_".$label."_".$uniqid."_".$now.".".$image->getClientOriginalExtension();  
             $tujuan_upload = 'downloads';
             $image->move($tujuan_upload,$nama_file);
 

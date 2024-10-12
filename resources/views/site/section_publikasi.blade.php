@@ -1,20 +1,17 @@
 <section class="features" id="publikasi">
     
     <div class="container">
-      <div class="row">
-        <div class="feature-col col-lg-3 col-xs-12">
-          <div class="row">
-            <div class="col-lg-3 col-xs-12 feature-icon">
-              <i class="bi bi-briefcase"></i>
-            </div>
-            <div class=" col-lg-8 col-xs-12 text-center h1">
-              Publikasi
-            </div>
-          </div>
+      <div class="feature-col col-lg-12 col-xs-12">
+        <div class="row">
          
+          <div class=" text-center h2 text-info">
+            PUBLIKASI
+          </div>
+          <p class="text-center text-dark">
+            Menampilkan data kajian yang telah di uji dan diperiksa oleh lembaga pemerintahan yang berfungsi sebagai informasi yang di tujukan kepada masyarakat dalam berbagai bidang dan aspek. Sebagai gambaran kinerja Dinas Pemberdayaan Perempuan Perlindungan Anak, Catatan Sipil dan Keluarga Berencana (DP3ACSKB) dalam melayani masyarakat sebagai bukti hasil kinerja dari visi dan misi yang ada.
+          </p>
         </div>
-        <div class="col-lg-7 col-xs-12 text-center border">Detail Publikasi </div>
-        
+       
       </div>
      
 

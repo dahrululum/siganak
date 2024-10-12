@@ -21,6 +21,7 @@ use App\Models\Reftarget;
 use App\Models\Periode;
 use App\Models\Publikasi;
 use App\Models\Weblink;
+use App\Models\Artikel;
 use App\Models\Admin;
  
 
@@ -38,9 +39,20 @@ class FrontController extends Controller
             ->orderby('id')
             ->limit(3)
             ->get();    
+      $art = Artikel::where('status_publish',1)
+            ->orderby('id')
+            ->limit(3)
+            ->get(); 
+      $web = Weblink::where('status',1)
+            ->orderby('id')
+             
+            ->get();     
         return view('site.index',[
                 'layout'  => $this->layout,
                 'pub'     => $pub,
+                'art'     => $art,
+                'wl'      => $web,
+                
                 
               ]);
         

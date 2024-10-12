@@ -19,7 +19,7 @@
     var modal = $(this)
     modal.find('.modal-title').text('Dialog Upload ' + jenis)
 
-    var appurl = {!! json_encode(url('/admin/dialog_uploadpub/')) !!};
+    var appurl = {!! json_encode(url('/admin/dialog_uploadart/')) !!};
         var deturl = appurl+'/'+uniqid+'/'+jenis;
         
         $("#viewupload").load(deturl);    
@@ -134,7 +134,7 @@
                                 File  : 
                                 <span id="ressnamafilefoto">
                                     @if(!empty($pub->file_foto))  
-                                    <input type="text" class="form-control form-control-sm col-7 mb-2" id="namafilecover" name="namafilecover" value="{{ $pub->file_foto }}" readonly /> 
+                                    <input type="text" class="form-control form-control-sm col-7 mb-2" id="namafilecover_old" name="namafilecover_old" value="{{ $pub->file_foto }}" readonly /> 
                                     <img src="{{ url('downloads/'.$pub->file_foto) }}" width="80" alt=""> 
                                     @else File kosong 
                                     @endif
