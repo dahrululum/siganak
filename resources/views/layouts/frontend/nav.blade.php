@@ -4,8 +4,8 @@
       Home</a>
     </li>
     <li><a class="nav-link scrollto" href="#about">Tentang Kami</a></li>
-    <li><a class="nav-link scrollto" href="#">Data Anak</a></li>
-    <li><a class="nav-link scrollto" href="#">Data Gender</a></li>
+    <li><a class="nav-link scrollto" href="{{url('/datadasar/anak')}}">Data Anak</a></li>
+    <li><a class="nav-link scrollto" href="{{url('/datadasar/gender')}}">Data Gender</a></li>
     <li><a class="nav-link scrollto " href="{{url('/indikator')}}">Indikator Kinerja</a></li>
     <li><a class="nav-link scrollto" href="#publikasi">Publikasi</a></li>
     <li><a class="nav-link scrollto" href="#artikel">Artikel</a></li>

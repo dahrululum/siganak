@@ -57,14 +57,68 @@ class FrontController extends Controller
               ]);
         
     }
+    public function datadasar($jenis, $wil = null)
+    {
+      if(empty($wil)){
+        $kdwil=1;
+      }else{
+        $kdwil=$wil;
+
+      }
+      if($jenis=="gender"){
+        $kdjenis=1;
+      }else{
+        $kdjenis=2;
+      }
+
+      $datel = Elemen::where('id_jenis',$kdjenis)->get();    
+      $per = Periode::where('status',1)->first();
+       
+      $label = "Data Dasar  ".ucfirst($jenis);
+        return view('site.datadasar',[
+                'layout'  => $this->layout,
+                'el'     => $datel,
+                'periode' => $per,
+                'label'   => $label
+              ]);
+        
+    }
+
     public function indikator()
     {
       $tar = Reftarget::where('status',1)->orderby('id')->get();    
       $per = Periode::where('status',1)->first();
+      $label = "Indikator Kinerja";
         return view('site.indikator',[
                 'layout'  => $this->layout,
                 'tar'     => $tar,
                 'periode' => $per,
+                'label'   => $label
+              ]);
+        
+    }
+    public function publikasi()
+    {
+      $pub = Publikasi::where('status',1)->orderby('id')->get();    
+      $per = Periode::where('status',1)->first();
+      $label = "Publikasi";
+        return view('site.publikasi',[
+                'layout'  => $this->layout,
+                'pub'     => $pub,
+                'periode' => $per,
+                'label'   => $label
+              ]);
+        
+    }
+    public function detailpublikasi($alias)
+    {
+      $pub = Publikasi::where('alias',$alias)->first();    
+     
+      $label = "Detail Publikasi";
+        return view('site.detailpublikasi',[
+                'layout'  => $this->layout,
+                'pub'     => $pub,
+                'label'   => $label
               ]);
         
     }

@@ -25,7 +25,13 @@ use App\Http\Controllers\FrontController;
 //     return view('welcome');
 // });
 Route::get('/', [FrontController::class,'index']);
+Route::get('/datadasar/{anak}/{wil?}', [FrontController::class,'datadasar'])->name('front.data-anak');
+Route::get('/datadasar/{gender}/{wil?}', [FrontController::class,'datadasar'])->name('front.data-gender');
 Route::get('/indikator', [FrontController::class,'indikator'])->name('front.indikator');
+Route::get('/publikasi', [FrontController::class,'publikasi'])->name('front.publikasi');
+Route::get('/detail-publikasi/{alias}', [FrontController::class,'detailpublikasi'])->name('front.detailpublikasi');
+Route::get('/artikel', [FrontController::class,'artikel'])->name('front.artikel');
+
 
 
 //admin

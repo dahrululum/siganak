@@ -8,7 +8,7 @@
             PUBLIKASI
           </div>
           <p class="text-center text-dark">
-            Menampilkan data kajian yang telah di uji dan diperiksa oleh lembaga pemerintahan yang berfungsi sebagai informasi yang di tujukan kepada masyarakat dalam berbagai bidang dan aspek. Sebagai gambaran kinerja Dinas Pemberdayaan Perempuan Perlindungan Anak, Catatan Sipil dan Keluarga Berencana (DP3ACSKB) dalam melayani masyarakat sebagai bukti hasil kinerja dari visi dan misi yang ada.
+            Menampilkan data kajian yang telah di uji dan diperiksa oleh lembaga pemerintahan yang berfungsi sebagai informasi yang di tujukan kepada masyarakat dalam berbagai bidang dan aspek. Sebagai gambaran kinerja Dinas Pemberdayaan Perempuan Perlindungan Anak, Catatan Sipil dan Keluarga Berencana (DP3ACSKB) dalam melayani masyarakat sebagai bukti hasil kinerja dari visi dan misi yang ada. <a href="{{url('/publikasi')}}" class="btn btn-sm btn-primary"> <i class="fa fa-list "></i> Selengkapnya</a>
           </p>
         </div>
        

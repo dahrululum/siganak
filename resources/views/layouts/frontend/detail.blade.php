@@ -58,6 +58,19 @@
       </div>
     </div>
   </header><!-- End Header -->
+  <section class="breadcrumbs">
+    <div class="container">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>{{ $label }} </h2>
+        <ol>
+          <li><a href="{{url('/')}}">Home</a></li>
+          <li>{{ $label }}</li>
+        </ol>
+      </div>
+
+    </div>
+  </section>
   <main id="main">
     @yield('content')
     {{-- @include('site.section_about')

@@ -6,9 +6,9 @@
     <!-- ======= Features Section ======= -->
   @include('site.section_publikasi')  
     <!-- ======= informasi Artikel ======= -->
-    @include('site.section_artikel')  
+  @include('site.section_artikel')  
     <!-- ======= informasi Section ======= -->
-    @include('site.section_informasi')  
+  @include('site.section_informasi')  
     <!-- ======= Contact Section ======= -->
   @include('site.section_contact') 
  

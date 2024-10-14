@@ -38,4 +38,35 @@
       
     </div>
 
-  </section><!-- End About Section -->
+</section>
+<section class="welcome text-left">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-xs-12">
+        <h2>SISTEM INFORMASI</h2>
+        <div class="">
+          GENDER & ANAK
+        </div>  
+        <small>Kemudahan dalam akses pencarian data dengan cepat, tepat dan akurat</small>
+
+        <form id="form-search" action="/search" method="get" autocomplete="off">	
+          <div class="input-group mt-4">
+            <input type="search" id="keyword" class="form-control form-control-sm" name="keyword" placeholder="Masukkan kata kunci pencarian...">		
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fa fa-search fa-lg"></i></button>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-6 col-xs-12 text-center">
+
+        <img alt="" class="gadgets-img hidden-md-down " src="assets/img/gadget_icon4.png">
+      </div>
+
+    </div>
+    
+  </div>
+  
+</section>
+
+<!-- End About Section -->
