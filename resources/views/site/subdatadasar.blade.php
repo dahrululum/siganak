@@ -1,14 +1,16 @@
 
 
-<tr bgcolor="#eee">
+<tr >
     
      
-    <td>{{ $el->id }}</td>
+    {{-- <td>
+        
+    </td> --}}
      
     <td style="padding-left:<?= 7 + $level * 20; ?>px">
-        <span class="@if($level==0 or $level==1 or $level==2) font-weight-bold @else font-weight-normal @endif "> 
+        <span class="@if($level==0 or $level==1 or $level==2) font-weight-bold @else font-weight-normal @endif small"> 
             @if(!empty($el->nama))
-              {{ ucwords(strtolower($el->nama)) }}
+              {{ strtoupper($el->nama) }}
         
              @else
 
@@ -52,7 +54,7 @@
     
 ?>
 
-    <td class="text-right">   {{ number_format($nilaielement,2) }} </td>
+    <td class="text-center small">   {{ number_format($nilaielement,2) }} </td>
     @endfor  
      
     {{-- <td class="text-center col-sm-2">

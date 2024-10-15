@@ -81,7 +81,7 @@
                                   $strip = "--"; 
                                 ?>
                                 @foreach ($bidang as $bid)
-                                    <option  class="{{ $bid->id_jenis }}" value="{{ $bid->id }}">  {{ $bid->id }}. {{ $bid->namabidang }}</option>
+                                    <option  class="{{ $bid->id_jenis }}" value="{{ $bid->id }}" @if($bid->id == $pel->id_bidang) selected @endif>  {{ $bid->id }}. {{ $bid->namabidang }}</option>
                                 @endforeach
                             </select>
                         

@@ -71,7 +71,9 @@ class FrontController extends Controller
         $kdjenis=2;
       }
 
-      $datel = Elemen::where('id_jenis',$kdjenis)->get();    
+      $datel = Elemen::where('id_jenis',$kdjenis)
+                      ->where('id_induk',0)
+                      ->get();    
       $per = Periode::where('status',1)->first();
        
       $label = "Data Dasar  ".ucfirst($jenis);
