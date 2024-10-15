@@ -19,6 +19,7 @@ class Elemen extends Model
         'id_bidang',
         
         'alias',
+        'satuan',
         'sumber',
         'nama',
         'status_verifikasi',

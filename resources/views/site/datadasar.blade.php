@@ -11,14 +11,15 @@
                       </div>
                        <div class="card-body">
                           <table class="table table-sm table-hover table-striped table-bordered" id="tablena">
-                              <thead class="bg-dark">
+                              <thead class="bg-dark small">
                               <tr>
                                   {{-- <th> ID</th> --}}
                                   <th> Nama Elemen </th>
                                   @for ($i = $periode->thnawal; $i <= $periode->thnakhir; $i++)
                                       <th class="text-center"> Tahun {{ $i }}  </th>
                                   @endfor
-                                  
+                                  <th class="text-center"> Satuan </th>
+                                  <th class="text-center"> Sumber </th>
               
                               </tr>
                               </thead>

@@ -8,9 +8,9 @@
     </td> --}}
      
     <td style="padding-left:<?= 7 + $level * 20; ?>px">
-        <span class="@if($level==0 or $level==1 or $level==2) font-weight-bold @else font-weight-normal @endif small"> 
+        <span class="@if($level==0) font-weight-bold @elseif($level==1) font-weight-normal @else font-italic text-dark @endif small"> 
             @if(!empty($el->nama))
-              {{ strtoupper($el->nama) }}
+              {{ strtoupper($el->nama) }}  
         
              @else
 
@@ -55,12 +55,15 @@
 ?>
 
     <td class="text-center small">   {{ number_format($nilaielement,2) }} </td>
+    
     @endfor  
      
     {{-- <td class="text-center col-sm-2">
         <input type="hidden" id="id_elemen{{ $el->id }}" name="id_elemen{{ $el->id }}" value="{{ $el->id }}" class="form-control form-control-sm"> 
         <input type="number" id="nilai{{ $el->id }}" name="nilai{{ $el->id }}" class="form-control form-control-sm" value="{{$nilaielement}}">
     </td> --}}
+    <td class="text-center small">   {{ $el->satuan }} </td>
+    <td class="text-center small">   {{ $el->sumber }} </td>
 </tr>
 <?php
     $level++;
