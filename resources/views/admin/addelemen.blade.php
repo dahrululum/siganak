@@ -99,7 +99,13 @@
                       </div> 
                     </div>
                                              
-                    
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label" for="satuan">Satuan</label>
+                      <div class="col-sm-4">
+                        <input class="form-control form-control-sm" id="satuan" type="text"   name="satuan" placeholder="Masukan satuan " />
+                        
+                      </div>
+                    </div>
                     <div class="form-group row">
                       <label class="col-sm-3 col-form-label" for="sumberdata">Sumber</label>
                       <div class="col-sm-4">

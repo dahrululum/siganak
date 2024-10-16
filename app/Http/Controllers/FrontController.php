@@ -57,12 +57,12 @@ class FrontController extends Controller
               ]);
         
     }
-    public function datadasar($jenis, $wil = null)
+    public function datadasar($jenis, $idwil = null)
     {
-      if(empty($wil)){
-        $kdwil=1;
+      if(empty($idwil)){
+        $kdwil="1";
       }else{
-        $kdwil=$wil;
+        $kdwil=$idwil;
 
       }
       if($jenis=="gender"){
@@ -75,13 +75,18 @@ class FrontController extends Controller
                       ->where('id_induk',0)
                       ->get();    
       $per = Periode::where('status',1)->first();
+      $getwil = Refwilayah::where('id',$kdwil)->first();
+      $wil = Refwilayah::where('status',1)->get();
        
       $label = "Data Dasar  ".ucfirst($jenis);
         return view('site.datadasar',[
-                'layout'  => $this->layout,
-                'el'     => $datel,
-                'periode' => $per,
-                'label'   => $label
+                'layout'    => $this->layout,
+                'el'        => $datel,
+                'periode'   => $per,
+                'wilayah'   => $wil,
+                'kdwil'     => $kdwil,
+                'label'     => $label,
+                'getwil'    => $getwil,
               ]);
         
     }

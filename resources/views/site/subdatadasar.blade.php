@@ -26,7 +26,7 @@
         $cekn=App\Models\Nilai::where(
         [
             ['id_jenis','=',$el->id_jenis],
-            ['id_wilayah','=',@$params['id_wilayah']],
+            ['id_wilayah','=',$kdwil],
             ['id_elemen','=',$el->id],
             ['tahun','=',$i],
         ]
@@ -37,7 +37,7 @@
         $nilaina=App\Models\Nilai::where(
         [
             ['id_jenis','=',$el->id_jenis],
-            ['id_wilayah','=',@$params['id_wilayah']],
+            ['id_wilayah','=',$kdwil],
             ['id_elemen','=',$el->id],
             ['tahun','=',$i],
         ]
@@ -62,7 +62,7 @@
         <input type="hidden" id="id_elemen{{ $el->id }}" name="id_elemen{{ $el->id }}" value="{{ $el->id }}" class="form-control form-control-sm"> 
         <input type="number" id="nilai{{ $el->id }}" name="nilai{{ $el->id }}" class="form-control form-control-sm" value="{{$nilaielement}}">
     </td> --}}
-    <td class="text-center small">   {{ $el->satuan }} </td>
+    <td class="text-center small">   {{ $el->satuan }}  </td>
     <td class="text-center small">   {{ $el->sumber }} </td>
 </tr>
 <?php
