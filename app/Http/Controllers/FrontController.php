@@ -129,4 +129,49 @@ class FrontController extends Controller
               ]);
         
     }
+    public function search(Request $request)
+    {
+      
+
+        $per = Periode::where('status',1)->first();
+        $wil = Refwilayah::all();
+        $jen = Refjenis::where('status',1)->get();
+
+        $params = $request->query();
+        if(!empty($params)){
+            if(!empty($params['key'])){$key=$params['key'];}else{$key="";}
+            
+
+            $arrpar="?key=".$key;
+        
+        }else{
+            $arrpar="";
+        }
+
+        
+          
+        $queryEL = Elemen::querysearch($params);
+
+        //$queryEL->latest();
+        //$allEL = $queryEL->paginate(10);
+        $model = $queryEL->get();
+        $jmlkey = $queryEL->count();
+        return view('site.search' , [
+          'layout' => $this->layout,
+          'periode'       => $per,
+          'wilayah'       => $wil,
+          'jenis'         => $jen,
+          'params'        => $params,
+          'arrpar'        => $arrpar,
+          'model'         => $model,
+          'jmlkey'        => $jmlkey,
+          
+           
+        ]);
+
+      
+    
+    
+    }
+
 }

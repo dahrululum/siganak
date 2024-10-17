@@ -30,6 +30,19 @@ class Elemen extends Model
     {
         return $this->hasOne(Refjenis::class,'id','id_jenis')->withDefault();
     }
+    public function getInduk()
+    {
+        return $this->hasOne(Elemen::class,'id','id_induk')->withDefault();
+    }
+    public function getSupInduk($id)
+    {
+        //return $this->hasOne(Elemen::class,'id_induk',$id)->withDefault();
+        $query = parent::query();
+        $query->where('id', '=', $id)->where('status_aktif',1);
+        
+
+        return $query;
+    }
     public function getBidang()
     {
         return $this->hasOne(Refbidang::class,'id','id_bidang')->withDefault();
@@ -76,7 +89,29 @@ class Elemen extends Model
 
         return $query;
     }
-
+    //query search
+    public static function querysearch($params = [])
+    {
+        $query = parent::query();
+        if (@$params['key'] != null) {
+            
+            // $query->where('data_api_pendidikan', 'like', '%' . $params['key'] . '%')
+            //     ->orwhere('data_api_jabatan', 'like', '%' . $params['key'] . '%')
+            //     ->orwhere('data_api_pelatihan', 'like', '%' . $params['key'] . '%')
+            //     ->orwhere('data_api_sertifikasi', 'like', '%' . $params['key'] . '%');
+            $query->where(function ($que){
+                $key=$_GET['key'];
+                $que->where('nama', 'like', '%' . $key . '%');
+                    
+            });
+       
+        }
+        
+        $query->orderby('id','desc');
+        
+        //    dd($query);
+        return $query;
+    }
 
     // //getnilai
     // public function getNilai($id_elemen,$id_jenis,$id_wilayah,$tahun)
