@@ -48,25 +48,45 @@
     @php 
     
     @endphp
+    //jml penduduk
     const ctx1 = document.getElementById('chart1');
       var barChart = new Chart(ctx1, {
       type: 'bar',
       data: {
-        labels: ["<?php echo $wil1; ?> ", "<?php echo $wil2; ?> ","<?php echo $wil3; ?> ","<?php echo $wil4; ?> ","<?php echo $wil5; ?> ","<?php echo $wil6; ?> ","<?php echo $wil7; ?> ","<?php echo $wil8; ?> "  ],
+        
+        labels:[{!! $allwil !!}],
         datasets: [
             {
                 label: "Laki-laki",
                 backgroundColor: "#890bb2",
-                data: [3,7]
+                data: [{{$jml1}}]
             },
             {
                 label: "Perempuan",
                 backgroundColor: "#0bb21f",
-                data: [4,3]
+                data: [{{$jml2}}]
             },
             
         ]
       }
-      });
+    });
+    //korban kekerasan
+    const ctx2 = document.getElementById('chart2');
+      var barChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        
+        labels:[{!! $allwil !!}],
+        datasets: [
+            {
+              label: "Jumlah Korban",
+                backgroundColor: "#0bbccf",
+                data: [{{$jml3}}]
+            },
+            
+            
+        ]
+      }
+    });
   
   </script>

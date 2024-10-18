@@ -39,14 +39,18 @@
     <div class="row  ">
       <h2>GRAFIK</h2> 
       <div class="col-md-6 text-center p-2" >
-          <h4>Jumlah Penduduk Berdasarkan Jenis Kelamin Tahun 2024</h4>
-          <div class="chart1  bg-light" id="" style="height: 340px;">
+          <h4>Jumlah Penduduk Berdasarkan Jenis Kelamin dan <br> Kelompok Wilayah Tahun {{$ynow}} </h4>
+          <div class="chart1  bg-dark" id="" style="height: 320px;">
             <canvas id="chart1" style="min-height: 320px; height:320px; max-height: 320px; max-width: 100%;"></canvas>
           </div>
       </div>  
       <div class="col-md-6  text-center p-2">
-        <h4>Jumlah Korban Kekerasan</h4>
-        <div class="chart2 bg-light"  style="height: 300px;"></div>
+        <h4>Jumlah Korban Kekerasan Terhadap Perempuan Menurut Kelompok <br> Wilayah Tahun {{$ynow}}</h4>
+        <div class="chart2 bg-dark"  style="height: 320px;">
+          <canvas id="chart2" style="min-height: 320px; height:320px; max-height: 320px; max-width: 100%;"></canvas>
+          {{-- <div>Laki {{ $jml1 }}</div>
+          <div>Bini {{ $jml2 }}</div> --}}
+        </div>
       </div>  
     </div>
   </div>

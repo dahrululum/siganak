@@ -33,19 +33,106 @@ class FrontController extends Controller
 {
     //
     public $layout = 'layouts.frontend.main';
+
     public function index()
     {
-      $wil = Refwilayah::where('status',1)->get();
-      $wil1 = Refwilayah::where('id',1)->first();
-      $wil2 = Refwilayah::where('id',2)->first();
-      $wil3 = Refwilayah::where('id',3)->first();
-      $wil4 = Refwilayah::where('id',4)->first();
-      $wil5 = Refwilayah::where('id',5)->first();
-      $wil6 = Refwilayah::where('id',6)->first();
-      $wil7 = Refwilayah::where('id',7)->first();
-      $wil8 = Refwilayah::where('id',8)->first();
-      
-      
+      $ynow = date('Y');
+      $per = Periode::where('status',1)->first();
+      $wil = Refwilayah::where('status',1)
+            ->orderby('id','asc')  
+            ->get();
+     
+      $namawil = "";
+      $n1 = "";
+      $n2 = "";
+      $n3 = "";
+      foreach($wil as $wilayah){
+         
+        $namawil .= '"' .$wilayah->ket. '"'.',';
+        //nlaki
+        $cekn1= Nilai::where(
+          [
+              ['id_elemen','=',2],
+              ['id_jenis','=',1],
+              ['id_wilayah','=',$wilayah->id],
+              ['tahun','=',$per->thnakhir],
+          ]
+          )->count();
+          if($cekn1 != 0 ){
+            $nilaina1= Nilai::where(
+              [
+                  ['id_elemen','=',2],
+                  ['id_jenis','=',1],
+                  ['id_wilayah','=',$wilayah->id],
+                  ['tahun','=',$per->thnakhir],
+              ]
+              )->first();
+
+              $nilaielement1=$nilaina1->nilai;
+              $n1 .= $nilaielement1 .",";  
+          }else{
+            $nilaielement1=0;
+            $n1 .= $nilaielement1 .",";  
+          }
+        
+        //nperempuan
+        $cekn2= Nilai::where(
+          [
+              ['id_elemen','=',2],
+              ['id_jenis','=',1],
+              ['id_wilayah','=',$wilayah->id],
+              ['tahun','=',$per->thnakhir],
+          ]
+          )->count();
+          if($cekn2 != 0 ){
+            $nilaina2= Nilai::where(
+              [
+                  ['id_elemen','=',3],
+                  ['id_jenis','=',1],
+                  ['id_wilayah','=',$wilayah->id],
+                  ['tahun','=',$per->thnakhir],
+              ]
+              )->first();
+
+              $nilaielement2=$nilaina2->nilai;
+              $n2 .= $nilaielement2 .",";  
+          }else{
+            $nilaielement2=0;
+            $n2 .= $nilaielement2 .",";  
+          }
+        //nkper
+        $cekn3= Nilai::where(
+          [
+              ['id_elemen','=',59],
+              ['id_jenis','=',1],
+              ['id_wilayah','=',$wilayah->id],
+              ['tahun','=',$per->thnakhir],
+          ]
+          )->count();
+          if($cekn3 != 0 ){
+            $nilaina3= Nilai::where(
+              [
+                  ['id_elemen','=',59],
+                  ['id_jenis','=',1],
+                  ['id_wilayah','=',$wilayah->id],
+                  ['tahun','=',$per->thnakhir],
+              ]
+              )->first();
+
+              $nilaielement3=$nilaina3->nilai;
+              $n3 .= $nilaielement3 .",";  
+          }else{
+            $nilaielement3=0;
+            $n3 .= $nilaielement3 .",";  
+          }
+
+ 
+      }
+      $arrwil = $namawil;
+      $arrn1 = $n1; 
+      $arrn2 = $n2;
+      $arrn3 = $n3;
+
       $pub = Publikasi::where('status',1)
             ->orderby('id')
             ->limit(3)
@@ -62,15 +149,13 @@ class FrontController extends Controller
                 'layout'  => $this->layout,
                 'pub'     => $pub,
                 'art'     => $art,
-                'wil1'     => $wil1->ket,
-                'wil2'     => $wil2->ket,
-                'wil3'     => $wil3->ket,
-                'wil4'     => $wil4->ket,
-                'wil5'     => $wil5->ket,
-                'wil6'     => $wil6->ket,
-                'wil7'     => $wil7->ket,
-                'wil8'     => $wil8->ket,
-                'wl'      => $web,
+                'ynow'    => $ynow,
+                'wl'       => $web,
+                'allwil'   => $arrwil,
+                'jml1'      => $arrn1,
+                'jml2'      => $arrn2,
+                'jml3'      => $arrn3,
+                
                 
                 
               ]);
