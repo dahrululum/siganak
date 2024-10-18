@@ -1,7 +1,7 @@
 <section class="features" id="publikasi">
     
     <div class="container">
-      <div class="feature-col col-lg-12 col-xs-12">
+      <div class="feature-col col-lg-12 col-xs-12 mt-4">
         <div class="row">
          
           <div class=" text-center h2 text-info">

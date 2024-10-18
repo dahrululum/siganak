@@ -117,7 +117,7 @@ a:hover {
 }
 
 section {
-  padding: 45px 0;
+  padding: 0px 0;
 }
 
 .card {
@@ -570,8 +570,9 @@ a:hover {
   color: #fff;
   height: 300px;
   overflow: hidden;
-  padding-top: 45px;
-  background: url("../img/parallax-bg.jpg") center top no-repeat;
+  padding-top: 35px;
+  /* background: url("../img/parallax-bg.jpg") center top no-repeat; */
+  background: #043641;
 }
 
 .welcome h2 {
@@ -584,7 +585,7 @@ a:hover {
   margin-bottom: 45px;
 }
 .gadgets-img{
-  width: 80%;
+  width: 40%;
   overflow: auto;
    
 }
@@ -599,6 +600,18 @@ a:hover {
 }
 .input-group-btn{
   padding-left: 5px;
+}
+
+/* ==================================================
+  Features Styling
+  ================================================== */
+.grafik {
+  color: #fff;
+  height: 500px;
+  overflow: hidden;
+  padding-top: 45px;
+  background: #043641;
+  /* background: url("../img/parallax-bg.jpg") center bottom repeat; */
 }
 
 /* ==================================================
@@ -859,8 +872,10 @@ a:hover {
   Contact Section
   ================================================== */
 #contact {
-  background: #f7f7f7;
-  padding: 80px 0;
+  border-top: 1px solid rgb(187, 184, 184);
+  padding: 40px 0;
+  /* background: #012830; */
+  background: url("../img/parallax-bg.jpg") center top no-repeat;
 }
 
 #contact h2 {
@@ -877,7 +892,7 @@ a:hover {
 
 #contact .info p {
   padding: 0 0 10px 50px;
-  line-height: 24px;
+  line-height: 20px;
 }
 
 #contact .php-email-form .validate {

@@ -42,3 +42,31 @@
 
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.2/chart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"></script>
+  <script>
+    @php 
+    
+    @endphp
+    const ctx1 = document.getElementById('chart1');
+      var barChart = new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: ["<?php echo $wil1; ?> ", "<?php echo $wil2; ?> ","<?php echo $wil3; ?> ","<?php echo $wil4; ?> ","<?php echo $wil5; ?> ","<?php echo $wil6; ?> ","<?php echo $wil7; ?> ","<?php echo $wil8; ?> "  ],
+        datasets: [
+            {
+                label: "Laki-laki",
+                backgroundColor: "#890bb2",
+                data: [3,7]
+            },
+            {
+                label: "Perempuan",
+                backgroundColor: "#0bb21f",
+                data: [4,3]
+            },
+            
+        ]
+      }
+      });
+  
+  </script>
