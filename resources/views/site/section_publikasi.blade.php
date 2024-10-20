@@ -25,7 +25,7 @@
 
             <div class="bg-dark p-2" style="height: 100px;">
               <h3>
-               {{ $pub->judul}}
+              <a href="{{url('/detail-publikasi/'.$pub->alias)}}">{{ $pub->judul}}</a> 
               </h3>
             
               <p>

@@ -233,6 +233,19 @@ class FrontController extends Controller
               ]);
         
     }
+    //detail artikel
+    public function detailartikel($alias)
+    {
+      $pub = Artikel::where('alias',$alias)->first();    
+     
+      $label = "Detail Artikel";
+        return view('site.detailartikel',[
+                'layout'  => $this->layout,
+                'pub'     => $pub,
+                'label'   => $label
+              ]);
+        
+    }
     public function search(Request $request)
     {
       

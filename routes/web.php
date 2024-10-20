@@ -31,6 +31,7 @@ Route::get('/indikator', [FrontController::class,'indikator'])->name('front.indi
 Route::get('/publikasi', [FrontController::class,'publikasi'])->name('front.publikasi');
 Route::get('/detail-publikasi/{alias}', [FrontController::class,'detailpublikasi'])->name('front.detailpublikasi');
 Route::get('/artikel', [FrontController::class,'artikel'])->name('front.artikel');
+Route::get('/detail-artikel/{alias}', [FrontController::class,'detailartikel'])->name('front.detailartikel');
 //search
 Route::get('/search', [FrontController::class,'search'])->name('front.search');
 

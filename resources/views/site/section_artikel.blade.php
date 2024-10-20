@@ -2,19 +2,17 @@
     
     <div class="container">
         <div class="row">
-            <div class="feature-col col-lg-3 col-xs-12">
+            <div class="feature-col col-lg-12 col-xs-12">
               <div class="row">
-                <div class="col-lg-2 col-xs-12 feature-icon">
-                    <i class="bi bi-envelope"></i>
-                </div>
-                <div class=" col-lg-8 col-xs-12 text-center h1">
-                  Artikel
+                 
+                <div class=" col-lg-12 col-xs-12 text-center h2 text-info">
+                  ARTIKEL
                 </div>
               </div>
              
             </div>
-            <div class="col-lg-7 col-xs-12 text-center  ">Semua Artikel </div>
-            
+            {{-- <div class="col-lg-7 col-xs-12 text-center  ">Semua Artikel </div>
+             --}}
           </div>
 
           <div class="row">
@@ -28,7 +26,7 @@
                 <div class="bg-light p-2" style="height: 100px;">
                   <span> {{ $art->tglinput}}</span>
                   <h4>
-                   {{ $art->judul}}
+                    <a href="{{url('/detail-artikel/'.$art->alias)}}">{{ $art->judul}}</a> 
                   </h4>
                 
                  
