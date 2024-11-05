@@ -34,6 +34,9 @@ Route::get('/artikel', [FrontController::class,'artikel'])->name('front.artikel'
 Route::get('/detail-artikel/{alias}', [FrontController::class,'detailartikel'])->name('front.detailartikel');
 //search
 Route::get('/search', [FrontController::class,'search'])->name('front.search');
+//forumanak
+Route::get('/forumanak/{alias?}', [FrontController::class,'forumanak'])->name('front.forumanak');
+Route::get('/detail-forumakan/{alias}', [FrontController::class,'detailforumanak'])->name('front.detailforumanak');
 
 
 //admin
@@ -149,5 +152,13 @@ Route::post('/admin/post-isinindi', [AdminController::class,'postIsinindi']);
 //Route::get('/admin/resetuser/{id}', 'Auth\AdminAuthController@resetuser')->name('admin.resetuser');
 //Route::post('/admin/post-resetuser', 'Auth\AdminAuthController@postResetuser'); 
 
- 
-
+//forumanak
+//05nov2024
+Route::get('admin/profilfa', [AdminController::class,'profilfa'])->name('admin.profilfa');
+Route::get('/admin/addprofilfa', [AdminController::class,'addprofilfa'])->name('admin.addprofilfa');
+Route::post('/admin/post-addprofilfa', [AdminController::class,'postAddprofilfa']); 
+Route::get('/admin/editprofilfa/{id}',  [AdminController::class,'editprofilfa'])->name('admin.editprofilfa');
+Route::post('/admin/post-editprofilfa', [AdminController::class,'postEditprofilfa']); 
+Route::get('/admin/delprofilfa/{id}',  [AdminController::class,'delprofilfa']);
+Route::get('admin/dialog_uploadfa/{id}/{label}', [AdminController::class,'dialoguploadfa'])->name('admin.dialoguploadfa');
+Route::post('/admin/uploadactionfa',  [AdminController::class,'uploadactionfa'])->name('admin.uploadactionfa');

@@ -26,6 +26,7 @@ use App\Models\Indikator;
 use App\Models\Nindi;
 use App\Models\Reftarget;
 use App\Models\Artikel;
+use App\Models\Forumanak;
 
 use Session;
 use Carbon;
@@ -1374,10 +1375,11 @@ class AdminController extends Controller
   public function addartikel(Request $request)
   {
        $uniqid=uniqid();
-
+       $userlev = Auth::guard('admin')->user()->level;
           return view('admin/addartikel',[
             'layout'    => $this->layout,
             'alias'     => $uniqid,
+            'userlev'       => $userlev,
            
              
         ]);
@@ -1397,6 +1399,7 @@ class AdminController extends Controller
     Artikel::create([
           'alias'                  => $request['alias'],
           'judul'                  => $request['judul'],
+          'jenis'                  => $request['jenis'],
           'teaser'                 => $request['teaser'],
           'isi'                    => $request['fullteks'],
           'file_foto'              => $request['namafilecover'],
@@ -1443,6 +1446,7 @@ class AdminController extends Controller
               ->update([
                 
                 'judul'                  => $request['judul'],
+                'jenis'                  => $request['jenis'],
                 'teaser'                 => $request['teaser'],
                 'isi'                    => $request['fullteks'],
                 'file_foto'              => $request['namafilecover'],
@@ -1477,6 +1481,184 @@ class AdminController extends Controller
       
       
   }
+  //profil Forumanak
+  //05112024
+  public function profilfa(Request $request)
+  {
+    if(Auth::guard('admin')->check()){ 
+        $fa = Forumanak::where('status',1)->orderby('id')->get();     
+        
+        return view('admin.profilfa',[
+          'layout'  => $this->layout,
+          'fa'     => $fa, 
+           
+
+      ]);
+    }else{
+        return view('admin.login',[
+            'layout' => $this->layout 
+        ]);
+    }
+  }
+  public function dialoguploadfa($id, $label)
+  {
+        if(Auth::guard('admin')->check()){  
+                
+            
+            //return view('/pelamar/datatable', compact('pelamars'));
+                return view('admin.dialog_uploadfa' , [
+                    'layout' => $this->layout,
+                    'uniqid'  =>$id,
+                    'label'     =>$label
+                    
+                     
+                     
+            ]);
+        }else{
+                return view('admin.login',[
+                    'layout' => $this->layout 
+                  ]);
+                }
+  }
+  public function uploadactionfa(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+        'select_file' => 'required|mimes:jpeg,png,jpg,pdf,docx,xlsx,doc|max:20748'
+        ]);
+        if($validation->passes())
+        {
+            $uniqid   =   $request->input('uniqid');
+            $now = date('his');
+            $label    =   $request->input('label');
+            
+            $image = $request->file('select_file');
+
+            $nama_file = "profilfa_".$label."_".$uniqid."_".$now.".".$image->getClientOriginalExtension();  
+            $tujuan_upload = 'downloads';
+            $image->move($tujuan_upload,$nama_file);
+
+            //Storage::disk('downloads') -> put($nama_file, file_get_contents($image->getRealPath()));
+
+             
+            return response()->json([
+                'message'   => 'Berkas Berhasil di Upload',
+                'uploaded_file' => '<input type="hidden" id="uploadfile" name="uploadfile" value="'.$nama_file.'"  />',
+                'label_file' => '<input type="hidden" id="labelfile" name="labelfile" value="'.$label.'"  />',
+                'uploaded_image' => '<a href="../downloads/'.$nama_file.'" class="btn btn-danger" target="_blank" >'.$nama_file.'</a>',
+                'class_name'  => 'alert-success'
+            ]);
+
+                
+
+        }
+        else
+        {
+            return response()->json([
+            'message'   => $validation->errors()->all(),
+            'uploaded_image' => '',
+            'class_name'  => 'alert-danger'
+            ]);
+        }
+  }
+
+
+  public function addprofilfa(Request $request)
+  {
+       $uniqid=uniqid();
+       $userlev = Auth::guard('admin')->user()->level;
+          return view('admin/addprofilfa',[
+            'layout'    => $this->layout,
+            'alias'     => $uniqid,
+            'userlev'       => $userlev,
+           
+             
+        ]);
+
+       // return view('register');
+  }
+  public function postAddprofilfa(Request $request)
+  {  
+   
+    $userna = Auth::guard('admin')->user()->name;
+    Forumanak::create([
+          'alias'                  => $request['alias'],
+          'judul'                  => $request['judul'],
+          'teaser'                 => $request['teaser'],
+          'isi'                    => $request['fullteks'],
+          'file_foto'              => $request['namafilecover'],
+          'tglinput'               => $request['tglupload'],
+          'status'                 => $request['status'],
+          'inputby'                => $userna,
+          
+          
+          
+        ]);
+      
+      return Redirect::to("/admin/profilfa")->with('success','Selamat, Anda berhasil untuk menambah profil FA');
+  }
+
+  public function editprofilfa($id)
+  {
+      $pub = Forumanak::where('id', $id)->first();
+      
+        return view('admin/editprofilfa',[
+          'layout'    => $this->layout,
+          'alias'     => $pub->alias,
+          'pub'       => $pub,
+          
+          
+            
+      ]);
+
+      // return view('register');
+  }
+  public function postEditprofilfa(Request $request)
+  {  
+      if(Auth::guard('admin')->check()){      
+        $userna = Auth::guard('admin')->user()->name;
+        $userlev = Auth::guard('admin')->user()->level;
+         
+
+              $idna=$request->input('idna');
+              Forumanak::where('id', $idna)
+              ->update([
+                
+                'judul'                  => $request['judul'],
+               
+                'isi'                    => $request['fullteks'],
+                'file_foto'              => $request['namafilecover'],
+                'status'                 => $request['status'],
+                'inputby'                => $userna,
+              
+              
+          ]);
+      
+              return Redirect::to("/admin/profilfa")->with('success',' Edit profil FA berhasil.');
+      }else{
+          return view('admin.login',[
+              'layout' => $this->layout 
+            ]);
+      }
+  }
+  public function delprofilfa($id)
+  {
+      if(Auth::guard('admin')->check()){      
+            
+          $pub = Forumanak::where('id', $id)->first();
+          
+          $pub->delete();
+          return Redirect::to("/admin/profilfa")->with('success',' Proses Delete profil FA berhasil.');
+      }else{
+          return view('admin.login',[
+              'layout' => $this->layout 
+          ]);
+      }
+      
+      
+      
+  }
+
+
 
     //indikator
     //13 aug 2024

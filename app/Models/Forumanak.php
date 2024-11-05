@@ -5,25 +5,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Artikel extends Model
+class Forumanak extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'data_artikel';
+    protected $table = 'data_forumanak';
     protected $fillable = [
         'id',
-        'jenis',
         'alias',
         'judul',
         'teaser',
         'isi',
+        'status',
         'file_foto',
-        'file_download',
         'inputby',
-        'tglinput',
-        'status_publish',
-        'tgl_publish',
-        'ket',
+      
          
     ];
 }

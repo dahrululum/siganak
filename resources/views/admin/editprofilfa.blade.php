@@ -19,7 +19,7 @@
     var modal = $(this)
     modal.find('.modal-title').text('Dialog Upload ' + jenis)
 
-    var appurl = {!! json_encode(url('/admin/dialog_uploadart/')) !!};
+    var appurl = {!! json_encode(url('/admin/dialog_uploadfa/')) !!};
         var deturl = appurl+'/'+uniqid+'/'+jenis;
         
         $("#viewupload").load(deturl);    
@@ -75,8 +75,8 @@
 	
         <div class="col-md-12">
             <div class="card card-primary">
-                <div class="card-header"><b>Edit Artikel</b></div>
-                <form action="{{url('admin/post-editartikel')}}" method="POST" id="regForm" class="form-horizontal">
+                <div class="card-header"><b>Edit Profil FA</b></div>
+                <form action="{{url('admin/post-editprofilfa')}}" method="POST" id="regForm" class="form-horizontal">
                 <div class="card-body">
                    {{ csrf_field() }}
                     
@@ -88,45 +88,16 @@
                         </div> 
                     </div>
                     <div class="form-group row">
-                      <label class="col-sm-3 col-form-label" for="judul">Judul Artikel</label>
+                      <label class="col-sm-3 col-form-label" for="judul">Judul Profil FA</label>
                       <div class="col-sm-9">
                       <input class="form-control form-control-sm " id="judul" type="text" name="judul" value="{{ $pub->judul }}" />
                          
                       </div> 
                     </div>
+                                           
+                 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3 text-danger" for="level">Jenis </label>
-                        <div class="col-sm-2">
-                            <select class="form-control form-control-sm select2" name="jenis" id="jenis"  required>
-                                <option value="">Pilih Jenis Artikel </option>
-                                <option value="1" @if($pub->jenis==1) selected @endif >Artikel Umum</option>
-                                <option value="2" @if($pub->jenis==2) selected @endif >Forum Anak </option>
-                            </select>
-                        </div>
-                      </div>
-
-                    <div class="form-group row">
-                        <label for="inputName" class="col-sm-3 col-form-label">Tanggal Upload</label>
-                        
-                        <div class="col-sm-2">
-                            <div class="input-group date" id="pilihtanggal" data-target-input="nearest">
-                                <input type="text"  id="tglupload" name="tglupload"  class="form-control form-control-sm datetimepicker-input "  data-target="#pilihtanggal" value="{{ $pub->tglinput }}" required  />
-                                <div class="input-group-append" data-target="#pilihtanggal" data-toggle="datetimepicker">
-                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                                </div>
-                            </div>
-                            <p class="small text-primary">format : YYYY-MM-DD</p>
-                        </div>
-                    </div>                             
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label" for="desk">Teaser/ Deskripsi</label>
-                      <div class="col-sm-9">
-                        <input class="form-control form-control-sm " id="teaser" type="text" name="teaser" value="{{ $pub->teaser }}" />
-                        
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-3 col-form-label" for="desk">Isi Artikel</label>
+                        <label class="col-sm-3 col-form-label" for="desk">Isi Profil</label>
                         <div class="col-sm-9">
                           <textarea name="fullteks" id="fullteks" cols="100" rows="30" class="form-control form-control-sm isi">{!! $pub->isi !!}</textarea>
                            
@@ -153,21 +124,20 @@
                                 </span>
                                 </div>
                     </div> 
-                    @if($userlev==1)
-                    <hr>
+                  
                     <div class="form-group row">
                         <label class="control-label col-sm-3" for="id_jenis">Status Publish </label>
                         <div class="col-sm-2">
-                            <select class="form-control form-control-sm select2" name="status_publish" id="status_publish"  required>
+                            <select class="form-control form-control-sm select2" name="status" id="status"  required>
                                 <option value="">Pilih Status Publish </option>
-                                <option value="1" @if($pub->status_publish==1) selected @endif >  Aktif</option>
-                                <option value="2" @if($pub->status_publish==2) selected @endif > Tidak  Aktif</option>
+                                <option value="1" @if($pub->status==1) selected @endif >  Aktif</option>
+                                <option value="2" @if($pub->status==2) selected @endif > Tidak  Aktif</option>
                             </select>
                         
                         </div>
     
                     </div>
-                    @endif
+                   
                 </div>
                 <div class="card-footer"> 
                     <button class="btn btn-primary" type="submit">Simpan</button>

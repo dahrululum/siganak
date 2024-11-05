@@ -38,7 +38,12 @@
     </li>
     <li class="nav-item ">
         <a class="nav-link <?php if(Request::segment(2)=='artikel' or Request::segment(2)=='addartikel' or Request::segment(2)=='editartikel'){echo 'active';} ?>" href="<?= url('/admin/artikel/'); ?>">
-            <i class="nav-icon fas fa-table"></i>  <p>Artikel  </p>
+            <i class="nav-icon fas fa-table"></i>  <p>Artikel / Forum Anak </p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link <?php if(Request::segment(2)=='profilfa' or Request::segment(2)=='addprofilfa' or Request::segment(2)=='editprofilfa'){echo 'active';} ?>" href="<?= url('/admin/profilfa/'); ?>">
+            <i class="nav-icon fas fa-table"></i>  <p>Profil Forum Anak </p>
         </a>
     </li>
     <li class="nav-header">Indikator Kinerja</li>

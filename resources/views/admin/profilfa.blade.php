@@ -28,10 +28,10 @@
      
     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title font-weight-bold">Daftar Artikel  </h3>
+                            <h3 class="card-title font-weight-bold">Daftar Profil Forum Anak  </h3>
                         </div>    
                     <div class="card-body">
-                        <a class="btn btn-success" href="{{ URL::to('/admin/addartikel')}}"><i class="fa fa-plus"></i> Tambah Artikel</a>
+                        <a class="btn btn-success" href="{{ URL::to('/admin/addprofilfa')}}"><i class="fa fa-plus"></i> Tambah Profil</a>
                         <br><br>
                         <div class="card-body table-responsive p-0">
                           
@@ -39,10 +39,10 @@
                                 <thead class="bg-primary">
                                 <tr>
                                     <th> ID</th>
-                                    <th> Jenis  </th>
-                                    <th> Judul Artikel </th>
+                                    <th>Alias</th>
+                                    <th> Judul Profil </th>
                                     <th> Deskripsi</th>
-                                    <th> Tanggal</th>
+                                    
                                     <th>   Foto</th>
                                      
                                     <th> Status </th>
@@ -51,9 +51,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($pub as $pub)
+                                    @foreach ($fa as $pub)
                                     <?php 
-                                       if ($pub->status_publish=="1"){
+                                       if ($pub->status=="1"){
                                            $namastatus="aktif";
                                         }else{
                                            $namastatus="tidak aktif"; 
@@ -62,19 +62,13 @@
                                     ?>
                                     <tr>
                                         <td>{{ $pub->id }}</td>
-                                        <td class="text-center">
-                                            @if($pub->jenis==2)
-                                                Forum Anak
-                                            @else
-                                                Artikel Umum
-                                            @endif
-                                        </td>
+                                        <td>{{ $pub->alias }}</td>
                                         <td>{{ $pub->judul }}</td>
-                                        <td>{!! Str::limit($pub->teaser, 50) !!}</td>
-                                        <td>{{ $pub->tglinput }}</td>
+                                        <td>{!! Str::limit($pub->isi, 200) !!}</td>
+                                        
                                         <td class="text-center">
                                             @if(empty($pub->file_foto))
-                                                <img src="{{ asset('images/noimage.jpg') }}" alt="">
+                                                <img src="{{ asset('images/noimage.jpg') }}" alt="" width="140px">
                                             @else
                                             <img src="{{ asset('downloads/'.$pub->file_foto) }}" width="140px" alt="" class="">
                                             @endif
@@ -83,8 +77,8 @@
                                         <td>{{ $namastatus }}</td>
                                          
                                         <td>
-                                            <a class="btn btn-success btn-xs" href="{{ URL::to('/admin/editartikel/'.$pub->id) }}"><i class="fa fa-edit"></i> Edit</a>
-                                            <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/delartikel/'.$pub->id) }}" onClick="if(!confirm('Anda yakin Akan Hapus Data Artikel ini !'))return false;"><i class="fa fa-trash"></i> Delete</a>
+                                            <a class="btn btn-success btn-xs" href="{{ URL::to('/admin/editprofilfa/'.$pub->id) }}"><i class="fa fa-edit"></i> Edit</a>
+                                            <a class="btn btn-danger btn-xs" href="{{ URL::to('/admin/delprofilfa/'.$pub->id) }}" onClick="if(!confirm('Anda yakin Akan Hapus Data FA ini !'))return false;"><i class="fa fa-trash"></i> Delete</a>
                                              
                                          </td>
                                          

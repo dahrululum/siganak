@@ -23,6 +23,8 @@ use App\Models\Publikasi;
 use App\Models\Weblink;
 use App\Models\Artikel;
 use App\Models\Admin;
+use App\Models\Forumanak;
+
  
 
 use Session;
@@ -290,5 +292,37 @@ class FrontController extends Controller
     
     
     }
-
+    //forum anak
+    public function forumanak($faid = null)
+    {
+      if(empty($faid)){
+        $detfa = Forumanak::where('id',1)->first();
+      }else{
+        $detfa = Forumanak::where('id',$faid)->first();
+      }
+      $fa = Forumanak::where('status',1)->orderby('id')->get();    
+      $art = Artikel::where('jenis',2)->get();
+      $label = "Forum Anak";
+        return view('site.forumanak',[
+                'layout'  => $this->layout,
+                'faid'   => $faid,
+                'fa'      => $fa,
+                'detfa'   => $detfa,
+                'art'     => $art,
+                'label'   => $label
+              ]);
+        
+    }
+    public function detailforumanak($alias)
+    {
+      $pub = Publikasi::where('alias',$alias)->first();    
+     
+      $label = "Detail Forum Anak";
+        return view('site.detailforumanak',[
+                'layout'  => $this->layout,
+                'pub'     => $pub,
+                'label'   => $label
+              ]);
+        
+    }
 }
