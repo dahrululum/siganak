@@ -23,12 +23,12 @@
               <img src="{{ asset('downloads/'.$pub->file_foto) }}" class="img-fluid mx-auto overflow-hidden" alt="Responsive image">
             </div>
 
-            <div class="bg-light p-2" style="height: 100px;">
+            <div class="bg-light p-2 overflow-hidden" style="height: 100px;">
               <h5>
                <a href="{{url('/detail-publikasi/'.$pub->alias)}}">{{ $pub->judul}}</a> 
               </h5>
             
-              <p>
+              <p class="">
                 {!! Str::limit($pub->deskripsi, 100) !!}
               </p>
             </div>

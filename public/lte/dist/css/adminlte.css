@@ -4528,8 +4528,8 @@ input[type="button"].btn-block {
     position: absolute;
   }
   .navbar-expand-md .navbar-nav .nav-link {
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding-right: 0.5rem;
+    padding-left: 0.8rem;
   }
   .navbar-expand-md > .container,
   .navbar-expand-md > .container-fluid, .navbar-expand-md > .container-sm, .navbar-expand-md > .container-md, .navbar-expand-md > .container-lg, .navbar-expand-md > .container-xl {
@@ -11320,9 +11320,9 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
 }
 
 .layout-top-nav .wrapper .main-header .brand-image {
-  margin-top: -.5rem;
+  margin-top: -.1rem;
   margin-right: 2.2rem;
-  height: 60px;
+  height: 50px;
 }
 
 .layout-top-nav .wrapper .main-sidebar {

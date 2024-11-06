@@ -42,8 +42,7 @@
     <nav class="main-header navbar navbar-expand-md navbar-info navbar-dark">
       <div class="container">
         <a href="{{url('/')}}" class="navbar-brand">
-          <img src="{{ asset('images/logo_siganak.png') }}" alt="Logo SIGANAK" class="brand-image  "
-               style=" ">
+          <img src="{{ asset('images/logo_siganak.png') }}" alt="Logo SIGANAK" class="brand-image" style=" " >
            
         </a>
         
@@ -64,7 +63,7 @@
             <li><a class="nav-link  <?php if(Request::segment(1)=='publikasi'){echo 'active';} ?>" href="{{url('/publikasi')}}">Publikasi</a></li>
             <li><a class="nav-link  <?php if(Request::segment(1)=='artikel'){echo 'active';} ?>" href="{{url('/artikel')}}">Artikel</a></li>
             <li><a class="nav-link  <?php if(Request::segment(1)=='weblink'){echo 'active';} ?>" href="{{url('/weblink')}}">Informasi</a></li>
-             
+            <li><a class="nav-link  <?php if(Request::segment(1)=='forumanak'){echo 'active';} ?>" href="{{url('/forumanak')}}">Forum Anak</a></li>
           </ul>
   
            

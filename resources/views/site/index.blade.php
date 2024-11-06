@@ -8,6 +8,8 @@
     <!-- ======= informasi Artikel ======= -->
   @include('site.section_artikel')  
     <!-- ======= informasi Section ======= -->
+  @include('site.section_forumanak')  
+    <!-- ======= informasi Section ======= -->
   @include('site.section_informasi')  
     <!-- ======= Contact Section ======= -->
   @include('site.section_contact') 

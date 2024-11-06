@@ -140,9 +140,16 @@ class FrontController extends Controller
             ->limit(3)
             ->get();    
       $art = Artikel::where('status_publish',1)
+            ->where('jenis',1)
             ->orderby('id')
             ->limit(3)
             ->get(); 
+      $fa = Artikel::where('status_publish',1)
+            ->where('jenis',2)
+            ->orderby('id')
+            ->limit(3)
+            ->get(); 
+
       $web = Weblink::where('status',1)
             ->orderby('id')
              
@@ -151,6 +158,7 @@ class FrontController extends Controller
                 'layout'  => $this->layout,
                 'pub'     => $pub,
                 'art'     => $art,
+                'fa'     => $fa,
                 'ynow'    => $ynow,
                 'wl'       => $web,
                 'allwil'   => $arrwil,
@@ -231,6 +239,20 @@ class FrontController extends Controller
         return view('site.detailpublikasi',[
                 'layout'  => $this->layout,
                 'pub'     => $pub,
+                'label'   => $label
+              ]);
+        
+    }
+    //artikel
+    public function artikel()
+    {
+      $pub = Artikel::where('status_publish',1)->orderby('id')->get();    
+      $per = Periode::where('status',1)->first();
+      $label = "Artikel";
+        return view('site.artikel',[
+                'layout'  => $this->layout,
+                'pub'     => $pub,
+                'periode' => $per,
                 'label'   => $label
               ]);
         
