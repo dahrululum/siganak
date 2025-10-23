@@ -12,6 +12,12 @@
     <td class="col-1 text-center">{{ $child->tahun3 }}</td>
     <td class="col-1 text-center">{{ $child->tahun4 }}</td>
     <td class="col-1 text-center">{{ $child->tahun5 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun6 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun7 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun8 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun9 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun10 }}</td>
+    <td class="col-1 text-center">{{ $child->tahun11 }}</td>
 </tr>
     
 @endforeach

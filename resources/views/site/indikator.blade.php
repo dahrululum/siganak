@@ -11,7 +11,7 @@
                     <th rowspan="2"> Nama Indikator </th>
                     <th rowspan="2"> Sumber Data </th>
                     <th rowspan="2"> Satuan </th>
-                    <th colspan="5" class=""> Realisasi Pencapaian </th>
+                    <th colspan="11" class=""> Realisasi Pencapaian </th>
                 </tr>
                 <tr class="text-center text-light ">
                     @for ($i = $periode->thnawal; $i <= $periode->thnakhir; $i++)
@@ -26,7 +26,7 @@
                        
                     ?>
                     <tr>
-                        <td colspan="10" class="bg-lightblue  ">
+                        <td colspan="20" class="bg-lightblue  ">
                             <div class="row">
                                 <div class="text-left fw-bold" style="width: 93px;"> Target {{ $tar->kdtarget }} </div>
                                 <div class="col-sm-10 fw-semibold"> {{ $tar->namatarget }}  </div>

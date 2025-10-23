@@ -25,6 +25,12 @@ class Indikator extends Model
         'tahun3',
         'tahun4',
         'tahun5',
+        'tahun6',
+        'tahun7',
+        'tahun8',
+        'tahun9',
+        'tahun10',
+        'tahun11',
         'status_verifikasi',
         'status_aktif',
          
