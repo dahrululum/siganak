@@ -351,4 +351,23 @@ class FrontController extends Controller
               ]);
         
     }
+    //artikel
+    public function weblink()
+    {
+      
+      $web = Weblink::where('status',1)
+            ->orderby('id')
+             
+            ->get();     
+
+      $per = Periode::where('status',1)->first();
+      $label = "Informasi";
+        return view('site.weblink',[
+                'layout'  => $this->layout,
+                'web'     => $web,
+                'periode' => $per,
+                'label'   => $label
+              ]);
+        
+    }
 }

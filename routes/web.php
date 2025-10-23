@@ -32,6 +32,7 @@ Route::get('/publikasi', [FrontController::class,'publikasi'])->name('front.publ
 Route::get('/detail-publikasi/{alias}', [FrontController::class,'detailpublikasi'])->name('front.detailpublikasi');
 Route::get('/artikel', [FrontController::class,'artikel'])->name('front.artikel');
 Route::get('/detail-artikel/{alias}', [FrontController::class,'detailartikel'])->name('front.detailartikel');
+Route::get('/weblink', [FrontController::class,'weblink'])->name('front.weblink');
 //search
 Route::get('/search', [FrontController::class,'search'])->name('front.search');
 //forumanak
